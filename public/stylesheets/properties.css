@@ -1,0 +1,7 @@
+._pos_rel {
+    position: relative;
+}
+
+._float_con:after {
+    clear: both;
+}

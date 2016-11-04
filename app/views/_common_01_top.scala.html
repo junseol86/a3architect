@@ -1,0 +1,71 @@
+@(page_data: Map[String, Any])
+
+<div class="top _pos_rel">
+    <a id="top_logo" href="/">
+        <img src="@routes.Assets.versioned("/images/interface/top_logo.png")">
+    </a>
+
+    <div id="account" class="_float_con">
+        <input type="text">
+        <img src="@routes.Assets.versioned("/images/interface/top_magnifier.png")">
+        <div>
+            @page_data("login") match {
+                case "" => {
+                    <span>로그인</span>
+                    <span>회원가입</span>
+                }
+                case default => {
+                    <span>로그아웃</span>
+                }
+            }
+        </div>
+    </div>
+
+    <div id="navigate" class="_float_con">
+        <div id="intro">
+            <div>A3</div>
+            <ul>
+                <li id="about">A3 그룹은?</li>
+                <li id="people">A3 사람들</li>
+                <li id="contact">Contact</li>
+            </ul>
+        </div>
+        <div id="portfoio">
+            <div>포트폴리오</div>
+            <ul>
+                <li id="construction">건축시공</li>
+                <li id="design">건축설계</li>
+                <li id="interior">인테리어</li>
+            </ul>
+        </div>
+        <div id="sites">
+            <div>현장이야기</div>
+            <ul>
+                <li id="in_progress">현장상황</li>
+                <li id="completed">완공현장</li>
+            </ul>
+        </div>
+        <div id="consulting">
+            <div>컨설팅</div>
+            <ul>
+                <li id="process">진행절차</li>
+                <li id="con_apply">컨설팅 신청</li>
+                <li id="contract_story">계약 스토리</li>
+                <li id="as_apply">A/S 신청</li>
+            </ul>
+        </div>
+        <div id="news">
+            <div>소식</div>
+            <ul>
+                <li id="promotion">A3 홍보관</li>
+                <li id="space_story">공간이야기</li>
+                <li id="news">A3 NEWS</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    navigationMark('@page_data("category")', '@page_data("page")');
+</script>

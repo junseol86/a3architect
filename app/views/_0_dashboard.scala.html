@@ -1,0 +1,7 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]])
+
+@main(page_data) {
+    @for(user <- user_data) {
+        <div>@user("tbl_user.user_name")</div>
+    }
+}
