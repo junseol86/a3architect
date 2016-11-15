@@ -22,7 +22,33 @@
     <body>
         <div class="wrapper _pos_rel">
             @_common_01_top(page_data)
-            @content
+            <div class="content_wrapper">
+                @content
+            </div>
+        </div>
+        <div class="footer_wrapper">
+            <div class="footer">
+                <div class="circles _float_con">
+                    <div><span>A3그룹 소개</span></div>
+                    <div><span>A3건축<br>구경하기</span></div>
+                    <div><span>건축컨설팅<br>신청하기</span></div>
+                    <div><span>A/S 신청하기</span></div>
+                </div>
+                <hr>
+                <div class="info _pos_rel">
+                    <div>
+                        사업자등록번호  ㅣ  506-20-77913<br>
+                        이메일  ㅣ  dcube72@@hanmail.net<br>
+                        대표  ㅣ  정창열
+                    </div>
+                    <div>
+                        경북 포항시 북구 우창동로 70, 304호 (우현동, 테라스31)<br>
+                        TEL  ㅣ  054. 574. 7600<br>
+                        FAX  ㅣ  054. 246. 8551
+                    </div>
+                    <img src="@routes.Assets.versioned("images/interface/footer_logo.png")">
+                </div>
+            </div>
         </div>
     </body>
 </html>

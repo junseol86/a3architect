@@ -5,3 +5,7 @@
 ._float_con:after {
     clear: both;
 }
+
+._float_con > div {
+    float: left;
+}

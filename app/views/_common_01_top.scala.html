@@ -11,8 +11,12 @@
         <div>
             @page_data("login") match {
                 case "" => {
-                    <span>로그인</span>
-                    <span>회원가입</span>
+                    <div class="login_interface">
+                    </div>
+                    <div class="login_and_register">
+                        <span class="login_btn">로그인</span>
+                        <span>회원가입</span>
+                    </div>
                 }
                 case default => {
                     <span>로그아웃</span>

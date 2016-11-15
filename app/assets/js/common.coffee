@@ -10,6 +10,8 @@ $ ->
     page = event.target.id
     navigate('/' + category + '/' + page)
 
+  $('.content_wrapper').css 'min-height', ($(window).height() - $('.top').height() - $('.footer_wrapper').height()) + 'px'
+
 #페이지 이동 (뒤로가기 가능)
 navigate = (link) -> window.location.href = link
 
