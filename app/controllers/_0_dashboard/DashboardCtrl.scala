@@ -11,12 +11,17 @@ import models.User
 class DashboardCtrl @Inject()(user: User) extends Controller {
 
 
-  def index = Action {
+  def index = Action { request =>
     var page_data = Map[String, Any]()
     page_data += "title" -> "A3그룹은?"
-    page_data += "login" -> ""
     page_data += "category" -> ""
     page_data += "page" -> ""
+
+    request.session.get("login").map { login =>
+      page_data += "login" -> login
+    }.getOrElse {
+      page_data += "login" -> ""
+    }
 
     var user_data = List[Map[String, Any]]()
     user_data = user.getList
