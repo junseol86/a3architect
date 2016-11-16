@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(page_data: Map[String, Any])(content: Html)
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="wrapper _pos_rel">
-            @_common_01_top(page_data)
+            @_common_01_top(page_data, user_data)
             <div class="content_wrapper">
                 @content
             </div>

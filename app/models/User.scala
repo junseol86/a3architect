@@ -14,6 +14,14 @@ class User @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
+  def idPwCheck(id: String, pw: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(s"SELECT user_id, user_name, user_group FROM tbl_user WHERE user_id = '$id' AND user_pwd = '$pw'").as(parser.*)
+    }
+    result
+  }
+
   def getList = {
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>

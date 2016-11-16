@@ -44,12 +44,24 @@
 
 .top #account span {
     cursor: pointer;
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .top #account span:hover {
     color: sandybrown;
 }
+
+.top #account .login_interface {
+    margin-left: 20px;
+    display: none;
+}
+
+.top #account .login_interface input {
+    float: none;
+    border: 1px solid #dedede;
+    width: 60px;
+}
+
 
 .top #navigate {
     position: absolute;

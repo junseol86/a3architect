@@ -1,11 +1,36 @@
 $ ->
+  $('#account .login_btn').click ->
+    $('.login_interface').css 'display', 'block'
+    $('.login_and_register').css 'display', 'none'
+    $('#login_id_input').focus()
+
+  $('#account .login_cancel').click ->
+    $('#account .login_interface').css 'display', 'none'
+    $('#account .login_and_register').css 'display', 'block'
+    $('#account #login_id_input').val ''
+    $('#account #login_pw_input').val ''
+
+  $('#account .login_ok').click ->
+    loginSubmit()
+
+  $('#account #login_pw_input').keyup (e) ->
+    if (e.keyCode == 13)
+      loginSubmit()
+
+  $('#account .logout_btn').click ->
+    $.post '/logout',
+      {
+      }
+      (data, status) ->
+        location.reload()
+
 #  상단 돋보기 클릭시 입력창 포커스
-  $('.top #account img').on 'click', ->
+  $('.top #account img').click ->
     if $('.top #account input').val().trim() == ''
       $('.top #account input').focus()
 
 #  네비게이션 메뉴 클릭시 페이지 이동
-  $('#navigate li').on 'click', event, ->
+  $('#navigate li').click event, ->
     category = event.target.closest('div').id
     page = event.target.id
     navigate('/' + category + '/' + page)
@@ -20,5 +45,18 @@ goto = (link) -> window.location.replace(link)
 
 #네비게이션 메뉴에 현 페이지 마크
 @navigationMark = (category, page) ->
-  $('#' + category).addClass('-on')
-  $('#' + category + ' #' + page).addClass('-on')
+  $('#' + category).addClass '-on'
+  $('#' + category + ' #' + page).addClass '-on'
+
+@loginSubmit = ->
+  $.post '/login',
+    {
+      id: $('#login_id_input').val()
+      pw: $('#login_pw_input').val()
+    }
+    (data, status) ->
+      dataJson = JSON.parse(data)
+      if (dataJson["logged_in"] == 1)
+        location.reload()
+      else
+        alert "아이디와 비밀번호를 확인하세요."
