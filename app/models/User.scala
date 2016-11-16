@@ -1,8 +1,6 @@
 package models
 
 import javax.inject._
-import play.api._
-import play.api.mvc._
 import play.api.db._
 import anorm._
 import anorm.{ RowParser, SqlParser }
@@ -17,7 +15,15 @@ class User @Inject()(db: Database) {
   def idPwCheck(id: String, pw: String) = {
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
-      result = SQL(s"SELECT user_id, user_name, user_group FROM tbl_user WHERE user_id = '$id' AND user_pwd = '$pw'").as(parser.*)
+      result = SQL(
+        s"""SELECT
+           |user_id,
+           |user_name,
+           |user_group
+           |FROM tbl_user
+           |WHERE user_id = '$id'
+           |AND user_pwd = '$pw'
+           |""".stripMargin).as(parser.*)
     }
     result
   }

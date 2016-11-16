@@ -22,22 +22,6 @@ class DashboardCtrl @Inject()(user: User, loginSession: LoginSession) extends Co
     page_data += "category" -> ""
     page_data += "page" -> ""
 
-//    var user_id = ""
-//    var user_pw = ""
-//
-//    request.session.get("user_id").map { id =>
-//      user_id = id
-//    }.getOrElse {
-//      user_id = ""
-//    }
-//
-//    request.session.get("user_pw").map { pw =>
-//      user_pw = pw
-//    }.getOrElse {
-//      user_pw = ""
-//    }
-
-
     Ok(views.html._0_dashboard(page_data, user_data))
   }
 }

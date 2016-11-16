@@ -3,10 +3,11 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers._0_dashboard.DashboardCtrl.index
-POST     /login                     controllers.LoginCtrl.login
-POST     /logout                     controllers.LoginCtrl.logout
-GET     /intro/about                controllers._1_intro.IntroCtrl.about
+GET     /                                       controllers._0_dashboard.DashboardCtrl.index
+POST     /login                                 controllers.LoginCtrl.login
+POST     /logout                                controllers.LoginCtrl.logout
+GET     /intro/about                            controllers._1_intro.IntroCtrl.about
+GET     /portfolio/construction                 controllers._2_portfolio.PortfolioCtrl.construction
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
