@@ -4,19 +4,50 @@
     padding-top: 12px;
     margin-bottom: 48px;
     border-top: 2px solid #bfbfbf;
+    overflow: hidden;
+}
+.filters > div, .filters > span {
+    float: left;
 }
 
-.filters div {
-    position: relative;
-    display: inline;
-    margin: 0px 28px 0px 28px;
+.filters > div {
+    padding: 0px 28px 0px 28px;
     cursor: pointer;
+    border-right: 1px solid #bfbfbf;
 }
 
-.filters div:hover {
+.filters > div:last-child {
+    border-right: 0px;
+}
+
+.filters .title:hover {
     color: sandybrown;
 }
 
 .filters span {
     color: #bfbfbf;
+}
+
+.filters .items {
+    margin-top: 12px;
+    font-size: 0.9em;
+    display: none;
+}
+
+.filters > div:hover .items, .filters > div.-on .items {
+    display: block;
+}
+
+
+.filters .items span {
+    color: #808080;
+    line-height: 1.8em;
+}
+
+.filters .items span:last-child {
+    font-size: 0.9em;
+}
+
+.filters .items > div:hover span {
+    color: #333333;
 }
