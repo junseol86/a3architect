@@ -1,0 +1,20 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], people_data: List[Map[String, Any]])
+
+@main(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_1_intro.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_1_intro.css")">
+
+    <div class="filters">
+        <div>A3 Group</div>
+        <span>|</span>
+        <div>사업부 선택</div>
+    </div>
+
+    <div class="people _float_con">
+        @for(people <- people_data) {
+            <div>
+                <div class="photo" id="@people("tbl_people.idx")"></div>
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,22 @@
+.filters {
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding-top: 12px;
+    margin-bottom: 48px;
+    border-top: 2px solid #bfbfbf;
+}
+
+.filters div {
+    position: relative;
+    display: inline;
+    margin: 0px 28px 0px 28px;
+    cursor: pointer;
+}
+
+.filters div:hover {
+    color: sandybrown;
+}
+
+.filters span {
+    color: #bfbfbf;
+}

@@ -18,7 +18,7 @@ class DashboardCtrl @Inject()(user: User, loginSession: LoginSession) extends Co
     user_data = loginSession.userData(request)
 
     var page_data = Map[String, Any]()
-    page_data += "title" -> "A3그룹은?"
+    page_data += "title" -> "A3 그룹"
     page_data += "category" -> ""
     page_data += "page" -> ""
 

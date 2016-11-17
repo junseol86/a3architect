@@ -17,7 +17,7 @@ class PortfolioCtrl @Inject()(user: User, loginSession: LoginSession) extends Co
     user_data = loginSession.userData(request)
 
     var page_data = Map[String, Any]()
-    page_data += "title" -> "A3그룹은?"
+    page_data += "title" -> "A3 :: 건축시공"
     page_data += "login" -> ""
     page_data += "category" -> "portfolio"
     page_data += "page" -> "construction"
