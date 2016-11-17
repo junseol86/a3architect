@@ -15,3 +15,36 @@
     height: 282px;
 }
 
+.people .photo img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.people .photo:hover img {
+    display: block;
+}
+
+.people .profiles {
+    padding: 16px;
+}
+
+.people .profiles {
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+.people .profiles .name_kor {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+
+.people .profiles .name_eng {
+    font-size: 1.1em;
+    color: #808080;
+}

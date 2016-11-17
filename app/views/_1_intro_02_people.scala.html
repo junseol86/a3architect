@@ -13,7 +13,17 @@
     <div class="people _float_con">
         @for(people <- people_data) {
             <div>
-                <div class="photo" id="@people("tbl_people.idx")"></div>
+                <div class="photo _pos_rel" id="@people("tbl_people.idx")">
+                    <img>
+                </div>
+                <div class="profiles">
+                    <span class="name_kor">@people("tbl_people.ppl_name")</span>
+                    <span class="name_eng">@people("tbl_people.ppl_name_eng")</span>
+                    <br>
+                    <span>@people("tbl_people.ppl_department")</span>
+                    <span>@people("tbl_people.ppl_position")</span>
+
+                </div>
             </div>
         }
     </div>
