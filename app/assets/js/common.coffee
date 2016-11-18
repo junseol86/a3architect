@@ -1,4 +1,5 @@
 $ ->
+  # 우상단 로그인 기능
   $('#account .login_btn').click ->
     $('.login_interface').css 'display', 'block'
     $('.login_and_register').css 'display', 'none'
@@ -30,18 +31,31 @@ $ ->
       $('.top #account input').focus()
 
 #  네비게이션 메뉴 클릭시 페이지 이동
-  $('#navigate li').click event, ->
-    category = event.target.closest('div').id
-    page = event.target.id
+  $('#navigate li').click ->
+    category = $(this).closest('div').attr('id')
+    page = $(this).attr('id')
     navigate('/' + category + '/' + page)
 
+  # 컨텐츠 화면 최소높이
   $('.content_wrapper').css 'min-height', ($(window).height() - $('.top').height() - $('.footer_wrapper').height()) + 'px'
 
+  $('.filters .items > div').click ->
+    $(this).parent('div').addClass '-on'
+    $('.filters .items  div').removeClass('-on')
+    $(this).addClass '-on'
+
+  $('.filters #all').click ->
+    $('.filters .items').removeClass('-on')
+    $('.filters .items  div').removeClass('-on')
+
+
 #페이지 이동 (뒤로가기 가능)
-navigate = (link) -> window.location.href = link
+@navigate = (link) ->
+  window.location.href = link
+  false
 
 #페이지 이동 (뒤로가기 불가)
-goto = (link) -> window.location.replace(link)
+@goto = (link) -> window.location.replace(link)
 
 #네비게이션 메뉴에 현 페이지 마크
 @navigationMark = (category, page) ->

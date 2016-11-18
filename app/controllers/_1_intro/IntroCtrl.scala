@@ -41,4 +41,16 @@ class IntroCtrl @Inject()(user: User, loginSession: LoginSession, ppl: People) e
     Ok(views.html._1_intro_02_people(page_data, user_data, people_data))
   }
 
+  def contact = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: Contact"
+    page_data += "login" -> ""
+    page_data += "category" -> "intro"
+    page_data += "page" -> "contact"
+
+    Ok(views.html._1_intro_03_contact(page_data, user_data))
+  }
 }

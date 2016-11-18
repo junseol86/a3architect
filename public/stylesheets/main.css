@@ -8,7 +8,7 @@ html {
     font-family: sans-serif, Dotum,'돋움',Helvetica,AppleSDGothicNeo;
 }
 
-.wrapper {
+.centered_wrapper {
     width: 980px;
     margin: 0 auto;
 }

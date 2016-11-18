@@ -1,14 +1,20 @@
 .people  {
     overflow: hidden;
+    padding-left: 18px;
 }
 
 .people > div {
-    margin: 0px 30px 30px 0px;
+    margin: 0px 18px 30px 0px;
+    display: none;
 }
 
-.people > div:nth-child(4n+4) {
-    margin-right: 0px;
+.people > div.-on {
+    display: block;
 }
+
+/*.people > div.-on:nth-child(4n+4) {*/
+    /*margin-right: 0px;*/
+/*}*/
 
 .people .photo {
     width: 222px;
@@ -47,4 +53,10 @@
 .people .profiles .name_eng {
     font-size: 1.1em;
     color: #808080;
+}
+
+.inside_office {
+    width: 100%;
+    height: 320px;
+    background-image: url('/assets//images/interface/inside_office.jpg');
 }

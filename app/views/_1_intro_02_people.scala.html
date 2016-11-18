@@ -4,44 +4,58 @@
     <script src="@routes.Assets.versioned("js/_1_intro.js")" type="text/javascript"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_1_intro.css")">
 
-    <div class="filters _float_con">
-        <div id="all">
-            <div class="title">A3 Group</div>
+
+    <div class="centered_wrapper">
+        <div class="page_message">
+            <h1>
+                A3는 사람을 먼저 생각합니다.
+            </h1>
+            <h2>
+                다양한 고객의 생각을 이해하고, 새로운 공간 창조를 목표로 주인정신, 도전정신, 프로정신을 바탕으로 정직과 신뢰로 똘똘뭉친 A3인이 탄생합니다.
+                <br>
+                깨끗한 조직문화와 투명한 경영을 바탕으로 고객과 소통하고 멋진 미래를 만들어갈 A3가족을 소개합니다.
+            </h2>
+
         </div>
-        <div>
-            <div class="title">사업부 선택</div>
-            <div class="items">
-                <div id="A3 그룹">
-                    <span>(주)A3</span>
-                    <span>- 그룹</span>
-                </div>
-                <div id="A3 D&D">
-                    <span>(주)A3 D&D</span>
-                    <span>- 부동산개발사업부</span>
-                </div>
-                <div id="A3 건설">
-                    <span>(주)A3 건설</span>
-                    <span>- 건축시공사업부</span>
-                </div>
-                <div id="건축사사무소 A3">
-                    <span>(주)건축사사무소 A3</span>
-                    <span>- 건축설계사업부</span>
-                </div>
-                <div id="A3 디자인">
-                    <span>(주)A3 디자인</span>
-                    <span>- 인테리어사업부</span>
-                </div>
-                @*<div>*@
+
+        <div class="filters _float_con">
+            <div id="all">
+                <div class="title">A3 Group</div>
+            </div>
+            <div>
+                <div class="title">사업부 선택</div>
+                <div class="items">
+                    <div id="A3그룹">
+                        <span>(주)A3</span>
+                        <span>- 그룹</span>
+                    </div>
+                    <div id="A3DD">
+                        <span>(주)A3 D&D</span>
+                        <span>- 부동산개발사업부</span>
+                    </div>
+                    <div id="A3건설">
+                        <span>(주)A3 건설</span>
+                        <span>- 건축시공사업부</span>
+                    </div>
+                    <div id="건축사사무소A3">
+                        <span>(주)건축사사무소 A3</span>
+                        <span>- 건축설계사업부</span>
+                    </div>
+                    <div id="A3디자인">
+                        <span>(주)A3 디자인</span>
+                        <span>- 인테리어사업부</span>
+                    </div>
+                    @*<div>*@
                     @*<span>(주)A3 윈도우</span>*@
                     @*<span>- 금속창호사업부</span>*@
-                @*</div>*@
+                    @*</div>*@
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="people _float_con">
+        <div class="people _float_con">
         @for(people <- people_data) {
-            <div id="@people("tbl_people.ppl_department")">
+            <div class="-on" id="@people("tbl_people.ppl_department")">
                 <div class="photo _pos_rel" id="@people("tbl_people.idx")">
                     <img>
                 </div>
@@ -55,5 +69,6 @@
                 </div>
             </div>
         }
+        </div>
     </div>
 }
