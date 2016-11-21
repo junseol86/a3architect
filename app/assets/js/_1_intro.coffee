@@ -1,8 +1,8 @@
 $ ->
   $('.people_gallery .photo').each( () ->
 #    $(this).css 'background-color', 'yellow'
-    $(this).css 'background-image', "url('/assets//images/contents/people/" + this.id + ".jpg')"
-    $(this).children('img').css 'background-image', "url('/assets//images/contents/people/" + this.id + ".png')"
+    $(this).css 'background-image', "url('/assets/images/contents/people/" + this.id + ".jpg')"
+    $(this).children('img').css 'background-image', "url('/assets/images/contents/people/" + this.id + ".png')"
   )
 
   $('.people_gallery > div').each( () ->
@@ -40,12 +40,12 @@ $ ->
   $('.contact #company_view .thumbnails > div').each () ->
     thumb_id = $(this).attr('id')
     img_id = thumb_id.replace('thumb_', '')
-    img_src = '/assets//images/contents/company_view/' + img_id + '.jpg'
-    $('#' + thumb_id).css "background-image", "url('/assets//images/contents/company_view/" + img_id + ".jpg')"
+    img_src = '/assets/images/contents/company_view/' + img_id + '.jpg'
+    $('#' + thumb_id).css "background-image", "url('/assets/images/contents/company_view/" + img_id + ".jpg')"
 
 
 @company_view_choice = (id) ->
-  $('.contact #view_large').css 'background-image', "url('/assets//images/contents/company_view/" + id + ".jpg')"
+  $('.contact #view_large').css 'background-image', "url('/assets/images/contents/company_view/" + id + ".jpg')"
   $('#company_view ul li').removeClass('-on')
   $('#li_' + id).addClass('-on')
   $('.thumbnails div').removeClass('-on')
