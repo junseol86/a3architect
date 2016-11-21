@@ -60,3 +60,29 @@
     height: 320px;
     background-image: url('/assets//images/interface/inside_office.jpg');
 }
+
+#contact_info,
+#company_view {
+    margin-top: 24px;
+}
+
+#contact_info {
+    text-align: center;
+}
+
+#contact_info .item {
+    color: #4d4d4d;
+    margin: 64px 0px 12px 0px;
+    font-size: 2em;
+}
+
+#contact_info .info {
+    color: #999999;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+#map {
+    margin-top: 64px;
+    height: 500px;
+}

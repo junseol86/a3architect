@@ -6,4 +6,45 @@
 
     <div class="inside_office image_fit">
     </div>
+
+    <div class="centered_wrapper">
+        <div class="tabs _float_con">
+
+            <div class="-on">찾아오시는 길</div>
+            <div>회사 전경</div>
+        </div>
+
+        <div id="contact_info">
+            <div class="item">TEL</div>
+            <div class="info">+82 (054) 274-7600  </div>
+            <div class="item">FAX</div>
+            <div class="info">F. +82 (054) 246-8551</div>
+            <div class="item">MAIL</div>
+            <div class="info">a3group@@hanmail.net</div>
+            <div class="item">ADDRESS</div>
+            <div class="info">경상북도 포항시 북구 우창동로 70, 304호 A3건설<br>(우현동, 테라스31)</div>
+
+            <div id="map"></div>
+            <script type="text/javascript">
+
+                    var map;
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: {lat: 36.057105, lng: 129.3634898},
+                            zoom: 15
+                        });
+                        var myLatlng = new google.maps.LatLng(36.057105, 129.3634898);
+                        var marker = new google.maps.Marker({
+                            position: myLatlng,
+                            title:"A3 Group"
+                        });
+                        marker.setMap(map);
+                    }
+
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPHJLDMWeIjTbdRbzHjMmGVJ5bHo9TX40&callback=initMap">
+            </script>
+        </div>
+    </div>
 }

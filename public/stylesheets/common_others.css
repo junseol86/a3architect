@@ -15,7 +15,7 @@
     color: #dedede;
 }
 
-.filters {
+.filters, .tabs {
     font-size: 1.4em;
     line-height: 1.4em;
     padding-top: 12px;
@@ -23,21 +23,34 @@
     border-top: 2px solid #bfbfbf;
     overflow: hidden;
 }
-.filters > div, .filters > span {
+.filters > div,
+.filters > span,
+.tabs > div {
     float: left;
 }
 
-.filters > div {
+.filters > div,
+.tabs > div {
     padding: 0px 28px 0px 28px;
     cursor: pointer;
     border-right: 1px solid #bfbfbf;
 }
 
-.filters > div:last-child {
+.filters > div:last-child,
+.tabs > div:last-child {
     border-right: 0px;
 }
 
-.filters .title:hover {
+.tabs {
+    color: #bfbfbf;
+}
+
+.tabs div.-on {
+    color: #333333;
+}
+
+.filters .title:hover,
+.tabs div:hover {
     color: sandybrown;
 }
 
