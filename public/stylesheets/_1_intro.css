@@ -1,27 +1,27 @@
-.people  {
+.people_gallery  {
     overflow: hidden;
     padding-left: 18px;
 }
 
-.people > div {
+.people_gallery > div {
     margin: 0px 18px 30px 0px;
     display: none;
 }
 
-.people > div.-on {
+.people_gallery > div.-on {
     display: block;
 }
 
-/*.people > div.-on:nth-child(4n+4) {*/
+/*.people_gallery > div.-on:nth-child(4n+4) {*/
     /*margin-right: 0px;*/
 /*}*/
 
-.people .photo {
+.people_gallery .photo {
     width: 222px;
     height: 282px;
 }
 
-.people .photo img {
+.people_gallery .photo img {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -30,27 +30,27 @@
     display: none;
 }
 
-.people .photo:hover img {
+.people_gallery .photo:hover img {
     display: block;
 }
 
-.people .profiles {
+.people_gallery .profiles {
     padding: 16px;
 }
 
-.people .profiles {
+.people_gallery .profiles {
     font-size: 1.1em;
     line-height: 1.6em;
 }
 
-.people .profiles .name_kor {
+.people_gallery .profiles .name_kor {
     font-size: 1.1em;
     font-weight: bold;
     margin-right: 8px;
 }
 
 
-.people .profiles .name_eng {
+.people_gallery .profiles .name_eng {
     font-size: 1.1em;
     color: #808080;
 }
@@ -86,3 +86,85 @@
     margin-top: 64px;
     height: 500px;
 }
+
+.contact .-contact_info .tabs {
+    border: 0;
+}
+
+.contact .-contact_info #contact_info_btn,
+.contact .-company_view #company_view_btn {
+    color: #333333;
+}
+
+.contact #contact_info,
+.contact #company_view,
+.inside_office,
+.page_message
+{
+    display: none;
+}
+
+.contact .-contact_info #contact_info,
+.contact .-company_view #company_view,
+.contact .-contact_info .inside_office,
+.contact .-company_view .page_message {
+    display: block;
+}
+
+.contact .list_and_view {
+    height: 400px;
+}
+
+.contact .list_and_view #list {
+    width: 380px;
+    height: 100%;
+}
+
+.contact .list_and_view #list ul {
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+
+}
+
+.contact .list_and_view #list li {
+    color: #bfbfbf;
+    cursor: pointer;
+    font-size: 1.5em;
+    line-height: 1.8em;
+}
+
+.contact .list_and_view #list li.-on,
+.contact .list_and_view #list li:hover {
+    color: #333333;
+}
+
+
+.contact .list_and_view #view_large {
+    width: 600px;
+    height: 100%;
+    background-image: url('/assets//images/contents/company_view/1.jpg');
+}
+
+.contact #company_view .thumbnails {
+    margin-top: 36px;
+    height: 120px;
+}
+
+.contact #company_view .thumbnails > div {
+    width: 150px;
+    height: 100%;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.contact #company_view .thumbnails > div.-on {
+    opacity: 0.3;
+}
+
+.contact #company_view .thumbnails > div:last-child {
+    margin-right: 0px;
+}
+
+
+

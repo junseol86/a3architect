@@ -18,7 +18,7 @@
 .filters, .tabs {
     font-size: 1.4em;
     line-height: 1.4em;
-    padding-top: 12px;
+    padding-top: 18px;
     margin-bottom: 48px;
     border-top: 2px solid #bfbfbf;
     overflow: hidden;
@@ -43,10 +43,6 @@
 
 .tabs {
     color: #bfbfbf;
-}
-
-.tabs div.-on {
-    color: #333333;
 }
 
 .filters .title:hover,

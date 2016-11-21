@@ -48,6 +48,10 @@ $ ->
     $('.filters .items').removeClass('-on')
     $('.filters .items  div').removeClass('-on')
 
+  $('.on_only_one li').click ->
+    $(this).siblings('li').removeClass('-on')
+    $(this).addClass('-on')
+
 
 #페이지 이동 (뒤로가기 가능)
 @navigate = (link) ->
