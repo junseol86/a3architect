@@ -163,3 +163,44 @@
     right: 0px;
     cursor: pointer;
 }
+
+.con_apply .form .columns {
+    margin-top: 56px;
+}
+
+.con_apply .form  .columns > div {
+    width: 50%;
+}
+
+.con_apply .form .item {
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 120px;
+}
+
+.con_apply .form .field {
+    height: 36px;
+}
+
+.con_apply .form .field > * {
+    margin-right: 6px;
+}
+
+.con_apply .form input {
+    border: 0;
+    border-bottom: 1px solid #cdcdcd;
+    outline: none;
+    text-align: center;
+}
+
+.con_apply .form #name input {
+    width: 72px;
+}
+
+.con_apply .form #phone input {
+    width: 50px;
+}
+
+.con_apply .form #email input {
+    width: 100px;
+}
