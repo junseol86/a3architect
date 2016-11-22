@@ -2,6 +2,16 @@
 
 @main(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/_4_consulting.js")" type="text/javascript"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script language="javascript">
+        findAddress = function () {
+            new daum.Postcode({
+                oncomplete: function(data) {
+//                    http://postcode.map.daum.net/guide
+                }
+            }).open();
+        };
+    </script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_4_consulting.css")">
 
     <div class="centered_wrapper">
@@ -75,6 +85,11 @@
                             <input type="text">
                             <span>@@</span>
                             <input type="text">
+                        </div>
+                        <div id="address_1" class="field _float_con">
+                            <div class="item">프로젝트 예정지</div>
+                            <input type="text">
+                            <div class="button" onclick="findAddress()">주소 찾기</div>
                         </div>
                     </div>
                     <div>

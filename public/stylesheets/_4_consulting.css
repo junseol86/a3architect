@@ -150,6 +150,7 @@
     padding-top: 36px;
     border-top: 2px solid #bfbfbf;
     color: #808080;
+    font-size: 1.3em;
 }
 
 .con_apply .form > span {
@@ -173,7 +174,6 @@
 }
 
 .con_apply .form .item {
-    font-size: 1.3em;
     font-weight: bold;
     width: 120px;
 }
@@ -191,10 +191,22 @@
     border-bottom: 1px solid #cdcdcd;
     outline: none;
     text-align: center;
+    height: 24px;
 }
 
 .con_apply .form #name input {
     width: 72px;
+}
+
+.con_apply .form .field .button {
+    font-size: 0.9em;
+    padding: 5px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+}
+
+.con_apply .form .field .button:hover {
+    border: 1px solid #bfbfbf;
 }
 
 .con_apply .form #phone input {
