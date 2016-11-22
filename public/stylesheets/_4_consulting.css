@@ -216,3 +216,9 @@
 .con_apply .form #email input {
     width: 100px;
 }
+
+.con_apply .form #address_1 input,
+.con_apply .form #address_2 input,
+.con_apply .form #address_3 input {
+    width: 240px;
+}
