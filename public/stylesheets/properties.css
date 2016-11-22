@@ -2,10 +2,14 @@
     position: relative;
 }
 
+._float_con {
+    overflow: hidden;
+}
+
 ._float_con:after {
     clear: both;
 }
 
-._float_con > div {
+._float_con > * {
     float: left;
 }

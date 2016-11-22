@@ -9,6 +9,7 @@
 }
 
 .top #account {
+    height: 26px;
     position: absolute;
     top: 60px;
     right: 0px;
@@ -16,7 +17,6 @@
 }
 
 .top #account input {
-    float: left;
     height: 24px;
     border: 0px;
     text-align: right;
@@ -36,7 +36,6 @@
 }
 
 .top #account > div {
-    float: left;
     height: 24px;
     line-height: 24px;
 }

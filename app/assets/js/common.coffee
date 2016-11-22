@@ -48,8 +48,8 @@ $ ->
     $('.filters .items').removeClass('-on')
     $('.filters .items  div').removeClass('-on')
 
-  $('.on_only_one li').click ->
-    $(this).siblings('li').removeClass('-on')
+  $('.on_only_one > *').click ->
+    $(this).siblings('*').removeClass('-on')
     $(this).addClass('-on')
 
 

@@ -8,6 +8,14 @@ html {
     font-family: sans-serif, Dotum,'돋움',Helvetica,AppleSDGothicNeo;
 }
 
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .centered_wrapper {
     width: 980px;
     margin: 0 auto;

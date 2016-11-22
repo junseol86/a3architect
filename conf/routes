@@ -10,6 +10,8 @@ GET     /intro/about                            controllers._1_intro.IntroCtrl.a
 GET     /intro/people                           controllers._1_intro.IntroCtrl.people
 GET     /intro/contact                          controllers._1_intro.IntroCtrl.contact
 GET     /portfolio/construction                 controllers._2_portfolio.PortfolioCtrl.construction
+GET     /consulting/process                     controllers._4_consulting.ConsultingCtrl.profess
+GET     /consulting/con_apply                   controllers._4_consulting.ConsultingCtrl.con_apply
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

@@ -1,0 +1,165 @@
+.process #scroll_numbers {
+    text-align: center;
+    margin: 40px;
+}
+
+.process #scroll_numbers span {
+    font-size: 2em;
+    color: #dedede;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+.process #scroll_numbers a:first-child span {
+    color: #808080;
+}
+
+.process {
+    color: white;
+}
+
+.processes {
+    margin-bottom: -80px;
+}
+
+.processes > div > .space {
+    height: 100px;
+    text-align: center;
+}
+
+.processes > div > .space img {
+    margin-top: 64px;
+}
+
+.processes > div > .content {
+    width: 720px;
+    margin: 0 auto;
+}
+
+.process h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.process h2 {
+    font-size: 1.6em;
+}
+
+.process span {
+    font-size: 1.3em;
+    line-height: 1.6em;
+}
+
+.process .columns {
+    margin-top: 64px;
+}
+
+.process .columns > div {
+    width: 320px;
+}
+
+.process .columns > div:nth-child(even) {
+    width: 80px;
+    height: 1px;
+}
+
+.process .columns > div > div {
+    padding: 12px 0px 12px 0px;
+}
+
+.process .columns > div > div:first-child {
+    border-bottom: 1px solid white;
+}
+
+.process .columns > div > div:nth-child(3) {
+    font-size: 1.3em;
+    width: 144px;
+    margin: 18px auto 0px;
+    border: 1px solid white;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.process .columns > div > div:nth-child(3):hover {
+    text-decoration: underline;
+}
+
+.con_apply .circles {
+    color: white;
+    text-align: center;
+    height: 176px;
+    width: 868px;
+    margin: 0 auto 48px;
+}
+
+.con_apply .circles > div {
+    width: 176px;
+    height: 176px;
+    font-size: 1.2em;
+    border: 1px solid #eaeaea;
+    border-radius: 100px;
+    margin-right: 48px;
+    box-sizing: border-box;
+    display: table;
+    cursor: pointer;
+    color: #bfbfbf;
+    display: table;
+    letter-spacing: -1px;
+    line-height: 1.3em;
+}
+
+.con_apply .circles > div > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.con_apply .circles > div > div > div {
+    width: 4px;
+    height: 4px;
+    background-color: #bfbfbf;
+    border-radius: 2px;
+    margin: 12px auto 12px;
+
+}
+
+.con_apply .circles > div.-on > div > div {
+    border-radius: 0px;
+    width: 64px;
+    height: 1px;
+    background-color: #808080;
+}
+
+.con_apply .circles > div h1 {
+    font-size: 1.2em;
+    letter-spacing: -0px;
+    font-weight: bold;
+}
+
+.con_apply .circles > div.-on,
+.con_apply .circles > div:hover {
+    background-color: #eaeaea;
+    color: #808080;
+}
+
+.con_apply .circles > div:last-child {
+    margin-right: 0px;
+}
+
+.con_apply .form {
+    padding-top: 36px;
+    border-top: 2px solid #bfbfbf;
+    color: #808080;
+}
+
+.con_apply .form > span {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.con_apply .form > img {
+    position: absolute;
+    top: 36px;
+    right: 0px;
+    cursor: pointer;
+}

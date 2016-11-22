@@ -23,11 +23,6 @@
     border-top: 2px solid #bfbfbf;
     overflow: hidden;
 }
-.filters > div,
-.filters > span,
-.tabs > div {
-    float: left;
-}
 
 .filters > div,
 .tabs > div {
