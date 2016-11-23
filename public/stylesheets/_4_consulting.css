@@ -158,11 +158,13 @@
     font-weight: bold;
 }
 
-.con_apply .form > img {
+.con_apply .form #lock {
     position: absolute;
     top: 36px;
     right: 0px;
     cursor: pointer;
+    width: 15px;
+    height: 21px;
 }
 
 .con_apply .form .columns {
@@ -197,12 +199,17 @@
     border: 0;
     border-bottom: 1px solid #cdcdcd;
     outline: none;
-    height: 30px;
     color: #555555;
 }
 
 .con_apply .form input {
     padding-left: 4px;
+    height: 30px;
+}
+
+.con_apply .form select {
+    height: 24px;
+    margin-top: 6px;
 }
 
 .con_apply .form #name input {
@@ -267,4 +274,46 @@
 .con_apply #yongdo_sub,
 .con_apply #gujo_sub {
     display: none;
+}
+
+.con_apply .form #budget input,
+.con_apply .form #meeting input {
+    width: 100px;
+}
+
+.con_apply .form textarea {
+    border: 1px solid #dedede;
+    width: 888px;
+    height: 200px;
+    margin-top: 12px;
+    outline: none;
+}
+
+.con_apply #submit_button_container {
+    height: 72px;
+}
+
+.con_apply #submit_button_container > div {
+    width: 100px;
+    font-size: 1.1em;
+    padding: 14px 0px 14px 0px;
+    color: white;
+    background-color: #666666;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.con_apply #submit_button_container > div:hover {
+    background-color: #555555;
+}
+
+.con_apply #lock {
+    background-image: url("/assets/images/interface/consulting_lock_off.png");
+}
+
+.con_apply #lock.-on {
+    background-image: url("/assets/images/interface/consulting_lock_on.png");
 }

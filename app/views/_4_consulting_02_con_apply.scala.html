@@ -63,8 +63,8 @@
         </div>
 
         <div class="form _pos_rel">
-            <span>브랜드 컨설팅 신청</span>
-            <img id="lock" src="@routes.Assets.versioned("images/interface/consulting_lock_off.png")">
+            <span id="title">BRAND 컨설팅 신청</span>
+            <div id="lock" class="on_off_toggle"></div>
             <form name="consulting">
                 <div class="columns _float_con">
                     <div>
@@ -148,13 +148,41 @@
                                 }
                             </select>
                         </div>
+
+                        <div id="meeting" class="field _float_con">
+                            <div class="item">미팅 가능 날짜</div>
+                            <input type="text">
+                            <span>~</span>
+                            <input type="text">
+                            <select>
+                                <option disabled selected value>-- 가능시간 --</option>
+                                <option>아무때나</option>
+                                <option>오전</option>
+                                <option>오후</option>
+                                <option>저녁</option>
+                            </select>
+                        </div>
+
+                        <div id="budget" class="field _float_con">
+                            <div class="item">예산</div>
+                            <input type="text">
+                            <span>만원</span>
+                        </div>
                         <div id="date" class="field _float_con">
                             <div class="item">건축 예정일</div>
                             <input type="text">
                         </div>
-
                     </div>
                 </div>
+
+                <div class="_float_con">
+                    <div class="item">기타</div>
+                    <textarea></textarea>
+                </div>
+                <div id="submit_button_container" class="_pos_rel">
+                    <div>접수하기</div>
+                </div>
+
             </form>
         </div>
 

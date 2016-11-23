@@ -1,23 +1,21 @@
 $ ->
+#  A3 사람들
   $('.people_gallery .photo').each( () ->
-#    $(this).css 'background-color', 'yellow'
     $(this).css 'background-image', "url('/assets/images/contents/people/" + this.id + ".jpg')"
     $(this).children('img').css 'background-image', "url('/assets/images/contents/people/" + this.id + ".png')"
   )
-
   $('.people_gallery > div').each( () ->
     idReplace = $(this).attr('id').replace(' ', '').replace('&', '')
     $(this).attr 'id', idReplace
   )
-
   $('.filters .items > div').click () ->
     idToShow = $(this).attr 'id'
     $('.people_gallery > div').removeClass '-on'
     $('.people_gallery > div#' + idToShow).addClass '-on'
-
   $('.filters #all').click ->
     $('.people_gallery > div').addClass '-on'
 
+#  Contact
   $('.contact #contact_info_btn').click ->
     $('.contact .contact_wrapper').removeClass('-company_view')
     $('.contact .contact_wrapper').addClass('-contact_info')
@@ -29,11 +27,11 @@ $ ->
     for x in [1..6]
       image_process '#thumb_' + x
 
-  $('.contact #company_view li').mouseover ->
+  $('.contact #company_view li').mouseenter ->
     view_id = $(this).attr 'id'
     company_view_choice view_id.replace('li_', '')
 
-  $('.contact .thumbnails div').mouseover ->
+  $('.contact .thumbnails div').mouseenter ->
     view_id = $(this).attr 'id'
     company_view_choice view_id.replace('thumb_', '')
 
@@ -44,6 +42,7 @@ $ ->
     $('#' + thumb_id).css "background-image", "url('/assets/images/contents/company_view/" + img_id + ".jpg')"
 
 
+# Contact 회사 전경
 @company_view_choice = (id) ->
   $('.contact #view_large').css 'background-image', "url('/assets/images/contents/company_view/" + id + ".jpg')"
   $('#company_view ul li').removeClass('-on')

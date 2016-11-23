@@ -41,16 +41,23 @@ $ ->
 
   $('.filters .items > div').click ->
     $(this).parent('div').addClass '-on'
-    $('.filters .items  div').removeClass('-on')
+    $('.filters .items  div').removeClass '-on'
     $(this).addClass '-on'
 
   $('.filters #all').click ->
-    $('.filters .items').removeClass('-on')
-    $('.filters .items  div').removeClass('-on')
+    $('.filters .items').removeClass '-on'
+    $('.filters .items  div').removeClass '-on'
 
   $('.on_only_one > *').click ->
-    $(this).siblings('*').removeClass('-on')
-    $(this).addClass('-on')
+    $(this).siblings('*').removeClass '-on'
+    $(this).addClass '-on'
+
+#  클릭하여 -on 토글되는 객체들
+  $('.on_off_toggle').click ->
+    if $(this).hasClass '-on'
+      $(this).removeClass '-on'
+    else
+      $(this).addClass '-on'
 
 
 #페이지 이동 (뒤로가기 가능)
