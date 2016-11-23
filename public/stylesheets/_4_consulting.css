@@ -179,7 +179,7 @@
 
 .con_apply .form .item {
     font-weight: bold;
-    width: 100px;
+    width: 92px;
     height: 36px;
     line-height: 36px;
 }
@@ -192,12 +192,17 @@
     margin-right: 6px;
 }
 
-.con_apply .form input {
+.con_apply .form input,
+.con_apply .form select {
     border: 0;
     border-bottom: 1px solid #cdcdcd;
     outline: none;
-    text-align: center;
     height: 30px;
+    color: #555555;
+}
+
+.con_apply .form input {
+    padding-left: 4px;
 }
 
 .con_apply .form #name input {
@@ -253,4 +258,13 @@
 
 .con_apply .form #date input {
     width: 328px;
+}
+
+.con_apply select {
+    font-size: 0.9em;
+}
+
+.con_apply #yongdo_sub,
+.con_apply #gujo_sub {
+    display: none;
 }
