@@ -276,10 +276,14 @@
     display: none;
 }
 
-.con_apply .form #budget input,
-.con_apply .form #meeting input {
+.con_apply .form #budget input {
     width: 100px;
 }
+
+.con_apply .form #meeting input {
+    width: 120px;
+}
+
 
 .con_apply .form textarea {
     border: 1px solid #dedede;
