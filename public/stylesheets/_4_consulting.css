@@ -173,13 +173,19 @@
     width: 50%;
 }
 
-.con_apply .form .item {
-    font-weight: bold;
-    width: 120px;
-}
-
 .con_apply .form .field {
     height: 36px;
+}
+
+.con_apply .form .item {
+    font-weight: bold;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.con_apply .form .field span {
+    line-height: 36px;
 }
 
 .con_apply .form .field > * {
@@ -191,7 +197,7 @@
     border-bottom: 1px solid #cdcdcd;
     outline: none;
     text-align: center;
-    height: 24px;
+    height: 30px;
 }
 
 .con_apply .form #name input {
@@ -203,6 +209,7 @@
     padding: 5px;
     border: 1px solid #dedede;
     cursor: pointer;
+    margin-top: 6px;
 }
 
 .con_apply .form .field .button:hover {
@@ -210,15 +217,40 @@
 }
 
 .con_apply .form #phone input {
-    width: 50px;
+    width: 60px;
 }
 
 .con_apply .form #email input {
-    width: 100px;
+    width: 120px;
 }
 
 .con_apply .form #address_1 input,
 .con_apply .form #address_2 input,
 .con_apply .form #address_3 input {
-    width: 240px;
+    width: 260px;
+}
+
+#address_add_2,
+#address_add_3 {
+    padding-left: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+#address_add_3,
+#address_2,
+#address_3 {
+    display: none;
+}
+
+.con_apply .form #purpose input {
+    width: 328px;
+}
+
+.con_apply .form #scale input {
+    width: 50px;
+}
+
+.con_apply .form #date input {
+    width: 328px;
 }
