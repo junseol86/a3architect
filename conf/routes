@@ -4,14 +4,15 @@
 
 # An example controller showing a sample home page
 GET     /                                       controllers._0_dashboard.DashboardCtrl.index
-POST     /login                                 controllers.LoginCtrl.login
-POST     /logout                                controllers.LoginCtrl.logout
+POST    /login                                  controllers.LoginCtrl.login
+POST    /logout                                 controllers.LoginCtrl.logout
 GET     /intro/about                            controllers._1_intro.IntroCtrl.about
 GET     /intro/people                           controllers._1_intro.IntroCtrl.people
 GET     /intro/contact                          controllers._1_intro.IntroCtrl.contact
 GET     /portfolio/construction                 controllers._2_portfolio.PortfolioCtrl.construction
 GET     /consulting/process                     controllers._4_consulting.ConsultingCtrl.profess
 GET     /consulting/con_apply                   controllers._4_consulting.ConsultingCtrl.con_apply
+POST    /consulting/con_apply_submit            controllers._4_consulting.ConsultingCtrl.con_apply_submit
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

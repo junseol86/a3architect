@@ -32,6 +32,9 @@ $ ->
     $.each subGujos.filter((sy) -> sy['gujo'] == gujo), (idx, subGujo) ->
       $('#gujo_sub').append '<option>' + subGujo['subGujo'] + '</option>'
 
+  $('#submit_button_container > div').click ->
+    conApplySubmit()
+
 # 다음 API 이용하여 주소 찾기
 @findAddress = (num) ->
   new daum.Postcode({
@@ -61,4 +64,15 @@ $ ->
   subGujos.push gujo
   if $.inArray(gujoName, gujos) == -1
     gujos.push gujoName
+
+@conApplySubmit = ->
+  $('.con_apply #lock_input').val(if $('.con_apply .form #lock').hasClass('-on') then 1 else 0)
+  $('.con_apply #created_input').val(new Date().getTimeString())
+  category = 0
+  $.each $('.circles > div'), (idx, circle) ->
+    if $(circle).hasClass('-on')
+      category = idx + 1
+  $('.con_apply #category_input').val(category)
+  $('.con_apply #con_apply_form').submit()
+  alert 'a'
 

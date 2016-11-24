@@ -25,7 +25,7 @@
                     </div>
                 }
                 case default => {
-                    <span class="logout_btn">로그아웃</span>
+                    <span id="i_am_logged_in" class="logout_btn">로그아웃</span>
                     @if(user_data(0)("tbl_user.user_group") == "ADMIN") {
                         <span>관리자 페이지</span>
                     }
@@ -62,9 +62,9 @@
             <div>컨설팅</div>
             <ul>
                 <li id="process">진행절차</li>
-                <li id="con_apply">컨설팅 신청</li>
+                <li id="con_apply" class="secured">컨설팅 신청</li>
                 <li id="contract_story">계약 스토리</li>
-                <li id="as_apply">A/S 신청</li>
+                <li id="as_apply" class="secured">A/S 신청</li>
             </ul>
         </div>
         <div id="news">

@@ -3,16 +3,16 @@ package controllers._4_consulting
 import javax.inject._
 
 import controllers.LoginSession
-import models.{User, Consulting}
+import models.{Consulting, User}
 import play.api.mvc._
-import scala.util.parsing.json._
+import utils.CommonUtil
 
 /**
   * Created by Hyeonmin on 2016-11-22.
   */
 
 @Singleton
-class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consulting: Consulting) extends Controller {
+class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consulting: Consulting, commonUtil: CommonUtil) extends Controller {
 
   def profess = Action { request =>
     var user_data = List[Map[String, Any]]()
@@ -40,7 +40,17 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     var options = Map[String, List[Map[String, Any]]]()
     options = consulting.getOptions
 
-    Ok(views.html._4_consulting_02_con_apply(page_data, user_data, options))
+    if (user_data.length != 0)
+      Ok(views.html._4_consulting_02_con_apply(page_data, user_data, options, commonUtil))
+    else
+      Ok(views.html.go_back(page_data, user_data))
+  }
+
+  def con_apply_submit = Action { request =>
+    println("hahaha")
+    val client_name = request.body.asFormUrlEncoded.get("client_name").head
+    println(client_name)
+    Ok(client_name)
   }
 
 }

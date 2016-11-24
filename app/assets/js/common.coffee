@@ -1,4 +1,14 @@
 $ ->
+#  시간 출력 프로토타입
+  Date.prototype.getTimeString = ->
+    timeString = this.getFullYear() + "-"
+    timeString += this.getMonth() + "-"
+    timeString += this.getDate() + " "
+    timeString += this.getHours() + ":"
+    timeString += this.getMinutes() + ":"
+    timeString += this.getSeconds()
+    timeString
+
   # 우상단 로그인 기능
   $('#account .login_btn').click ->
     $('.login_interface').css 'display', 'block'
@@ -32,9 +42,12 @@ $ ->
 
 #  네비게이션 메뉴 클릭시 페이지 이동
   $('#navigate li').click ->
-    category = $(this).closest('div').attr('id')
-    page = $(this).attr('id')
-    navigate('/' + category + '/' + page)
+    if ($(this).hasClass('secured') && $('#i_am_logged_in').length < 1)
+      alert '로그인이 필요합니다.'
+    else
+      category = $(this).closest('div').attr('id')
+      page = $(this).attr('id')
+      navigate('/' + category + '/' + page)
 
   # 컨텐츠 화면 최소높이
   $('.content_wrapper').css 'min-height', ($(window).height() - $('.top').height() - $('.footer_wrapper').height()) + 'px'

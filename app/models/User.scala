@@ -19,6 +19,8 @@ class User @Inject()(db: Database) {
         s"""SELECT
            |user_id,
            |user_name,
+           |user_mobile,
+           |user_email,
            |user_group
            |FROM tbl_user
            |WHERE user_id = '$id'
