@@ -13,3 +13,7 @@
 ._float_con > * {
     float: left;
 }
+
+._hidden {
+    display: none;
+}

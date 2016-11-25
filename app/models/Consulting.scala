@@ -42,7 +42,7 @@ class Consulting @Inject()(db: Database) {
 
   def con_apply(
                  category:String, lock: String,
-                 client_name: String, client_phone: String, client_email: String,
+                 client_id: String, client_name: String, client_phone: String, client_email: String,
                  address_1: String, address_2: String, address_3: String,
                  purpose:String, pyung: String, floor: String, base_floor: String,
                  yongdo_main: String, yongdo_sub: String, gujo_main: String, gujo_sub: String, style: String,
@@ -53,30 +53,30 @@ class Consulting @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       SQL(
            """
-          |INSERT INTO tbl_con_apply (
-          |ca_category, ca_lock,
-          |ca_client_name, ca_client_phone, ca_client_email,
-          |ca_address_1, ca_address_2, ca_address_3,
-          |ca_purpose, ca_pyung, ca_floor, ca_base_floor,
-          |ca_yongdo_main, ca_yongdo_sub, ca_gujo_main, ca_gujo_sub, ca_style,
-          |ca_meeting_from, ca_meeting_to, ca_meeting_hour,
-          |ca_budget, ca_construction_date, ca_others,
-          |ca_modified, ca_created
-          |) values (
-          |{category}, {lock},
-          |{client_name}, {client_phone}, {client_email},
-          |{address_1}, {address_2}, {address_3},
-          |{purpose}, {pyung}, {floor}, {base_floor},
-          |{yongdo_main}, {yongdo_sub}, {gujo_main}, {gujo_sub}, {style},
-          |{meeting_from}, {meeting_to}, {meeting_hour},
-          |{budget}, {construction_date}, {others},
-          |{modified}, {created}
-          |)
+          INSERT INTO tbl_consulting_stories (
+          ca_category, ca_lock,
+          ca_client_id, ca_client_name, ca_client_phone, ca_client_email,
+          ca_address_1, ca_address_2, ca_address_3,
+          ca_purpose, ca_pyung, ca_floor, ca_base_floor,
+          ca_yongdo_main, ca_yongdo_sub, ca_gujo_main, ca_gujo_sub, ca_style,
+          ca_meeting_from, ca_meeting_to, ca_meeting_hour,
+          ca_budget, ca_construction_date, ca_others,
+          ca_modified, ca_created
+          ) values (
+          {category}, {lock},
+          {client_id}, {client_name}, {client_phone}, {client_email},
+          {address_1}, {address_2}, {address_3},
+          {purpose}, {pyung}, {floor}, {base_floor},
+          {yongdo_main}, {yongdo_sub}, {gujo_main}, {gujo_sub}, {style},
+          {meeting_from}, {meeting_to}, {meeting_hour},
+          {budget}, {construction_date}, {others},
+          {modified}, {created}
+          )
       """
       )
         .on(
           'category -> category, 'lock -> lock,
-          'client_name -> client_name, 'client_phone -> client_phone, 'client_email -> client_email,
+          'client_id -> client_id, 'client_name -> client_name, 'client_phone -> client_phone, 'client_email -> client_email,
           'address_1 -> address_1, 'address_2 -> address_2, 'address_3 -> address_3,
           'purpose -> purpose, 'pyung -> pyung, 'floor -> floor, 'base_floor -> base_floor,
           'yongdo_main -> yongdo_main, 'yongdo_sub -> yongdo_sub, 'gujo_main -> gujo_main, 'gujo_sub -> gujo_sub, 'style -> style,
@@ -85,5 +85,29 @@ class Consulting @Inject()(db: Database) {
           'modified -> modified, 'created -> created
         ).executeInsert()
     }
+  }
+
+  def getContractStories(category: Int, search: String, page: Int) = {
+
+    val pageSize = 5
+    val pageOffset = (page - 1) * pageSize
+
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""
+          |SELECT * FROM tbl_contract_stories
+          |WHERE ca_client_id LIKE "%%$search%s%%"
+          |OR ca_client_name LIKE "%%$search%s%%"
+          |OR ca_purpose LIKE "%%$search%s%%"
+          |OR ca_address_1 LIKE "%%$search%s%%"
+          |OR ca_address_2 LIKE "%%$search%s%%"
+          |OR ca_address_3 LIKE "%%$search%s%%"
+          |OR ca_others LIKE "%%$search%s%%"
+          |ORDER BY ca_idx DESC
+          |LIMIT $pageOffset%d, $pageSize%d
+          |""".stripMargin).as(parser.*)
+    }
+    result
   }
 }

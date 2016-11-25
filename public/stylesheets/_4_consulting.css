@@ -85,7 +85,8 @@
     text-decoration: underline;
 }
 
-.con_apply .circles {
+.con_apply .circles,
+.contract_story .circles {
     color: white;
     text-align: center;
     height: 176px;
@@ -93,7 +94,8 @@
     margin: 0 auto 48px;
 }
 
-.con_apply .circles > div {
+.con_apply .circles > div,
+.contract_story .circles > div {
     width: 176px;
     height: 176px;
     font-size: 1.2em;
@@ -109,12 +111,14 @@
     line-height: 1.3em;
 }
 
-.con_apply .circles > div > div {
+.con_apply .circles > div > div,
+.contract_story .circles > div > div {
     display: table-cell;
     vertical-align: middle;
 }
 
-.con_apply .circles > div > div > div {
+.con_apply .circles > div > div > div,
+.contract_story .circles > div > div > div {
     width: 4px;
     height: 4px;
     background-color: #bfbfbf;
@@ -123,26 +127,31 @@
 
 }
 
-.con_apply .circles > div.-on > div > div {
+.con_apply .circles > div.-on > div > div,
+.contract_story .circles > div.-on > div > div {
     border-radius: 0px;
     width: 64px;
     height: 1px;
     background-color: #808080;
 }
 
-.con_apply .circles > div h1 {
+.con_apply .circles > div h1,
+.contract_story .circles > div h1 {
     font-size: 1.2em;
     letter-spacing: -0px;
     font-weight: bold;
 }
 
 .con_apply .circles > div.-on,
-.con_apply .circles > div:hover {
+.con_apply .circles > div:hover,
+.contract_story .circles > div.-on,
+.contract_story .circles > div:hover {
     background-color: #eaeaea;
     color: #808080;
 }
 
-.con_apply .circles > div:last-child {
+.con_apply .circles > div:last-child,
+.contract_story .circles > div:last-child {
     margin-right: 0px;
 }
 

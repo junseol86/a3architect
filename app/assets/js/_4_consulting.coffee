@@ -18,22 +18,29 @@ $ ->
 
 #  주용도, 주구조 선택장 내용 받아오기
   $.each yongdos, (idx, yongdo) ->
-    $('#yongdo_main').append '<option>' + yongdo + '</option>'
+    $('#yongdo_main').append '<option value="' + yongdo + '">' + yongdo + '</option>'
   $('#yongdo_main').change ->
     yongdo = $(this).val()
     $('#yongdo_sub').css('display', 'block').html ""
     $.each subYongdos.filter((sy) -> sy['yongdo'] == yongdo), (idx, subYongdo) ->
-      $('#yongdo_sub').append '<option>' + subYongdo['subYongdo'] + '</option>'
+      $('#yongdo_sub').append '<option value="' + subYongdo['subYongdo'] + '">' + subYongdo['subYongdo'] + '</option>'
   $.each gujos, (idx, gujo) ->
-    $('#gujo_main').append '<option>' + gujo + '</option>'
+    $('#gujo_main').append '<option value="' + gujo + '">' + gujo + '</option>'
   $('#gujo_main').change ->
     gujo = $(this).val()
     $('#gujo_sub').css('display', 'block').html ""
     $.each subGujos.filter((sy) -> sy['gujo'] == gujo), (idx, subGujo) ->
-      $('#gujo_sub').append '<option>' + subGujo['subGujo'] + '</option>'
+      $('#gujo_sub').append '<option value="' + subGujo['subGujo'] + '">' + subGujo['subGujo'] + '</option>'
 
   $('#submit_button_container > div').click ->
     conApplySubmit()
+
+#  '계약 스토리'에서 둥근 버튼 클릭시 해당 카테고리로 이동
+  $.each $('.contract_story .circles > div'), (idx, circle) ->
+    if $('#category_indicator').text() == (idx + 1).toString()
+      $(circle).addClass('-on')
+    $(circle).click ->
+      navigate("/consulting/contract_story/#{idx + 1}/@/1")
 
 # 다음 API 이용하여 주소 찾기
 @findAddress = (num) ->
@@ -73,6 +80,5 @@ $ ->
     if $(circle).hasClass('-on')
       category = idx + 1
   $('.con_apply #category_input').val(category)
-  $('.con_apply #con_apply_form').submit()
-  alert 'a'
+  document.con_apply_form.submit()
 

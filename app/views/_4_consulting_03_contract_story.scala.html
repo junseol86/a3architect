@@ -1,0 +1,59 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], list_data: Map[String, Any])
+
+@main(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_4_consulting.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_4_consulting.css")">
+
+    <div class="centered_wrapper">
+
+        <span class="_hidden" id="category_indicator">@list_data("category")</span>
+        <div class="circles _float_con">
+            <div>
+                <div>
+                    <h1>BRAND</h1>
+                    <div class="divider"></div>
+                    <span>
+                        사업 브랜딩부터 시작하는
+                        <br>
+                        융합디자인 프로젝트
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h1>건축 컨설팅</h1>
+                    <div class="divider"></div>
+                    <span>
+                        건축에서 시공까지
+                        <br>
+                        건축토탈 솔루션
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h1>인테리어 컨설팅</h1>
+                    <div class="divider"></div>
+                    <span>
+                        정해진 틀 안에서
+                        <br>
+                        새로운 변화
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h1>시공 컨설팅</h1>
+                    <div class="divider"></div>
+                    <span>
+                        설계 디자인을 끝까지
+                        <br>
+                        책임지는 시공기술
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
