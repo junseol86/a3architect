@@ -53,7 +53,7 @@ class Consulting @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       SQL(
            """
-          INSERT INTO tbl_consulting_stories (
+          INSERT INTO tbl_con_story (
           ca_category, ca_lock,
           ca_client_id, ca_client_name, ca_client_phone, ca_client_email,
           ca_address_1, ca_address_2, ca_address_3,
@@ -96,7 +96,7 @@ class Consulting @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       result = SQL(
         f"""
-          |SELECT * FROM tbl_contract_stories
+          |SELECT * FROM tbl_con_story
           |WHERE ca_client_id LIKE "%%$search%s%%"
           |OR ca_client_name LIKE "%%$search%s%%"
           |OR ca_purpose LIKE "%%$search%s%%"

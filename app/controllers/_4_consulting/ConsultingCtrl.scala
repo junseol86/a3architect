@@ -112,6 +112,9 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     list_data += "search" -> search
     list_data += "page" -> page.toString
 
-    Ok(views.html._4_consulting_03_contract_story(page_data, user_data, list_data))
+    var stories = List[Map[String, Any]]()
+    stories = consulting.getContractStories(category, search.replace("@", ""), page)
+
+    Ok(views.html._4_consulting_03_contract_story(page_data, user_data, list_data, stories))
   }
 }

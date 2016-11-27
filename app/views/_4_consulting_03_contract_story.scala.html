@@ -1,4 +1,4 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], list_data: Map[String, Any])
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], list_data: Map[String, Any], stories: List[Map[String, Any]])
 
 @main(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/_4_consulting.js")" type="text/javascript"></script>
@@ -68,8 +68,23 @@
             <th width="144">
                 <div>날짜 ▼</div>
             </th>
-
         </tr>
+        @for(story <- stories) {
+            <tr>
+                <td widtd="72">
+                    @story("tbl_con_story.ca_idx")
+                </td>
+                <td class="_left">
+                    @story("tbl_con_story.ca_address_1")
+                </td>
+                <td widtd="120">
+                    @story("tbl_con_story.ca_client_id")
+                </td>
+                <td widtd="144">
+                    @story("tbl_con_story.ca_modified").toString.split(' ')(0)
+                </td>
+            </tr>
+        }
     </table>
 
     </div>
