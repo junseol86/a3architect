@@ -72,16 +72,16 @@
         @for(story <- stories) {
             <tr>
                 <td widtd="72">
-                    @story("tbl_con_story.ca_idx")
+                    @story("tbl_con_apply.ca_idx")
                 </td>
                 <td class="_left">
-                    @story("tbl_con_story.ca_address_1")
+                    @story("tbl_con_apply.ca_address_1")
                 </td>
                 <td widtd="120">
-                    @story("tbl_con_story.ca_client_id")
+                    @story("tbl_con_apply.ca_client_id")
                 </td>
                 <td widtd="144">
-                    @story("tbl_con_story.ca_modified").toString.split(' ')(0)
+                    @story("tbl_con_apply.ca_created").toString.split(' ')(0)
                 </td>
             </tr>
         }

@@ -81,7 +81,12 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     val created = fp.get("created")
     val modified = fp.get("created")
 
-    val insert = consulting.con_apply(category, lock, client_id, client_name, client_phone, client_email, address_1, address_2, address_3, purpose, pyung, floor, base_floor, yongdo_main, yongdo_sub, gujo_main, gujo_sub, style, meeting_from, meeting_to, meeting_hour, budget, constuction_date, others, modified, created)
+    val insert = consulting.con_apply(category, client_id, client_name, client_phone, client_email,
+      address_1, address_2, address_3, purpose, pyung, floor, base_floor,
+      yongdo_main, yongdo_sub, gujo_main, gujo_sub, style,
+      meeting_from, meeting_to, meeting_hour,
+      budget, constuction_date, others,
+      created)
     val insertResult = insert match {
       case None => ""
       case Some(i: Long) => i.toString
@@ -116,5 +121,24 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     stories = consulting.getContractStories(category, search.replace("@", ""), page)
 
     Ok(views.html._4_consulting_03_contract_story(page_data, user_data, list_data, stories))
+  }
+
+  def as_apply = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: AS 신청"
+    page_data += "login" -> ""
+    page_data += "category" -> "consulting"
+    page_data += "page" -> "as_apply"
+
+    var options = Map[String, List[Map[String, Any]]]()
+    options = consulting.getOptions
+
+    if (user_data.length != 0)
+      Ok(views.html._4_consulting_04_as_apply(page_data, user_data))
+    else
+      Ok(views.html.go_back(page_data, user_data))
   }
 }
