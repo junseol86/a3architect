@@ -155,55 +155,55 @@
     margin-right: 0px;
 }
 
-.con_apply .form {
+.con_apply .form,
+.as_apply .form {
     padding-top: 36px;
     border-top: 2px solid #bfbfbf;
     color: #808080;
     font-size: 1.3em;
 }
 
-.con_apply .form > span {
+.con_apply .form > span,
+.as_apply .form > span {
     font-size: 1.6em;
     font-weight: bold;
 }
 
-.con_apply .form #lock {
-    position: absolute;
-    top: 36px;
-    right: 0px;
-    cursor: pointer;
-    width: 15px;
-    height: 21px;
-}
-
-.con_apply .form .columns {
+.con_apply .form .columns,
+.as_apply .form .columns {
     margin-top: 56px;
 }
 
-.con_apply .form  .columns > div {
+.con_apply .form  .columns > div,
+.as_apply .form  .columns > div {
     width: 50%;
 }
 
-.con_apply .form .field {
+.con_apply .form .field,
+.as_apply .form .field {
     height: 36px;
 }
 
-.con_apply .form .item {
+.con_apply .form .item,
+.as_apply .form .item {
     font-weight: bold;
     width: 92px;
     height: 36px;
     line-height: 36px;
 }
 
-.con_apply .form .field span {
+.con_apply .form .field span,
+.as_apply .form .field span {
     line-height: 36px;
 }
 
-.con_apply .form .field > * {
+.con_apply .form .field > *,
+.as_apply .form .field > * {
     margin-right: 6px;
 }
 
 .con_apply .form input,
+.as_apply .form input,
 .con_apply .form select {
     border: 0;
     border-bottom: 1px solid #cdcdcd;
@@ -211,7 +211,8 @@
     color: #555555;
 }
 
-.con_apply .form input {
+.con_apply .form input,
+.as_apply .form input {
     padding-left: 4px;
     height: 30px;
 }
@@ -221,11 +222,13 @@
     margin-top: 6px;
 }
 
-.con_apply .form #name input {
+.con_apply .form #name input,
+.as_apply .form #name input {
     width: 100px;
 }
 
-.con_apply .form .field .button {
+.con_apply .form .field .button,
+.as_apply .form .field .button {
     font-size: 0.9em;
     padding: 5px;
     border: 1px solid #dedede;
@@ -233,11 +236,13 @@
     margin-top: 6px;
 }
 
-.con_apply .form .field .button:hover {
+.con_apply .form .field .button:hover,
+.as_apply .form .field .button:hover {
     border: 1px solid #bfbfbf;
 }
 
-.con_apply .form #phone input {
+.con_apply .form #phone input,
+.as_apply .form #phone input {
     width: 60px;
 }
 
@@ -245,9 +250,16 @@
     width: 120px;
 }
 
+.as_apply .form #project_name input {
+    width: 260px;
+}
+
 .con_apply .form #address_1 input,
 .con_apply .form #address_2 input,
-.con_apply .form #address_3 input {
+.con_apply .form #address_3 input,
+.as_apply .form #address_1 input,
+.as_apply .form #address_2 input,
+.as_apply .form #address_3 input {
     width: 260px;
 }
 
@@ -294,7 +306,8 @@
 }
 
 
-.con_apply .form textarea {
+.con_apply .form textarea,
+.as_apply .form textarea {
     border: 1px solid #dedede;
     width: 888px;
     height: 200px;
@@ -302,11 +315,13 @@
     outline: none;
 }
 
-.con_apply #submit_button_container {
+.con_apply #submit_button_container,
+.as_apply #submit_button_container {
     height: 72px;
 }
 
-.con_apply #submit_button_container > div {
+.con_apply #submit_button_container > div,
+.as_apply #submit_button_container > div {
     width: 100px;
     font-size: 1.1em;
     padding: 14px 0px 14px 0px;
@@ -319,7 +334,8 @@
     cursor: pointer;
 }
 
-.con_apply #submit_button_container > div:hover {
+.con_apply #submit_button_container > div:hover,
+.as_apply #submit_button_container > div:hover {
     background-color: #555555;
 }
 

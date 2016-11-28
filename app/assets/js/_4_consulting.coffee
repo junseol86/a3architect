@@ -32,8 +32,11 @@ $ ->
     $.each subGujos.filter((sy) -> sy['gujo'] == gujo), (idx, subGujo) ->
       $('#gujo_sub').append '<option value="' + subGujo['subGujo'] + '">' + subGujo['subGujo'] + '</option>'
 
-  $('#submit_button_container > div').click ->
+  $('.con_apply #submit_button_container > div').click ->
     conApplySubmit()
+
+  $('.as_apply #submit_button_container > div').click ->
+    asApplySubmit()
 
 #  '계약 스토리'에서 둥근 버튼 클릭시 해당 카테고리로 이동
   $.each $('.contract_story .circles > div'), (idx, circle) ->
@@ -73,7 +76,16 @@ $ ->
     gujos.push gujoName
 
 @conApplySubmit = ->
-  $('.con_apply #lock_input').val(if $('.con_apply .form #lock').hasClass('-on') then 1 else 0)
+  $('.con_apply #created_input').val(new Date().getTimeString())
+  category = 0
+  $.each $('.circles > div'), (idx, circle) ->
+    if $(circle).hasClass('-on')
+      category = idx + 1
+  $('.con_apply #category_input').val(category)
+  document.con_apply_form.submit()
+
+
+@asApplySubmit = ->
   $('.con_apply #created_input').val(new Date().getTimeString())
   category = 0
   $.each $('.circles > div'), (idx, circle) ->

@@ -93,8 +93,8 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     }
 
     Ok(insert match {
-      case None => ""
-      case Some(i: Long) => i.toString
+      case None => views.html.alert_and_move("신청서가 접수되지 않았습니다.  다시 시도해 주십시오.", "/consulting/con_apply")
+      case Some(i: Long) => views.html.alert_and_move("신청서가 접수되었습니다.  곧 연락드리겠습니다.", "/")
     })
   }
 
@@ -141,4 +141,40 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     else
       Ok(views.html.go_back(page_data, user_data))
   }
+
+
+  def as_apply_submit = Action { request =>
+
+    val fp = new commonUtil.FromPost(request)
+
+    var client_id = ""
+    request.session.get("user_id").map { id =>
+      client_id = id
+    }
+    val client_name = fp.get("client_name")
+    val client_phone =
+      fp.get("client_phone_1") + "-" + fp.get("client_phone_2") + "-" + fp.get("client_phone_3")
+    val project_name = fp.get("project_name")
+    val address_1 = fp.get("address_1")
+    val address_2 = fp.get("address_2")
+    val address_3 = fp.get("address_3")
+    val content = fp.get("content")
+    val created = fp.get("created")
+
+    val insert = consulting.as_apply(client_id, client_name, client_phone,
+      project_name,
+      address_1, address_2, address_3,
+      content,
+      created)
+    val insertResult = insert match {
+      case None => ""
+      case Some(i: Long) => i.toString
+    }
+
+    Ok(insert match {
+      case None => views.html.alert_and_move("신청서가 접수되지 않았습니다.  다시 시도해 주십시오.", "/consulting/as_apply")
+      case Some(i: Long) => views.html.alert_and_move("신청서가 접수되었습니다.  곧 연락드리겠습니다.", "/")
+    })
+  }
+
 }
