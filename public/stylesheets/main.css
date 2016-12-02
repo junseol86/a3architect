@@ -1,6 +1,7 @@
 @import "common_top.css";
 @import "common_footer.css";
 @import "common_others.css";
+@import "common_settings.css";
 
 html {
     font-size: 10px;

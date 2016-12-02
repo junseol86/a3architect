@@ -93,6 +93,7 @@ $ ->
       pw: $('#login_pw_input').val()
     }
     (data, status) ->
+      console.log data
       dataJson = JSON.parse(data)
       if (dataJson["logged_in"] == 1)
         location.reload()

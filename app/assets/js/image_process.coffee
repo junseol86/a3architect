@@ -1,3 +1,4 @@
+#image_fit이란 클래스를 가지고 이미지를 배경으로 하는 화면상 모든 div의 배경화면을 사이즈&위치 조정
 $ ->
   image_process('.image_fit')
 
@@ -29,8 +30,6 @@ $(window).resize () ->
         bgW = divW
         bgH = imgH * (divW / imgW)
         offY = -(bgH - divH)/2
-
-#      alert imgW + " " + imgH + " " + bgW + " " + bgH + " " + divW + " " + divH + " " + offX + " " + offY
 
       $(name).css 'background-size', bgW + 'px ' + bgH + 'px'
       $(name).css 'background-position', offX + 'px ' + offY + 'px'

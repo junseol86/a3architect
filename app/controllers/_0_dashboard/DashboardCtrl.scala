@@ -19,8 +19,8 @@ class DashboardCtrl @Inject()(user: User, loginSession: LoginSession) extends Co
 
     var page_data = Map[String, Any]()
     page_data += "title" -> "A3 그룹"
-    page_data += "category" -> ""
-    page_data += "page" -> ""
+    page_data += "category" -> "index"
+    page_data += "page" -> "dashboard"
 
     Ok(views.html._0_dashboard(page_data, user_data))
   }

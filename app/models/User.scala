@@ -17,11 +17,15 @@ class User @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       result = SQL(
         s"""SELECT
-           |user_id,
-           |user_name,
-           |user_mobile,
-           |user_email,
-           |user_group
+           |tbl_user.user_id,
+           |tbl_user.user_group,
+           |tbl_user.user_name,
+           |tbl_user.user_mobile,
+           |tbl_user.user_email,
+           |tbl_user.user_addr,
+           |tbl_user.user_birth_year,
+           |tbl_user.user_birth_month,
+           |tbl_user.user_birth_day
            |FROM tbl_user
            |WHERE user_id = '$id'
            |AND user_pwd = '$pw'

@@ -141,7 +141,7 @@ class Consulting @Inject()(db: Database) {
           'client_id -> client_id, 'client_name -> client_name, 'client_phone -> client_phone,
           'project_name -> project_name,
           'address_1 -> address_1, 'address_2 -> address_2, 'address_3 -> address_3,
-          'content -> created,
+          'content -> content,
           'created -> created
         ).executeInsert()
     }
