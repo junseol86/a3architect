@@ -18,7 +18,7 @@ GET     /consulting/contract_story/:category/:search/:page          controllers.
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 
-GET     /admin                                                      controllers._A_admin.AdminCtrl.admin
+GET     /admin/myinfo                                               controllers._A_admin.AdminCtrl.myinfo
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count

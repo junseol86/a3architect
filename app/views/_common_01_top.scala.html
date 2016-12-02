@@ -27,7 +27,7 @@
                 case default => {
                     <span id="i_am_logged_in" class="logout_btn">로그아웃</span>
                     @if(user_data(0)("tbl_user.user_group") == "ADMIN") {
-                        <a href="/admin">
+                        <a href="/admin/myinfo">
                             <span>관리자 페이지</span>
                         </a>
                     }
