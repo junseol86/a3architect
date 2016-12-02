@@ -1,0 +1,26 @@
+.with_left_menu  {
+}
+
+.left_menu {
+    width: 160px;
+    padding: 30px 16px 30px 16px;
+    background-color: #4d4d4d;
+    margin-right: 160px;
+    color: white;
+}
+
+.left_menu > div {
+    font-size: 1.5em;
+    line-height: 1.8em;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.left_menu > div:hover {
+    color: #00ffff;
+    opacity: 1;
+}
+
+.left_menu > div.-on {
+    opacity: 1;
+}
