@@ -6,7 +6,11 @@
 
     <div class="centered_wrapper">
         <div class="with_left_menu _float_con">
-            @_A_admin_left_menu(page_data)
+            @page_data("category") match {
+                case "Admin" =>  {
+                    @_A_admin_left_menu(page_data)
+                }
+            }
             <div class="on_right">
                 @content
             </div>

@@ -38,14 +38,13 @@ $ ->
   $('.contact #company_view .thumbnails > div').each () ->
     thumb_id = $(this).attr('id')
     img_id = thumb_id.replace('thumb_', '')
-    img_src = '/assets/images/contents/company_view/' + img_id + '.jpg'
     $('#' + thumb_id).css "background-image", "url('/assets/images/contents/company_view/" + img_id + ".jpg')"
 
 
-# Contact 회사 전경
-@company_view_choice = (id) ->
-  $('.contact #view_large').css 'background-image', "url('/assets/images/contents/company_view/" + id + ".jpg')"
-  $('#company_view ul li').removeClass('-on')
-  $('#li_' + id).addClass('-on')
-  $('.thumbnails div').removeClass('-on')
-  $('#thumb_' + id).addClass('-on')
+  # Contact 회사 전경
+  company_view_choice = (id) ->
+    $('.contact #view_large').css 'background-image', "url('/assets/images/contents/company_view/" + id + ".jpg')"
+    $('#company_view ul li').removeClass('-on')
+    $('#li_' + id).addClass('-on')
+    $('.thumbnails div').removeClass('-on')
+    $('#thumb_' + id).addClass('-on')
