@@ -9,5 +9,5 @@
 
 <script src="@routes.Assets.versioned("js/left_menu.js")" type="text/javascript"></script>
 <script language="javascript">
-    var leftMenuVal = '@page_data("left_menu")';
+    leftMenuMarkModule().mark('@page_data("left_menu")')
 </script>

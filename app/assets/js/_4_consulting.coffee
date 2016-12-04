@@ -93,4 +93,3 @@ $ ->
       category = idx + 1
   $('.con_apply #category_input').val(category)
   document.con_apply_form.submit()
-
