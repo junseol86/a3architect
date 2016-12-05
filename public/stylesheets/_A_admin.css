@@ -1,33 +1,33 @@
-form#contract_story_upload {
+form#contract_story_write {
     font-size: 1.3em;
     color: #808080;
 }
 
-form#contract_story_upload span {
+form#contract_story_write span {
     margin-right: 7px;
     line-height: 36px;
 }
 
-form#contract_story_upload > div {
+form#contract_story_write > div {
     height: 36px;
 }
 
-form#contract_story_upload .item {
+form#contract_story_write .item {
     font-weight: bold;
     width: 92px;
     height: 36px;
     line-height: 36px;
 }
 
-form#contract_story_upload input {
+form#contract_story_write input {
     padding-left: 4px;
     height: 30px;
 }
 
-form#contract_story_upload #title {
+form#contract_story_write #title {
     margin-bottom: 12px;
 }
 
-form#contract_story_upload #title input {
+form#contract_story_write #title input {
     width: 606px;
 }

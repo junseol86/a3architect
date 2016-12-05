@@ -74,4 +74,10 @@ class AdminCtrl @Inject()(user: User, loginSession: LoginSession, consulting: Co
       Redirect("/")
   }
 
+//  def contract_story_submit = Action { request =>
+//
+//
+//
+//  }
+
 }
