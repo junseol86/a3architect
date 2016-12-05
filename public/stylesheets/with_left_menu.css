@@ -5,7 +5,6 @@
     width: 160px;
     padding: 30px 16px 30px 16px;
     background-color: #4d4d4d;
-    margin-right: 160px;
     color: white;
 }
 
@@ -23,4 +22,9 @@
 
 .left_menu > div.-on {
     opacity: 1;
+}
+
+.on_right {
+    width: 820px;
+    padding-left: 120px;
 }

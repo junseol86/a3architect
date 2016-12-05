@@ -19,6 +19,9 @@ GET     /consulting/as_apply                                        controllers.
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 
 GET     /admin/myinfo                                               controllers._A_admin.AdminCtrl.myinfo
+GET     /admin/contract_story                                       controllers._A_admin.AdminCtrl.contract_story
+GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminCtrl.contract_story_list(category:Int, page:Int)
+GET     /admin/contract_story_write                                 controllers._A_admin.AdminCtrl.contract_story_write
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count

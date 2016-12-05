@@ -1,0 +1,33 @@
+form#contract_story_upload {
+    font-size: 1.3em;
+    color: #808080;
+}
+
+form#contract_story_upload span {
+    margin-right: 7px;
+    line-height: 36px;
+}
+
+form#contract_story_upload > div {
+    height: 36px;
+}
+
+form#contract_story_upload .item {
+    font-weight: bold;
+    width: 92px;
+    height: 36px;
+    line-height: 36px;
+}
+
+form#contract_story_upload input {
+    padding-left: 4px;
+    height: 30px;
+}
+
+form#contract_story_upload #title {
+    margin-bottom: 12px;
+}
+
+form#contract_story_upload #title input {
+    width: 606px;
+}

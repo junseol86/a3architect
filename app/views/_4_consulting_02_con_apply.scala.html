@@ -3,15 +3,17 @@
 
 @main(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/_4_consulting.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/_4_consulting_02_con_apply.js")" type="text/javascript"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_4_consulting.css")">
 
     <script language="JavaScript">
+        var cafm = conApplyFormManager();
         @for(yongdo <- options("yongdos")) {
-            addYongdos("@yongdo("tbl_consult_yongdo.yongdo_main")", "@yongdo("tbl_consult_yongdo.yongdo_sub")");
+            cafm.addYongdos("@yongdo("tbl_consult_yongdo.yongdo_main")", "@yongdo("tbl_consult_yongdo.yongdo_sub")");
         }
         @for(gujo <- options("gujos")) {
-            addGujos("@gujo("tbl_consult_gujo.gujo_main")", "@gujo("tbl_consult_gujo.gujo_sub")");
+            cafm.addGujos("@gujo("tbl_consult_gujo.gujo_main")", "@gujo("tbl_consult_gujo.gujo_sub")");
         }
     </script>
 
@@ -192,4 +194,5 @@
         </div>
 
     </div>
+
 }
