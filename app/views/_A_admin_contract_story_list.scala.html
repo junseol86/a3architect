@@ -1,0 +1,45 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], stories: List[Map[String, Any]], count: Int, board_page: Int)
+
+<table>
+    @for(story <- stories) {
+        <tr>
+            <td width="72">
+            @story("tbl_contract_story.cs_idx")
+            </td>
+            <td width="112">
+            @story("tbl_contract_story.cs_category") match {
+                case "1" => {BRAND}                    
+                case "2" => {건축}
+                case "3" => {인테리어}
+                case "4" => {시공}
+                case default => {}
+            }
+            </td>
+            <td class="_left">
+            @story("tbl_contract_story.cs_title")
+            </td>
+            <td width="100">
+            @story("tbl_contract_story.cs_modified").toString.split(' ')(0)
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="pages_container">
+    <div id="pages" class="_float_con">
+        <img id="move_left" src="@routes.Assets.versioned("/images/interface/pages_left.png")">
+        <div id="numbers">
+            <div id="numbers_lined" class="_float_con">
+                @for(pageNo <- 1 to count) {
+                    @if(pageNo == board_page) {
+                        <div class="number -on">@pageNo</div>
+                    } else {
+                        <div class="number">@pageNo</div>
+                    }
+            }
+            </div>
+        </div>
+        <img id="move_right" src="@routes.Assets.versioned("/images/interface/pages_right.png")">
+    </div>
+</div>
+

@@ -43,12 +43,12 @@ class AdminCtrl @Inject()(user: User, loginSession: LoginSession,
     page_data += "left_menu" -> "contract_story"
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_stories(page_data, user_data))
+      Ok(views.html._A_admin_contract_story(page_data, user_data))
     else
       Redirect("/")
   }
 
-  def contract_story_list(category: Int, board_page: Int) = Action { request =>
+  def contract_story_list(category: String, board_page: Int) = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
 
@@ -61,12 +61,12 @@ class AdminCtrl @Inject()(user: User, loginSession: LoginSession,
 
     var stories = List[Map[String, Any]]()
     var totalCount = 0
-    stories = contractStory.getContractStories(category, "", board_page)._1
-    totalCount = contractStory.getContractStories(category, "", board_page)._2(0)(".total").toString.toInt
+    stories = contractStory.getContractStories(category.replace("@", ""), "", board_page)._1
+    totalCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)._2(0)(".total").toString.toInt
     val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_stories_list(page_data, user_data, stories, count, board_page))
+      Ok(views.html._A_admin_contract_story_list(page_data, user_data, stories, count, board_page))
     else
       Redirect("/")
   }

@@ -15,9 +15,9 @@ class ContractStory @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 1
+  val pageSize = 5
 
-  def getContractStories(category: Int, search: String, page: Int) = {
+  def getContractStories(category: String, search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 
     var list = List[Map[String, Any]]()
@@ -25,7 +25,7 @@ class ContractStory @Inject()(db: Database) {
 
     val commonQuery =
       f"""FROM tbl_contract_story
-         WHERE cs_category = $category%s
+         WHERE cs_category LIKE "%%$category%s%%"
          AND (
          cs_title LIKE "%%$search%s%%"
          OR cs_content LIKE "%%$search%s%%"

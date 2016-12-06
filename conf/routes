@@ -13,14 +13,14 @@ GET     /portfolio/construction                                     controllers.
 GET     /consulting/process                                         controllers._4_consulting.ConsultingCtrl.profess
 GET     /consulting/con_apply                                       controllers._4_consulting.ConsultingCtrl.con_apply
 POST    /consulting/con_apply_submit                                controllers._4_consulting.ConsultingCtrl.con_apply_submit
-GET     /consulting/contract_story                                  controllers._4_consulting.ConsultingCtrl.contract_stories_forward
-GET     /consulting/contract_story/:category/:search/:page          controllers._4_consulting.ConsultingCtrl.contract_stories(category:Int, search:String, page:Int)
+GET     /consulting/contract_story                                  controllers._4_consulting.ConsultingCtrl.contract_story
+GET     /consulting/contract_story_list/:category/:page             controllers._4_consulting.ConsultingCtrl.contract_story_list(category:String, page:Int)
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 
 GET     /admin/myinfo                                               controllers._A_admin.AdminCtrl.myinfo
 GET     /admin/contract_story                                       controllers._A_admin.AdminCtrl.contract_story
-GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminCtrl.contract_story_list(category:Int, page:Int)
+GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminCtrl.contract_story_list(category:String, page:Int)
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminCtrl.contract_story_write
 POST    /admin/contract_story_submit                                 controllers._A_admin.AdminCtrl.contract_story_submit
 

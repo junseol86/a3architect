@@ -6,13 +6,19 @@
             <td width="72">
             @story("tbl_contract_story.cs_idx")
             </td>
-            <td width="120">
-            @story("tbl_contract_story.cs_category")
+            <td width="112">
+            @story("tbl_contract_story.cs_category") match {
+                case "1" => {BRAND}                    
+                case "2" => {건축}
+                case "3" => {인테리어}
+                case "4" => {시공}
+                case default => {}
+            }
             </td>
             <td class="_left">
             @story("tbl_contract_story.cs_title")
             </td>
-            <td width="144">
+            <td width="100">
             @story("tbl_contract_story.cs_modified").toString.split(' ')(0)
             </td>
         </tr>

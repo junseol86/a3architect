@@ -1,14 +1,13 @@
 $ ->
-  $('#contract_story_write').click () ->
-    location.href = '/admin/contract_story_write'
-
-  $('#filter_category').change () ->
+  $('.circles > div').click () ->
+    $(this).siblings().removeClass('-on')
+    $(this).addClass('-on')
     getAdminContractList()
 
   getAdminContractList()
 
 @getAdminContractList = () ->
-  category = $('#filter_category').val()
+  category = $('.circles > div.-on').data('category')
   page = if $('#pages_container #pages #numbers .number.-on').length then $('#pages_container #pages #numbers .number.-on').text() else 1
   url = $('#list_container').data("url")
   console.log("#{url}/#{category}/#{page}")
@@ -20,4 +19,3 @@ $ ->
 
 @pageMove = () ->
   getAdminContractList()
-

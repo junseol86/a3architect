@@ -100,11 +100,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     })
   }
 
-  def contract_stories_forward = Action {
-    Redirect("/consulting/contract_story/1/@/1")
-  }
-
-  def contract_stories(category: Int, search: String, page: Int) = Action { request =>
+  def contract_story() = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
 
@@ -114,15 +110,26 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     page_data += "category" -> "consulting"
     page_data += "page" -> "contract_story"
 
-    var list_data = Map[String, Any]()
-    list_data += "category" -> category.toString
-    list_data += "search" -> search
-    list_data += "page" -> page.toString
+    Ok(views.html._4_consulting_03_contract_story(page_data, user_data))
+  }
+
+  def contract_story_list(category: String, board_page: Int) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: 계약 스토리"
+    page_data += "login" -> ""
+    page_data += "category" -> "consulting"
+    page_data += "page" -> "contract_story"
 
     var stories = List[Map[String, Any]]()
-    stories = contractStory.getContractStories(category, search.replace("@", ""), page)._1
+    var totalCount = 0
+    stories = contractStory.getContractStories(category.replace("@", ""), "", board_page)._1
+    totalCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)._2(0)(".total").toString.toInt
+    val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
-    Ok(views.html._4_consulting_03_contract_story(page_data, user_data, list_data, stories))
+    Ok(views.html._4_consulting_03_contract_story_list(page_data, user_data, stories, count, board_page))
   }
 
   def as_apply = Action { request =>
