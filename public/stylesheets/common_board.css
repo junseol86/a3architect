@@ -1,0 +1,88 @@
+th {
+    background-color: #4d4d4d;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    font-size: 1.4em;
+    padding: 16px 0px 16px 0px;
+}
+
+th div {
+    height: 100%;
+    border-right: 1px solid white;
+}
+
+th:last-child div {
+    border-right: 0px;
+}
+
+#pages_container {
+    margin-top: 40px;
+    height: 24px;
+    color: #808080;
+}
+
+#pages_container * {
+    height: 100%;
+    line-height: 100%;
+}
+
+#pages_container #pages {
+    width: 280px;
+    margin: 0 auto;
+}
+
+#pages_container #pages #numbers {
+    width: 200px;
+    overflow: hidden;
+}
+
+#pages_container #pages #numbers .number {
+    font-size: 2.1em;
+    font-weight: bold;
+    opacity: 0.2;
+    cursor: pointer;
+    width: 40px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+#pages_container #pages #numbers .number.-on {
+    opacity: 1;
+}
+
+#pages_container #pages > img {
+    cursor: pointer;
+}
+
+td {
+    line-height: 16px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #dedede;
+    text-align: center;
+    cursor: pointer;
+    padding: 14px 0px 14px 0px;
+    vertical-align: middle;
+}
+
+td._left {
+    text-align: left;
+    padding-left: 24px;
+}
+
+tr:hover td {
+    color: sandybrown;
+}
+
+.board_btn {
+    margin-top: 24px;
+    float: right;
+    padding: 16px 20px 16px 20px;
+    background-color: #4d4d4d;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.board_btn:hover {
+    background-color: #333333;
+}

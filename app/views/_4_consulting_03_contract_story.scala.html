@@ -59,11 +59,11 @@
             <th width="72">
                 <div>번호</div>
             </th>
+            <th width="120">
+                <div>카테고리</div>
+            </th>
             <th>
                 <div>전체 계약 현황 보기</div>
-            </th>
-            <th width="120">
-                <div>글쓴이</div>
             </th>
             <th width="144">
                 <div>날짜 ▼</div>
@@ -72,16 +72,16 @@
         @for(story <- stories) {
             <tr>
                 <td widtd="72">
-                    @story("tbl_con_apply.ca_idx")
-                </td>
-                <td class="_left">
-                    @story("tbl_con_apply.ca_address_1")
+                    @story("tbl_contract_story.cs_idx")
                 </td>
                 <td widtd="120">
-                    @story("tbl_con_apply.ca_client_id")
+                    @story("tbl_contract_story.cs_category")
+                </td>
+                <td class="_left">
+                    @story("tbl_contract_story.cs_title")
                 </td>
                 <td widtd="144">
-                    @story("tbl_con_apply.ca_created").toString.split(' ')(0)
+                    @story("tbl_contract_story.cs_modified").toString.split(' ')(0)
                 </td>
             </tr>
         }

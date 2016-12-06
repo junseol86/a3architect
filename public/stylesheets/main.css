@@ -1,6 +1,7 @@
 @import "common_top.css";
 @import "common_footer.css";
 @import "common_others.css";
+@import "common_board.css";
 @import "with_left_menu.css";
 
 html {
@@ -18,23 +19,6 @@ table {
     outline: 0;
 }
 
-th {
-    background-color: #4d4d4d;
-    height: 20px;
-    line-height: 20px;
-    color: white;
-    font-size: 1.4em;
-    padding: 16px 0px 16px 0px;
-}
-
-th div {
-    height: 100%;
-    border-right: 1px solid white;
-}
-
-th:last-child div {
-    border-right: 0px;
-}
 
 a {
     text-decoration: none;
@@ -45,20 +29,3 @@ a {
     margin: 0 auto;
 }
 
-td {
-    font-size: 1.3em;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #dedede;
-    text-align: center;
-    cursor: pointer;
-}
-
-td._left {
-    text-align: left;
-    padding-left: 24px;
-}
-
-tr:hover td {
-    color: sandybrown;
-}

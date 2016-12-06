@@ -100,17 +100,3 @@
     color: #333333;
     font-weight: bold;
 }
-
-.board_btn {
-    margin-top: 40px;
-    float: right;
-    padding: 16px 20px 16px 20px;
-    background-color: #4d4d4d;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.board_btn:hover {
-    background-color: #333333;
-}

@@ -87,29 +87,6 @@ class Consulting @Inject()(db: Database) {
     }
   }
 
-  def getContractStories(category: Int, search: String, page: Int) = {
-
-    val pageSize = 5
-    val pageOffset = (page - 1) * pageSize
-
-    var result = List[Map[String, Any]]()
-    db.withConnection{implicit conn =>
-      result = SQL(
-        f"""
-          |SELECT * FROM tbl_con_apply
-          |WHERE ca_client_id LIKE "%%$search%s%%"
-          |OR ca_client_name LIKE "%%$search%s%%"
-          |OR ca_purpose LIKE "%%$search%s%%"
-          |OR ca_address_1 LIKE "%%$search%s%%"
-          |OR ca_address_2 LIKE "%%$search%s%%"
-          |OR ca_address_3 LIKE "%%$search%s%%"
-          |OR ca_others LIKE "%%$search%s%%"
-          |ORDER BY ca_idx DESC
-          |LIMIT $pageOffset%d, $pageSize%d
-          |""".stripMargin).as(parser.*)
-    }
-    result
-  }
 
 
   def as_apply(

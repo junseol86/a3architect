@@ -3,7 +3,8 @@
 @with_left_menu(page_data, user_data) {
     <script type="text/javascript" src="@routes.Assets.versioned("se2/js/HuskyEZCreator.js")" charset="utf-8"></script>
     <div>
-        <form id="contract_story_write" name="contract_story_upload" method="post">
+        <form action="/admin/contract_story_submit" id="contract_story_write" name="contract_story_write" method="post">
+            <input id="modified_input" type="hidden" name="modified">
             <div class="_float_con">
                 <div class="item">카테고리</div>
                 <input type="radio" name="category" value="1" checked><span>BRAND</span>
@@ -14,7 +15,7 @@
 
             <div id="title" class="_float_con">
                 <div class="item">스토리 제목</div>
-                <input type="text" name="client_name" maxlength="20" value="@user_data(0)("tbl_user.user_name")">
+                <input type="text" name="title" maxlength="50">
             </div>
 
             <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:698px; height:412px; display:none;"></textarea>
@@ -69,6 +70,7 @@
                 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
                 // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 
+                $('#contract_story_write #modified_input').val(new Date().getTimeString());
                 try {
                     elClickedObj.form.submit();
                 } catch(e) {}

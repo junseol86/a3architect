@@ -3,7 +3,7 @@ package controllers._4_consulting
 import javax.inject._
 
 import controllers.LoginSession
-import models.{Consulting, User}
+import models.{Consulting, ContractStory, User}
 import play.api.mvc._
 import utils.CommonUtil
 
@@ -12,7 +12,9 @@ import utils.CommonUtil
   */
 
 @Singleton
-class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consulting: Consulting, commonUtil: CommonUtil) extends Controller {
+class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
+                               consulting: Consulting, contractStory: ContractStory,
+                               commonUtil: CommonUtil) extends Controller {
 
   def profess = Action { request =>
     var user_data = List[Map[String, Any]]()
@@ -118,7 +120,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession, consultin
     list_data += "page" -> page.toString
 
     var stories = List[Map[String, Any]]()
-    stories = consulting.getContractStories(category, search.replace("@", ""), page)
+    stories = contractStory.getContractStories(category, search.replace("@", ""), page)._1
 
     Ok(views.html._4_consulting_03_contract_story(page_data, user_data, list_data, stories))
   }

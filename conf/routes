@@ -22,6 +22,7 @@ GET     /admin/myinfo                                               controllers.
 GET     /admin/contract_story                                       controllers._A_admin.AdminCtrl.contract_story
 GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminCtrl.contract_story_list(category:Int, page:Int)
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminCtrl.contract_story_write
+POST    /admin/contract_story_submit                                 controllers._A_admin.AdminCtrl.contract_story_submit
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
