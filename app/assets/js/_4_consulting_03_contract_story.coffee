@@ -1,10 +1,15 @@
 $ ->
   $('.circles > div').click () ->
-    $(this).siblings().removeClass('-on')
-    $(this).addClass('-on')
-    getAdminContractList()
+    category = $(this).data('category')
+    location.href = "/consulting/contract_story/#{category}"
 
   getAdminContractList()
+
+@setCategory = (category) ->
+  $.each $('.circles > div'), (idx, obj) ->
+    $(obj).removeClass('-on')
+    if ($(obj).data('category').toString() == category)
+      $(obj).addClass('-on')
 
 @getAdminContractList = () ->
   category = $('.circles > div.-on').data('category')
@@ -19,3 +24,4 @@ $ ->
 
 @pageMove = () ->
   getAdminContractList()
+
