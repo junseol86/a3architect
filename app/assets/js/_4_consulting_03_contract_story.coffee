@@ -3,7 +3,7 @@ $ ->
     category = $(this).data('category')
     location.href = "/consulting/contract_story/#{category}"
 
-  getAdminContractList()
+  getContractList()
 
 @setCategory = (category) ->
   $.each $('.circles > div'), (idx, obj) ->
@@ -11,15 +11,19 @@ $ ->
     if ($(obj).data('category').toString() == category)
       $(obj).addClass('-on')
 
-@getAdminContractList = () ->
+@getContractList = () ->
   category = $('.circles > div.-on').data('category')
-  page = if $('#pages_container #pages #numbers .number.-on').length then $('#pages_container #pages #numbers .number.-on').text() else 1
+  page = getCurrentPage()
   url = $('#list_container').data("url")
-  $.get "#{url}/#{category}/#{page}",
+  console.log("page:#{page} category:#{category}")
+  $.post url,
+    {
+      category: category
+      page: page
+    }
     (data, status) ->
       afterAjaxLoad(data)
 
-
 @pageMove = () ->
-  getAdminContractList()
+  getContractList()
 

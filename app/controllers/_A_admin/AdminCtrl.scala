@@ -43,7 +43,7 @@ class AdminCtrl @Inject()(user: User, loginSession: LoginSession,
     page_data += "left_menu" -> "contract_story"
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_story(page_data, user_data))
+      Ok(views.html._A_admin_contract_story(page_data, user_data, commonUtil))
     else
       Redirect("/")
   }
@@ -66,7 +66,7 @@ class AdminCtrl @Inject()(user: User, loginSession: LoginSession,
     val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_story_list(page_data, user_data, stories, count, board_page))
+      Ok(views.html._A_admin_contract_story_list(page_data, user_data, commonUtil, stories, count, board_page))
     else
       Redirect("/")
   }

@@ -13,4 +13,12 @@ class CommonUtil {
       request.body.asFormUrlEncoded.get(str).head
   }
 
+  def contractStoryCategory(code: String): String =
+    code match {
+      case "1" => {"BRAND"}
+      case "2" => {"건축"}
+      case "3" => {"인테리어"}
+      case "4" => {"시공"}
+    }
+
 }

@@ -117,9 +117,12 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     Ok(views.html._4_consulting_03_contract_story(page_data, user_data, category))
   }
 
-  def contract_story_list(category: String, board_page: Int) = Action { request =>
+  def contract_story_list() = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
+
+    val category = request.body.asFormUrlEncoded.get("category").head
+    val board_page = request.body.asFormUrlEncoded.get("page").head.toInt
 
     var page_data = Map[String, Any]()
     page_data += "title" -> "A3 :: 계약 스토리"
@@ -133,7 +136,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     totalCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)._2(0)(".total").toString.toInt
     val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
-    Ok(views.html._4_consulting_03_contract_story_list(page_data, user_data, stories, count, board_page))
+    Ok(views.html._4_consulting_03_contract_story_list(page_data, user_data, commonUtil, stories, count, board_page))
   }
 
   def contract_story_view(idx: String) = Action { request =>
@@ -149,7 +152,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     var story = Map[String, Any]()
     story = contractStory.getAContractStory(idx)
 
-    Ok(views.html._4_consulting_03_contract_story_view(page_data, user_data, story))
+    Ok(views.html._4_consulting_03_contract_story_view(page_data, user_data, commonUtil, story))
   }
 
   def as_apply = Action { request =>

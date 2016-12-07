@@ -7,6 +7,7 @@ $ ->
   pageNoScroll = $('#pages_container #pages #numbers')
 
   pageNumbers.click () ->
+    location.hash = ''
     $(this).siblings().removeClass '-on'
     $(this).addClass '-on'
     pageMove()
@@ -17,7 +18,6 @@ $ ->
     $('#pages_container #numbers').css 'width', pageNoWidth * pagesCount + 'px'
   else
     $('#pages_container #pages #numbers #numbers_lined').css 'width', pageNoWidth * pagesCount + 'px'
-    console.log(($('#pages_container #pages #numbers .number.-on').text() - 3) * pageNoWidth)
     pageNoScroll.scrollLeft(($('#pages_container #pages #numbers .number.-on').text() - 3) * pageNoWidth)
 
 
@@ -31,4 +31,14 @@ $ ->
   $('#list_container').html(data)
   setPagesInterface()
   $('.board_list_item').click () ->
+    location.hash = getCurrentPage()
     location.href = $(this).data('url')
+
+@getCurrentPage = () ->
+#  해시를 없앴을 때 타 브라우저는 '', 익스플로러는 '#'을 남기므로 제거한다.
+  if (location.hash.replace('#', '') != '')
+    hashData = location.hash
+    hashData.replace('#', '').split('^')[0]
+  else
+    pageOn = $('#pages_container #pages #numbers .number.-on')
+    if pageOn.length then pageOn.text() else 1

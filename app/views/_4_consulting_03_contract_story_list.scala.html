@@ -1,4 +1,5 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], stories: List[Map[String, Any]], count: Int, board_page: Int)
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, stories: List[Map[String, Any]], count: Int, board_page: Int)
 
 <table>
     @for(story <- stories) {
@@ -7,13 +8,7 @@
             @story("tbl_contract_story.cs_idx")
             </td>
             <td width="112">
-            @story("tbl_contract_story.cs_category") match {
-                case "1" => {BRAND}                    
-                case "2" => {건축}
-                case "3" => {인테리어}
-                case "4" => {시공}
-                case default => {}
-            }
+                @commonUtil.contractStoryCategory(story("tbl_contract_story.cs_category").toString)
             </td>
             <td class="_left">
             @story("tbl_contract_story.cs_title")

@@ -15,7 +15,7 @@ GET     /consulting/con_apply                                       controllers.
 POST    /consulting/con_apply_submit                                controllers._4_consulting.ConsultingCtrl.con_apply_submit
 GET     /consulting/contract_story                                  controllers._4_consulting.ConsultingCtrl.contract_story_forward
 GET     /consulting/contract_story/:category                        controllers._4_consulting.ConsultingCtrl.contract_story(category:String)
-GET     /consulting/contract_story_list/:category/:page             controllers._4_consulting.ConsultingCtrl.contract_story_list(category:String, page:Int)
+POST    /consulting/contract_story_list                             controllers._4_consulting.ConsultingCtrl.contract_story_list
 GET     /consulting/contract_story_view/:idx                        controllers._4_consulting.ConsultingCtrl.contract_story_view(idx: String)
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
@@ -24,7 +24,8 @@ GET     /admin/myinfo                                               controllers.
 GET     /admin/contract_story                                       controllers._A_admin.AdminCtrl.contract_story
 GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminCtrl.contract_story_list(category:String, page:Int)
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminCtrl.contract_story_write
-POST    /admin/contract_story_submit                                 controllers._A_admin.AdminCtrl.contract_story_submit
+POST    /admin/contract_story_submit                                controllers._A_admin.AdminCtrl.contract_story_submit
+POST    /admin/contract_story_image_up                              controllers.UploadCtrl.contractStoryImage
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count
