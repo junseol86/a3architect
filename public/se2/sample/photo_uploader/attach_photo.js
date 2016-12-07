@@ -477,6 +477,7 @@
  	 * jindo에 파일 업로드 사용.(iframe에 Form을 Submit하여 리프레시없이 파일을 업로드하는 컴포넌트)
  	 */
  	function callFileUploader (){
+ 	    alert("haha");
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
  			// sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/file_uploader.php',	//샘플 URL입니다.
             sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/admin/contract_story_image_up',	//샘플 URL입니다.
@@ -677,5 +678,6 @@
  			}
  		}
 
+ 		req.send(data);
  		return this;
  	};
