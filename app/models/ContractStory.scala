@@ -31,7 +31,8 @@ class ContractStory @Inject()(db: Database) {
          OR cs_content LIKE "%%$search%s%%"
          )"""
     val listQuery =
-      f"""SELECT * $commonQuery%s
+      f"""SELECT cs_idx, cs_category, cs_title, cs_modified
+         $commonQuery%s
          ORDER BY cs_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""
     val countQuery =
@@ -46,6 +47,17 @@ class ContractStory @Inject()(db: Database) {
     }
 
     (list, count)
+  }
+
+  def getAContractStory(idx: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        s"""SELECT * FROM tbl_contract_story
+           WHERE cs_idx = '$idx'
+           """.stripMargin).as(parser.*)
+    }
+    result(0)
   }
 
   def contractStoryWrite(

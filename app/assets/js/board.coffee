@@ -11,7 +11,6 @@ $ ->
     $(this).addClass '-on'
     pageMove()
 
-
   if (pagesCount <= 5)
     $('#pages_container img').css 'display', 'none'
     $('#pages_container #pages').css 'width', pageNoWidth * pagesCount + 'px'
@@ -27,3 +26,9 @@ $ ->
 
   $('#pages_container #pages #move_left').click () ->
     pageNoScroll.animate({scrollLeft: '-=' + pageNoScroll.width()}, 300);
+
+@afterAjaxLoad = (data) ->
+  $('#list_container').html(data)
+  setPagesInterface()
+  $('.board_list_item').click () ->
+    location.href = $(this).data('url')

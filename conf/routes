@@ -16,6 +16,7 @@ POST    /consulting/con_apply_submit                                controllers.
 GET     /consulting/contract_story                                  controllers._4_consulting.ConsultingCtrl.contract_story_forward
 GET     /consulting/contract_story/:category                        controllers._4_consulting.ConsultingCtrl.contract_story(category:String)
 GET     /consulting/contract_story_list/:category/:page             controllers._4_consulting.ConsultingCtrl.contract_story_list(category:String, page:Int)
+GET     /consulting/contract_story_view/:idx                        controllers._4_consulting.ConsultingCtrl.contract_story_view(idx: String)
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 

@@ -14,8 +14,7 @@ $ ->
   console.log("#{url}/#{category}/#{page}")
   $.get "#{url}/#{category}/#{page}",
     (data, status) ->
-      $('#list_container').html(data)
-      setPagesInterface()
+      afterAjaxLoad(data)
 
 
 @pageMove = () ->

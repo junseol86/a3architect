@@ -76,6 +76,7 @@ td {
     vertical-align: middle;
 }
 
+th._left,
 td._left {
     text-align: left;
     padding-left: 24px;
@@ -97,4 +98,8 @@ tr:hover td {
 
 .board_btn:hover {
     background-color: #333333;
+}
+
+#board_content_container {
+    padding: 20px;
 }

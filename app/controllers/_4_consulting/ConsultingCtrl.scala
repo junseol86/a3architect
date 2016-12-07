@@ -136,6 +136,22 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     Ok(views.html._4_consulting_03_contract_story_list(page_data, user_data, stories, count, board_page))
   }
 
+  def contract_story_view(idx: String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: 계약 스토리"
+    page_data += "login" -> ""
+    page_data += "category" -> "consulting"
+    page_data += "page" -> "contract_story"
+
+    var story = Map[String, Any]()
+    story = contractStory.getAContractStory(idx)
+
+    Ok(views.html._4_consulting_03_contract_story_view(page_data, user_data, story))
+  }
+
   def as_apply = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
