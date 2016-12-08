@@ -12,6 +12,10 @@ import play.api.mvc._
   */
 class UploadCtrl extends Controller {
 
+  def checkIfImage(picture: MultipartFormData.FilePart[Files.TemporaryFile]):Int = {
+    Array("Some(image/jpeg)", "Some(image/png)", "Some(image/gif)").indexOf(picture.contentType.toString)
+  }
+
   def setFileName(picture: MultipartFormData.FilePart[Files.TemporaryFile]):String =  {
     val format = new SimpleDateFormat("yyyy-mm-dd_HH-mm-ss")
     val filenameFront = format.format(new Date()) + "_" +
@@ -20,12 +24,15 @@ class UploadCtrl extends Controller {
   }
 
   def contractStoryImage = Action(parse.multipartFormData) { request =>
-    println("hahahahhahahaha")
     request.body.file("picture").map { picture =>
-      val filename = setFileName(picture)
-      val url = s"/images/contents/contract_story/$filename"
-      picture.ref.moveTo(new File(s"public$url"))
-      Ok(url)
+      if (checkIfImage(picture) > -1) {
+        val filename = setFileName(picture)
+        val url = s"/images/contents/contract_story/$filename"
+        picture.ref.moveTo(new File(s"public$url"))
+        Ok(url)
+      }
+      else
+        Ok("NOT IMAGE")
     }.getOrElse { Ok("Error") }
   }
 

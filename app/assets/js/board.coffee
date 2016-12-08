@@ -32,7 +32,7 @@ $ ->
   $('#list_container').html(data)
   setPagesInterface()
   $('.board_list_item').click () ->
-    location.hash = getCurrentPage()
+    location.hash = getCurrentPage() + getExtraHash()
     location.href = $(this).data('url')
 
 @getCurrentPage = () ->
@@ -64,13 +64,16 @@ $ ->
   uploadForm.submit()
 
 @asyncFileUploadCallback = (result) ->
-  image = "<img src=\"/assets/#{result}\"/>"
-  oEditors.getById["ir1"].exec("PASTE_HTML", [image])
+  if (result == 'NOT IMAGE')
+    alert '이미지 파일(jpg, png, 또는 gif)을 첨부하세요.'
+  else
+    image = "<img src=\"/assets/#{result}\"/>"
+    oEditors.getById["ir1"].exec("PASTE_HTML", [image])
   putPickPhotoForm()
 
 @putPickPhotoForm = () ->
   uploadPhotoBtn = $('#photoUploadBtn')
   if (uploadPhotoBtn.length > 0)
-    pickPhotoForm = $("<input type=\"file\" name=\"picture\" value=\"사진 찾기\"/>")
+    pickPhotoForm = $("<input type=\"file\" name=\"picture\"/>")
     pickPhotoForm.insertBefore(uploadPhotoBtn)
 

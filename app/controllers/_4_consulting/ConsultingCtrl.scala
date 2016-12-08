@@ -100,11 +100,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     })
   }
 
-  def contract_story_forward() = Action { request =>
-    Redirect("/consulting/contract_story/1")
-  }
-
-  def contract_story(category:String) = Action { request =>
+  def contract_story() = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
 
@@ -114,7 +110,7 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     page_data += "category" -> "consulting"
     page_data += "page" -> "contract_story"
 
-    Ok(views.html._4_consulting_03_contract_story(page_data, user_data, category))
+    Ok(views.html._4_consulting_03_contract_story(page_data, user_data))
   }
 
   def contract_story_list() = Action { request =>

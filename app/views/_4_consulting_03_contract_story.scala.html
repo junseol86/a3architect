@@ -1,4 +1,4 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], category:String)
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]])
 
 @main(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/_4_consulting.js")" type="text/javascript"></script>
@@ -74,8 +74,4 @@
     </div>
 
     </div>
-
-    <script language="javascript">
-        setCategory('@category');
-    </script>
 }

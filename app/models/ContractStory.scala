@@ -61,7 +61,7 @@ class ContractStory @Inject()(db: Database) {
   }
 
   def contractStoryWrite(
-                        category:String, title: String, content:String, created:String, modified:String
+                        category:String, title: String, content:String, created:String
                         ) = {
     db.withConnection { implicit conn =>
       SQL(
@@ -74,8 +74,25 @@ class ContractStory @Inject()(db: Database) {
       """
       )
         .on(
-          'category -> category, 'title -> title, 'content -> content, 'created -> created, 'modified -> modified
+          'category -> category, 'title -> title, 'content -> content, 'created -> created, 'modified -> created
         ).executeInsert()
+    }
+  }
+
+  def contractStoryModify(
+                          idx:String, category:String, title: String, content:String, modified:String
+                        ) = {
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          UPDATE tbl_contract_story SET
+          cs_category = {category}, cs_title = {title}, cs_content = {content}, cs_modified = {modified}
+          WHERE cs_idx = {idx}
+      """
+      )
+        .on(
+          'idx -> idx, 'category -> category, 'title -> title, 'content -> content, 'modified -> modified
+        ).executeUpdate()
     }
   }
 }
