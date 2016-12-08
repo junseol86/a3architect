@@ -1,4 +1,5 @@
 $ ->
+  window.addEventListener('message', asyncReceiveMessage, false)
   putPickPhotoForm()
 
 @setPagesInterface = () ->
@@ -46,28 +47,42 @@ $ ->
 
 #익스플로러 10 이하에서는 ajax로 파일을 업로드할 수 없다.  따라서, 새로고침 없이 비동기로 파일 업로드를 진행하기 위해서,
 #보이지 않는 iframe을 만들고 여기서 파일을 업로드한 뒤, 그 결과를 load 콜백으로 받아 호출한다.
+
 @asyncFileUpload = (file, action) ->
   targetIframe = 'upload_iframe'
-  uploadForm = $("<form action=\"#{action}\" method=\"post\" enctype=\"multipart/form-data\" style=\"display:none;\" target=\"#{targetIframe}\"></form>")
+  uploadForm = $("<form id=\"uploadForm\" action=\"#{action}\" method=\"post\" enctype=\"multipart/form-data\" style=\"display:none;\" target=\"#{targetIframe}\"></form>")
   $('body').append(uploadForm)
   file.appendTo(uploadForm)
 
-  uploadIframe = $("<iframe src=\"javascript:false;\" name=\"#{targetIframe}\" style=\"display:none;\"><iframe>")
+  uploadIframe = $("<iframe id=\"uploadIframe\" src=\"javascript:false;\" name=\"#{targetIframe}\" style=\"display:none;\"><iframe>")
   $('body').append(uploadIframe)
+
   uploadIframe.on 'load', () ->
-    doc = if this.contentWindow then this.contentWindow.document else (if this.contentDocument then this.contentDocument else this.document);
-    root = if doc.documentElement then doc.documentElement else doc.body;
-    result = if root.textContent then root.textContent else root.innerText;
-    asyncFileUploadCallback result
-    uploadForm.remove()
-    uploadIframe.remove()
+    ui = window.frames["upload_iframe"]
+    console.log typeof ui
+    console.log ui
+    ui.contentWindow.postMessage("hello there!", "115.68.110.118/9000")
+
+#    doc = if this.contentWindow then this.contentWindow.document else (if this.contentDocument then this.contentDocument else this.document);
+#    root = if doc.documentElement then doc.documentElement else doc.body;
+#    result = if root.textContent then root.textContent else root.innerText;
+#    asyncFileUploadCallback result
+#    uploadForm.remove()
+#    uploadIframe.remove()
+
   uploadForm.submit()
+
+@asyncReceiveMessage = (event) ->
+  asyncFileUploadCallback event.data
+  $('#uploadForm').remove()
+  $('#uploadIframe').remove()
+
 
 @asyncFileUploadCallback = (result) ->
   if (result == 'NOT IMAGE')
     alert '이미지 파일(jpg, png, 또는 gif)을 첨부하세요.'
   else
-    image = "<img src=\"/assets/#{result}\"/>"
+    image = "<img src=\"http://#{result}\" />"
     oEditors.getById["ir1"].exec("PASTE_HTML", [image])
   putPickPhotoForm()
 

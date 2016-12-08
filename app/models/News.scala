@@ -8,16 +8,16 @@ import play.api.db._
 /**
   * Created by Hyeonmin on 2016-12-05.
   */
-class ContractStory @Inject()(db: Database) {
+class News @Inject()(db: Database) {
 
   val parser: RowParser[Map[String, Any]] =
     SqlParser.folder(Map.empty[String, Any]) { (map, value, meta) =>
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 2
+  val pageSize = 5
 
-  def getContractStories(category: String, search: String, page: Int) = {
+  def getNewses(search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 
     var list = List[Map[String, Any]]()
@@ -25,15 +25,14 @@ class ContractStory @Inject()(db: Database) {
 
     val commonQuery =
       f"""FROM tbl_contract_story
-         WHERE cs_category LIKE "%%$category%s%%"
          AND (
-         cs_title LIKE "%%$search%s%%"
-         OR cs_content LIKE "%%$search%s%%"
+         news_title LIKE "%%$search%s%%"
+         OR news_content LIKE "%%$search%s%%"
          )"""
     val listQuery =
-      f"""SELECT cs_idx, cs_category, cs_title, cs_modified
+      f"""SELECT news_idx, news_category, news_title, news_modified
          $commonQuery%s
-         ORDER BY cs_idx DESC
+         ORDER BY news_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""
     val countQuery =
       f"""SELECT count(*) as total $commonQuery%s"""
@@ -54,44 +53,44 @@ class ContractStory @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       result = SQL(
         s"""SELECT * FROM tbl_contract_story
-           WHERE cs_idx = '$idx'
+           WHERE news_idx = '$idx'
            """.stripMargin).as(parser.*)
     }
     result(0)
   }
 
   def contractStoryWrite(
-                        category:String, title: String, content:String, created:String
+                        title: String, content:String, created:String
                         ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
           INSERT INTO tbl_contract_story (
-          cs_category, cs_title, cs_content, cs_created, cs_modified
+          news_title, news_content, news_created, news_modified
           ) values (
-          {category}, {title}, {content}, {created}, {modified}
+          {title}, {content}, {created}, {modified}
           )
       """
       )
         .on(
-          'category -> category, 'title -> title, 'content -> content, 'created -> created, 'modified -> created
+          'title -> title, 'content -> content, 'created -> created, 'modified -> created
         ).executeInsert()
     }
   }
 
   def contractStoryModify(
-                          idx:String, category:String, title: String, content:String, modified:String
+                          idx:String, title: String, content:String, modified:String
                         ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
           UPDATE tbl_contract_story SET
-          cs_category = {category}, cs_title = {title}, cs_content = {content}, cs_modified = {modified}
-          WHERE cs_idx = {idx}
+          news_title = {title}, news_content = {content}, news_modified = {modified}
+          WHERE news_idx = {idx}
       """
       )
         .on(
-          'idx -> idx, 'category -> category, 'title -> title, 'content -> content, 'modified -> modified
+          'idx -> idx, 'title -> title, 'content -> content, 'modified -> modified
         ).executeUpdate()
     }
   }
