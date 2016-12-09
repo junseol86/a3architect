@@ -46,8 +46,7 @@ $ ->
     if pageOn.length then pageOn.text() else 1
 
 #익스플로러 10 이하에서는 ajax로 파일을 업로드할 수 없다.  따라서, 새로고침 없이 비동기로 파일 업로드를 진행하기 위해서,
-#보이지 않는 iframe을 만들고 여기서 파일을 업로드한 뒤, 그 결과를 load 콜백으로 받아 호출한다.
-
+#보이지 않는 iframe을 만들고 여기서 파일을 업로드한 뒤, 그 결과를 postMessage() 콜백으로 받아 호출한다.
 @asyncFileUpload = (file, action) ->
   targetIframe = 'upload_iframe'
   uploadForm = $("<form id=\"uploadForm\" action=\"#{action}\" method=\"post\" enctype=\"multipart/form-data\" style=\"display:none;\" target=\"#{targetIframe}\"></form>")
@@ -62,13 +61,6 @@ $ ->
     console.log typeof ui
     console.log ui
     ui.contentWindow.postMessage("hello there!", "115.68.110.118/9000")
-
-#    doc = if this.contentWindow then this.contentWindow.document else (if this.contentDocument then this.contentDocument else this.document);
-#    root = if doc.documentElement then doc.documentElement else doc.body;
-#    result = if root.textContent then root.textContent else root.innerText;
-#    asyncFileUploadCallback result
-#    uploadForm.remove()
-#    uploadIframe.remove()
 
   uploadForm.submit()
 

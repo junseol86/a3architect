@@ -118,6 +118,7 @@ tr:hover td {
 
 #board_btns > input {
     float: right;
+    margin-left: 4px;
 }
 
 #board_btns input[type=button] {

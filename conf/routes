@@ -26,6 +26,7 @@ GET     /admin/contract_story_write                                 controllers.
 GET     /admin/contract_story_modify/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_modify(idx:String)
 POST    /admin/contract_story_submit/:insertOrModify                controllers._A_admin.AdminContractStoryCtrl.contract_story_submit(insertOrModify:Int)
 POST    /admin/contract_story_image_up                              controllers.UploadCtrl.contractStoryImage
+GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count

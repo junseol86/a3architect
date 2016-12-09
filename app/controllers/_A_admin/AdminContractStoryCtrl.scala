@@ -3,7 +3,7 @@ package controllers._A_admin
 import javax.inject._
 
 import controllers.LoginSession
-import models.{Consulting, ContractStory, User}
+import models.{Consulting, ContractStory, Deleter, User}
 import play.api.mvc._
 import utils.CommonUtil
 
@@ -12,6 +12,7 @@ import utils.CommonUtil
   */
 class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
                                        consulting: Consulting, contractStory: ContractStory,
+                                       deleter: Deleter,
                                        commonUtil: CommonUtil) extends Controller  {
 
   def contract_story = Action { request =>
@@ -123,6 +124,26 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
       else
         Redirect("/")
     }
+  }
+
+  def contract_story_delete(idx: String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+    var client_id = ""
+    request.session.get("user_id").map { id =>
+      client_id = id
+    }
+
+    val result = deleter.deleteAContent("tbl_contract_story", "cs_idx", idx)
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+      Ok(result match {
+        case 1 => views.html.alert_and_move("게시물이 삭제되었습니다", "/admin/contract_story")
+        case default => views.html.alert_and_move("에러가 발생하여 게시물이 삭제되지 않앗습니다.  다시 시도해 주십시오.", "/admin/contract_story_write")
+      })
+    else
+      Redirect("/")
   }
 
 }
