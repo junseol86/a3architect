@@ -19,14 +19,28 @@ GET     /consulting/contract_story_view/:idx                        controllers.
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 
+GET     /news/news                                                  controllers._5_news.NewsCtrl.news
+POST    /news/news_list                                             controllers._5_news.NewsCtrl.news_list
+GET     /news/news_view/:idx                                        controllers._5_news.NewsCtrl.news_view(idx: String)
+
 GET     /admin/myinfo                                               controllers._A_admin.AdminMyInfoCtrl.myinfo
+
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
-GET     /admin/contract_story_list/:category/:page                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list(category:String, page:Int)
+POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminContractStoryCtrl.contract_story_write
 GET     /admin/contract_story_modify/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_modify(idx:String)
 POST    /admin/contract_story_submit/:insertOrModify                controllers._A_admin.AdminContractStoryCtrl.contract_story_submit(insertOrModify:Int)
 POST    /admin/contract_story_image_up                              controllers.UploadCtrl.contractStoryImage
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
+
+
+GET     /admin/news                                       controllers._A_admin.AdminNewsCtrl.news
+POST    /admin/news_list                                  controllers._A_admin.AdminNewsCtrl.news_list
+GET     /admin/news_write                                 controllers._A_admin.AdminNewsCtrl.news_write
+GET     /admin/news_modify/:idx                           controllers._A_admin.AdminNewsCtrl.news_modify(idx:String)
+POST    /admin/news_submit/:insertOrModify                controllers._A_admin.AdminNewsCtrl.news_submit(insertOrModify:Int)
+POST    /admin/news_image_up                              controllers.UploadCtrl.contractStoryImage
+GET     /admin/news_delete/:idx                           controllers._A_admin.AdminNewsCtrl.news_delete(idx:String)
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count

@@ -27,7 +27,7 @@ $ ->
 
 @getContractList = () ->
   category = getCategory()
-  page = getCurrentPage()
+  page = boardModule().getCurrentPage()
   url = $('#list_container').data("url")
   $.post url,
     {
@@ -35,7 +35,7 @@ $ ->
       page: page
     }
     (data, status) ->
-      afterAjaxLoad(data)
+      boardModule().afterAjaxLoad(data)
 
 @pageMove = () ->
   getContractList()

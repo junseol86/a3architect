@@ -32,9 +32,12 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
       Redirect("/")
   }
 
-  def contract_story_list(category: String, board_page: Int) = Action { request =>
+  def contract_story_list() = Action { request =>
     var user_data = List[Map[String, Any]]()
     user_data = loginSession.userData(request)
+
+    val category = request.body.asFormUrlEncoded.get("category").head
+    val board_page = request.body.asFormUrlEncoded.get("page").head.toInt
 
     var page_data = Map[String, Any]()
     page_data += "title" -> "A3 :: 관리자 페이지"
@@ -69,7 +72,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
     var story:Map[String, Any] = null
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_stories_write(page_data, user_data, story))
+      Ok(views.html._A_admin_contract_story_write(page_data, user_data, story))
     else
       Redirect("/")
   }
@@ -89,7 +92,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
     story = contractStory.getAContractStory(idx)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_stories_write(page_data, user_data, story))
+      Ok(views.html._A_admin_contract_story_write(page_data, user_data, story))
     else
       Redirect("/")
   }

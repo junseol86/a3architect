@@ -134,3 +134,8 @@ tr:hover td {
 #board_btns input[type=button]:hover {
     background-color: #333333;
 }
+
+#width_checker {
+    width: 100%;
+    height: 1px;
+}

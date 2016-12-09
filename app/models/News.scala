@@ -24,13 +24,13 @@ class News @Inject()(db: Database) {
     var count = List[Map[String, Any]]()
 
     val commonQuery =
-      f"""FROM tbl_contract_story
-         AND (
+      f"""FROM tbl_news
+         WHERE (
          news_title LIKE "%%$search%s%%"
          OR news_content LIKE "%%$search%s%%"
          )"""
     val listQuery =
-      f"""SELECT news_idx, news_category, news_title, news_modified
+      f"""SELECT news_idx, news_title, news_modified
          $commonQuery%s
          ORDER BY news_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""
@@ -48,24 +48,24 @@ class News @Inject()(db: Database) {
     (list, count)
   }
 
-  def getAContractStory(idx: String) = {
+  def getANews(idx: String) = {
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
       result = SQL(
-        s"""SELECT * FROM tbl_contract_story
+        s"""SELECT * FROM tbl_news
            WHERE news_idx = '$idx'
            """.stripMargin).as(parser.*)
     }
     result(0)
   }
 
-  def contractStoryWrite(
+  def newsWrite(
                         title: String, content:String, created:String
                         ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
-          INSERT INTO tbl_contract_story (
+          INSERT INTO tbl_news (
           news_title, news_content, news_created, news_modified
           ) values (
           {title}, {content}, {created}, {modified}
@@ -78,13 +78,13 @@ class News @Inject()(db: Database) {
     }
   }
 
-  def contractStoryModify(
+  def newsModify(
                           idx:String, title: String, content:String, modified:String
                         ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
-          UPDATE tbl_contract_story SET
+          UPDATE tbl_news SET
           news_title = {title}, news_content = {content}, news_modified = {modified}
           WHERE news_idx = {idx}
       """

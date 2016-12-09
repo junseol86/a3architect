@@ -23,13 +23,25 @@ $ ->
   else
     $('#filter_category').val() || 1
 
+
 @getContractList = () ->
-  category = $('#filter_category').val()
-  page = getCurrentPage()
+  category = getCategory()
+  page = boardModule().getCurrentPage()
   url = $('#list_container').data("url")
-  $.get "#{url}/#{category}/#{page}",
+  $.post url,
+    {
+      category: category
+      page: page
+    }
     (data, status) ->
-      afterAjaxLoad(data)
+      boardModule().afterAjaxLoad(data)
+#@getContractList = () ->
+#  category = $('#filter_category').val()
+#  page = boardModule().getCurrentPage()
+#  url = $('#list_container').data("url")
+#  $.get "#{url}/#{category}/#{page}",
+#    (data, status) ->
+#      boardModule().afterAjaxLoad(data)
 
 @pageMove = () ->
   getContractList()

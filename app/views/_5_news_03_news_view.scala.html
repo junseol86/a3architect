@@ -1,0 +1,27 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, news: Map[String, Any])
+
+@main(page_data, user_data) {
+
+    <div class="centered_wrapper">
+
+        <table>
+            <tr>
+                <th width="72">
+                    <div>@news("tbl_news.news_idx")</div>
+                </th>
+                <th class="_left">
+                    <div>@news("tbl_news.news_title")</div>
+                </th>
+                <th width="100">
+                    <div>@news("tbl_news.news_modified").toString.split(' ')(0)</div>
+                </th>
+            </tr>
+        </table>
+
+        <div id="board_content_container">
+            <div id="width_checker"></div>
+            @Html(news("tbl_news.news_content").toString)
+        </div>
+    </div>
+}

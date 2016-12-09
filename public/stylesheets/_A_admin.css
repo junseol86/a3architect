@@ -1,33 +1,32 @@
-form#contract_story_write {
-    font-size: 1.3em;
+form { font-size: 1.3em;
     color: #808080;
 }
 
-form#contract_story_write span {
+form span {
     margin-right: 7px;
     line-height: 36px;
 }
 
-form#contract_story_write > div {
+form > div {
     height: 36px;
 }
 
-form#contract_story_write .item {
+form .item {
     font-weight: bold;
     width: 92px;
     height: 36px;
     line-height: 36px;
 }
 
-form#contract_story_write input {
+form input {
     padding-left: 4px;
     height: 30px;
 }
 
-form#contract_story_write #title {
+form #title {
     margin-bottom: 12px;
 }
 
-form#contract_story_write #title input {
+form #title input {
     width: 606px;
 }

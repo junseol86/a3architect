@@ -23,9 +23,9 @@ $ ->
   $('.contact #company_view_btn').click ->
     $('.contact .contact_wrapper').removeClass('-contact_info')
     $('.contact .contact_wrapper').addClass('-company_view')
-    image_process '#view_large'
+    imageProcessor().image_process '#view_large'
     for x in [1..6]
-      image_process '#thumb_' + x
+      imageProcessor().image_process '#thumb_' + x
 
   $('.contact #company_view li').mouseenter ->
     view_id = $(this).attr 'id'
