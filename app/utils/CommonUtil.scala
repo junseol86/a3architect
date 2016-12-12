@@ -21,4 +21,11 @@ class CommonUtil {
       case "4" => {"시공"}
     }
 
+  def promotionCategory(code: String): String =
+    code match {
+      case "1" => {"NOW"}
+      case "2" => {"PAST"}
+      case "3" => {"FUTURE"}
+    }
+
 }

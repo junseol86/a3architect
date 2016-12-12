@@ -19,6 +19,8 @@ GET     /consulting/contract_story_view/:idx                        controllers.
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
 
+GET     /news/promotion                                             controllers._5_news.PromotionCtrl.promotion
+POST    /news/promotion_list                                        controllers._5_news.PromotionCtrl.promotion_list
 GET     /news/news                                                  controllers._5_news.NewsCtrl.news
 POST    /news/news_list                                             controllers._5_news.NewsCtrl.news_list
 GET     /news/news_view/:idx                                        controllers._5_news.NewsCtrl.news_view(idx: String)
@@ -34,6 +36,8 @@ POST    /admin/contract_story_image_up                              controllers.
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
 
 
+GET     /admin/promotion                                  controllers._A_admin.AdminPromotionCtrl.promotion
+POST    /admin/promotion_list                             controllers._A_admin.AdminPromotionCtrl.promotion_list
 GET     /admin/news                                       controllers._A_admin.AdminNewsCtrl.news
 POST    /admin/news_list                                  controllers._A_admin.AdminNewsCtrl.news_list
 GET     /admin/news_write                                 controllers._A_admin.AdminNewsCtrl.news_write

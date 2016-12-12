@@ -49,6 +49,9 @@ $ ->
   #익스플로러 10 이하에서는 ajax로 파일을 업로드할 수 없다.  따라서, 새로고침 없이 비동기로 파일 업로드를 진행하기 위해서,
   #보이지 않는 iframe을 만들고 여기서 파일을 업로드한 뒤, 그 결과를 postMessage() 콜백으로 받아 호출한다.
   asyncFileUpload: (file, action) ->
+    if (file.val() == '')
+      alert '사진 파일을 선택하세요.'
+      return
     targetIframe = 'upload_iframe'
     uploadForm = $("<form id=\"uploadForm\" action=\"#{action}\" method=\"post\" enctype=\"multipart/form-data\" style=\"display:none;\" target=\"#{targetIframe}\"></form>")
     $('body').append(uploadForm)
@@ -74,9 +77,12 @@ $ ->
   asyncFileUploadCallback: (result) ->
     if (result == 'NOT IMAGE')
       alert '이미지 파일(jpg, png, 또는 gif)을 첨부하세요.'
-    else
+    else if result.indexOf('@') < 0
       image = "<img src=\"http://#{result}\" />"
       oEditors.getById["ir1"].exec("PASTE_HTML", [image])
+#    게시판 내용으로 들어가는 사진이 아닐 경우
+    else
+      uploadedImageProcess()
     boardModule().putPickPhotoForm()
 
   putPickPhotoForm: () ->

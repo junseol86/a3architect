@@ -36,7 +36,7 @@ class NewsCtrl@Inject()(user: User, loginSession: LoginSession,
     var page_data = Map[String, Any]()
     page_data += "title" -> "A3 :: 계약 스토리"
     page_data += "login" -> ""
-    page_data += "category" -> "consulting"
+    page_data += "category" -> "news"
     page_data += "page" -> "news"
 
     var newses = List[Map[String, Any]]()

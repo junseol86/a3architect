@@ -1,3 +1,7 @@
+.on_right .centered_wrapper {
+    width: 100%;
+}
+
 th {
     background-color: #4d4d4d;
     height: 48px;

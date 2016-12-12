@@ -10,6 +10,13 @@
                 case "admin" =>  {
                     @_A_admin_left_menu(page_data)
                 }
+                case "news" =>  {
+                    @page_data("page") match {
+                        case "promotion" => {
+                            @_5_news_01_promotion_left_menu()
+                        }
+                    }
+                }
             }
             <div class="on_right">
                 @content
