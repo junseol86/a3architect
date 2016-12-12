@@ -57,7 +57,7 @@ class Promotion @Inject()(db: Database) {
     result(0)
   }
 
-  def contractStoryWrite(
+  def promotionWrite(
                         category:String, title: String, subtitle: String, thumbnail: String, content:String, created:String
                         ) = {
     db.withConnection { implicit conn =>
@@ -76,7 +76,7 @@ class Promotion @Inject()(db: Database) {
     }
   }
 
-  def contractStoryModify(
+  def promotionModify(
                           idx:String, category:String, title: String, subtitle: String, thumbnail: String, content:String, modified:String
                         ) = {
     db.withConnection { implicit conn =>

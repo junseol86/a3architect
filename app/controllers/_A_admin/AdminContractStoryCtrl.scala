@@ -72,7 +72,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
     var story:Map[String, Any] = null
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_story_write(page_data, user_data, story))
+      Ok(views.html._A_admin_contract_story_write(page_data, user_data, commonUtil, story))
     else
       Redirect("/")
   }
@@ -92,7 +92,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
     story = contractStory.getAContractStory(idx)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_contract_story_write(page_data, user_data, story))
+      Ok(views.html._A_admin_contract_story_write(page_data, user_data, commonUtil, story))
     else
       Redirect("/")
   }

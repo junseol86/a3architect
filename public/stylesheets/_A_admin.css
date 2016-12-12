@@ -23,10 +23,10 @@ form input {
     height: 30px;
 }
 
-form #title {
-    margin-bottom: 12px;
+form div.title input {
+    width: 606px;
 }
 
-form #title input {
-    width: 606px;
+form iframe {
+    margin-top: 12px;
 }

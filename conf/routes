@@ -38,6 +38,9 @@ GET     /admin/contract_story_delete/:idx                           controllers.
 
 GET     /admin/promotion                                  controllers._A_admin.AdminPromotionCtrl.promotion
 POST    /admin/promotion_list                             controllers._A_admin.AdminPromotionCtrl.promotion_list
+GET     /admin/promotion_write                            controllers._A_admin.AdminPromotionCtrl.promotion_write
+GET     /admin/promotion_modify/:idx                      controllers._A_admin.AdminPromotionCtrl.promotion_modify(idx:String)
+POST    /admin/promotion_submit/:insertOrModify           controllers._A_admin.AdminPromotionCtrl.promotion_submit(insertOrModify:Int)
 GET     /admin/news                                       controllers._A_admin.AdminNewsCtrl.news
 POST    /admin/news_list                                  controllers._A_admin.AdminNewsCtrl.news_list
 GET     /admin/news_write                                 controllers._A_admin.AdminNewsCtrl.news_write
