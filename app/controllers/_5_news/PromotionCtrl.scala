@@ -49,20 +49,20 @@ class PromotionCtrl@Inject()(user: User, loginSession: LoginSession,
     Ok(views.html._5_news_01_promotion_list(page_data, user_data, commonUtil, promotions, count, board_page))
   }
 
-//  def promotion_view(idx: String) = Action { request =>
-//    var user_data = List[Map[String, Any]]()
-//    user_data = loginSession.userData(request)
-//
-//    var page_data = Map[String, Any]()
-//    page_data += "title" -> "A3 :: 계약 스토리"
-//    page_data += "login" -> ""
-//    page_data += "category" -> "promotion"
-//    page_data += "page" -> "promotion"
-//
-//    var promotion = Map[String, Any]()
-//    promotion = promotionMdl.getAPromotion(idx)
-//
-//    Ok(views.html._5_news_01_promotion_view(page_data, user_data, commonUtil, promotion))
-//  }
+  def promotion_view(idx: String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: 계약 스토리"
+    page_data += "login" -> ""
+    page_data += "category" -> "news"
+    page_data += "page" -> "promotion"
+
+    var promotion = Map[String, Any]()
+    promotion = promotionMdl.getAPromotion(idx)
+
+    Ok(views.html._5_news_01_promotion_view(page_data, user_data, commonUtil, promotion))
+  }
 
 }

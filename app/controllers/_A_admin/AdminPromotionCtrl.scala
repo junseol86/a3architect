@@ -141,7 +141,7 @@ class AdminPromotionCtrl @Inject()(user: User, loginSession: LoginSession,
       client_id = id
     }
 
-    val result = deleter.deleteAContent("tbl_promotion", "cs_idx", idx)
+    val result = deleter.deleteAContent("tbl_promotion", "prom_idx", idx)
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
       Ok(result match {
         case 1 => views.html.alert_and_move("게시물이 삭제되었습니다", "/admin/promotion")

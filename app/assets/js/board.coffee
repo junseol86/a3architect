@@ -1,6 +1,7 @@
 $ ->
   window.addEventListener('message', boardModule().asyncReceiveMessage, false)
   boardModule().putPickPhotoForm()
+  boardModule().putPickThumbnailForm()
 
 @boardModule = () -> {
   setPagesInterface: () ->
@@ -33,7 +34,7 @@ $ ->
   afterAjaxLoad: (data) ->
     $('#list_container').html(data)
     this.setPagesInterface()
-    $('.board_list_item').click () ->
+    $('.url_link').click () ->
       location.hash = boardModule().getCurrentPage() + getExtraHash()
       location.href = $(this).data('url')
 
@@ -60,12 +61,6 @@ $ ->
     uploadIframe = $("<iframe id=\"uploadIframe\" src=\"javascript:false;\" name=\"#{targetIframe}\" style=\"display:none;\"><iframe>")
     $('body').append(uploadIframe)
 
-    uploadIframe.on 'load', () ->
-      ui = window.frames["upload_iframe"]
-      console.log typeof ui
-      console.log ui
-      ui.contentWindow.postMessage("hello there!", "115.68.110.118/9000")
-
     uploadForm.submit()
 
   asyncReceiveMessage: (event) ->
@@ -77,19 +72,25 @@ $ ->
   asyncFileUploadCallback: (result) ->
     if (result == 'NOT IMAGE')
       alert '이미지 파일(jpg, png, 또는 gif)을 첨부하세요.'
+      boardModule().putPickPhotoForm()
     else if result.indexOf('@') < 0
       image = "<img src=\"http://#{result}\" />"
       oEditors.getById["ir1"].exec("PASTE_HTML", [image])
+      boardModule().putPickPhotoForm()
 #    게시판 내용으로 들어가는 사진이 아닐 경우
     else
-      uploadedImageProcess()
-    boardModule().putPickPhotoForm()
+      uploadedImageProcess(result)
 
   putPickPhotoForm: () ->
     uploadPhotoBtn = $('#photoUploadBtn')
     if (uploadPhotoBtn.length > 0)
-      pickPhotoForm = $("<input type=\"file\" name=\"picture\"/>")
+      pickPhotoForm = $("<input id=\"photoInput\" type=\"file\" name=\"picture\"/>")
       pickPhotoForm.insertBefore(uploadPhotoBtn)
 
+  putPickThumbnailForm: () ->
+    uploadThumbnailBtn = $('#thumbnailUploadBtn')
+    if (uploadThumbnailBtn.length > 0)
+      pickThumbnailForm = $("<input id=\"thumbnailInput\" type=\"file\" name=\"picture\"/>")
+      pickThumbnailForm.insertBefore(uploadThumbnailBtn)
 }
 

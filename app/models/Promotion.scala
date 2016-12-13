@@ -15,7 +15,7 @@ class Promotion @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 2
+  val pageSize = 3
 
   def getPromotions(category: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
@@ -71,7 +71,7 @@ class Promotion @Inject()(db: Database) {
       """
       )
         .on(
-          'category -> category, 'title -> title, 'content -> content, 'created -> created, 'modified -> created
+          'category -> category, 'title -> title, 'subtitle -> subtitle, 'thumbnail -> thumbnail, 'content -> content, 'created -> created, 'modified -> created
         ).executeInsert()
     }
   }

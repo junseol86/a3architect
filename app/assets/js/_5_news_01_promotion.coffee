@@ -16,7 +16,7 @@ $ ->
 
 #페이징 이외의 해시가 필요할 때.  없으면 '' 반환
 @getExtraHash = () ->
-  ''
+  '^' + getCategory()
 
 @getCategory = () ->
   if (location.hash.replace('#', '') != '')

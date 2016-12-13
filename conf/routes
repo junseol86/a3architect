@@ -21,6 +21,7 @@ POST    /consulting/as_apply_submit                                 controllers.
 
 GET     /news/promotion                                             controllers._5_news.PromotionCtrl.promotion
 POST    /news/promotion_list                                        controllers._5_news.PromotionCtrl.promotion_list
+GET     /news/promotion_view/:idx                                   controllers._5_news.PromotionCtrl.promotion_view(idx: String)
 GET     /news/news                                                  controllers._5_news.NewsCtrl.news
 POST    /news/news_list                                             controllers._5_news.NewsCtrl.news_list
 GET     /news/news_view/:idx                                        controllers._5_news.NewsCtrl.news_view(idx: String)
@@ -32,7 +33,6 @@ POST    /admin/contract_story_list                                  controllers.
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminContractStoryCtrl.contract_story_write
 GET     /admin/contract_story_modify/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_modify(idx:String)
 POST    /admin/contract_story_submit/:insertOrModify                controllers._A_admin.AdminContractStoryCtrl.contract_story_submit(insertOrModify:Int)
-POST    /admin/contract_story_image_up                              controllers.UploadCtrl.contractStoryImage
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
 
 
@@ -41,12 +41,12 @@ POST    /admin/promotion_list                             controllers._A_admin.A
 GET     /admin/promotion_write                            controllers._A_admin.AdminPromotionCtrl.promotion_write
 GET     /admin/promotion_modify/:idx                      controllers._A_admin.AdminPromotionCtrl.promotion_modify(idx:String)
 POST    /admin/promotion_submit/:insertOrModify           controllers._A_admin.AdminPromotionCtrl.promotion_submit(insertOrModify:Int)
+GET     /admin/promotion_delete/:idx                      controllers._A_admin.AdminPromotionCtrl.promotion_delete(idx:String)
 GET     /admin/news                                       controllers._A_admin.AdminNewsCtrl.news
 POST    /admin/news_list                                  controllers._A_admin.AdminNewsCtrl.news_list
 GET     /admin/news_write                                 controllers._A_admin.AdminNewsCtrl.news_write
 GET     /admin/news_modify/:idx                           controllers._A_admin.AdminNewsCtrl.news_modify(idx:String)
 POST    /admin/news_submit/:insertOrModify                controllers._A_admin.AdminNewsCtrl.news_submit(insertOrModify:Int)
-POST    /admin/news_image_up                              controllers.UploadCtrl.contractStoryImage
 GET     /admin/news_delete/:idx                           controllers._A_admin.AdminNewsCtrl.news_delete(idx:String)
 
 # An example controller showing how to use dependency injection

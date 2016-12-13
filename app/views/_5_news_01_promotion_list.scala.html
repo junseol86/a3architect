@@ -2,7 +2,7 @@
 @(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, promotions: List[Map[String, Any]], count: Int, board_page: Int)
 
 @for(promotion <- promotions) {
-    <div class="promotion_list_item _float_con">
+    <div class="promotion_list_item _float_con url_link" data-url="/news/promotion_view/@promotion("tbl_promotion.prom_idx")">
         <div class="texts">
             <div>
                 @promotion("tbl_promotion.prom_title")
@@ -18,22 +18,6 @@
         </script>
     </div>
 }
-
-@*<table>
-    @for(promotion <- promotions) {
-        <tr class="board_list_item" data-url="/promotion/prom_view/@promotion("tbl_promotion.prom_idx")">
-            <td width="72">
-            @promotion("tbl_promotion.prom_idx")
-            </td>
-            <td class="_left">
-            @promotion("tbl_promotion.prom_title")
-            </td>
-            <td width="100">
-            @promotion("tbl_promotion.prom_modified").toString.split(' ')(0)
-            </td>
-        </tr>
-    }
-</table>*@
 
 <div id="pages_container">
     <div id="pages" class="_float_con">

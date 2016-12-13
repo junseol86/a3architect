@@ -30,3 +30,14 @@ form div.title input {
 form iframe {
     margin-top: 12px;
 }
+
+#prom_thumbnail {
+    width: 360px;
+    height: 200px;
+    border: 1px solid #dedede;
+    margin-top: 8px;
+}
+
+#thumbnail_btns {
+    margin: 8px 0px 16px 0px;
+}
