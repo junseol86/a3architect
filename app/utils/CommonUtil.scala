@@ -28,4 +28,10 @@ class CommonUtil {
       case "3" => {"FUTURE"}
     }
 
+  def spaceStoryCategory(code: String): String =
+    code match {
+      case "1" => {"건축이 궁금해"}
+      case "2" => {"자유로운 공간"}
+    }
+
 }

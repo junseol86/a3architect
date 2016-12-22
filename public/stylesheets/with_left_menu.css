@@ -24,6 +24,12 @@
     opacity: 1;
 }
 
+.left_menu > div.divider {
+    width: 100%;
+    height: 12px;
+    padding: 0px;
+}
+
 .on_right {
     width: 820px;
     padding-left: 120px;

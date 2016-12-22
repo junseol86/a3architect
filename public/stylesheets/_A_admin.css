@@ -31,7 +31,8 @@ form iframe {
     margin-top: 12px;
 }
 
-#prom_thumbnail {
+#prom_thumbnail,
+#ss_thumbnail {
     width: 360px;
     height: 200px;
     border: 1px solid #dedede;

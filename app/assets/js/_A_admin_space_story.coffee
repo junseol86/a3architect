@@ -1,13 +1,13 @@
 $ ->
-  $('#promotion_write').click () ->
-    location.href = '/admin/promotion_write'
+  $('#space_story_write').click () ->
+    location.href = '/admin/space_story_write'
 
   $('#filter_category').change () ->
     location.hash = ''
-    getPromotionList()
+    getSpaceStoryList()
 
   $('#filter_category').val(getCategory())
-  getPromotionList()
+  getSpaceStoryList()
 
 @getExtraHash = () ->
   '^' + getCategory()
@@ -24,7 +24,7 @@ $ ->
     $('#filter_category').val() || 1
 
 
-@getPromotionList = () ->
+@getSpaceStoryList = () ->
   category = getCategory()
   page = boardModule().getCurrentPage()
   url = $('#list_container').data("url")
@@ -37,5 +37,5 @@ $ ->
       boardModule().afterAjaxLoad(data)
 
 @pageMove = () ->
-  getPromotionList()
+  getSpaceStoryList()
 
