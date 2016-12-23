@@ -4,8 +4,9 @@ import javax.inject._
 import play.api.db._
 import anorm._
 import anorm.{ RowParser, SqlParser }
+import utils.CommonUtil
 
-class User @Inject()(db: Database) {
+class User @Inject()(db: Database, commonUtil: CommonUtil) {
 
   val parser: RowParser[Map[String, Any]] =
     SqlParser.folder(Map.empty[String, Any]) { (map, value, meta) =>
@@ -13,6 +14,19 @@ class User @Inject()(db: Database) {
     }
 
   def idPwCheck(id: String, pw: String) = {
+    var saltRaw = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      saltRaw = SQL(
+        s"""SELECT tbl_user.user_salt
+           |FROM tbl_user
+           |WHERE user_id = '$id'
+         """.stripMargin
+      ).as(parser.*)
+    }
+
+    val salt = if (saltRaw.length > 0) saltRaw(0)("tbl_user.user_salt") else ""
+    val hash = commonUtil.passwordHashing(pw + salt)
+
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
       result = SQL(
@@ -28,7 +42,7 @@ class User @Inject()(db: Database) {
            |tbl_user.user_birth_day
            |FROM tbl_user
            |WHERE user_id = '$id'
-           |AND user_pwd = '$pw'
+           |AND user_pwd = '$hash'
            |""".stripMargin).as(parser.*)
     }
     result

@@ -13,6 +13,25 @@ class CommonUtil {
       request.body.asFormUrlEncoded.get(str).head
   }
 
+  val letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+  def createSalt(): String = {
+    def addLetter(i: Int, s: String): String = {
+      if (i > 0) {
+        addLetter(i - 1, s + letters.charAt((Math.random() * letters.length).toInt))
+      }
+      else s
+    }
+    addLetter(20, "")
+  }
+
+  def passwordHashing(pw:String):String = {
+    val m = java.security.MessageDigest.getInstance("MD5")
+    val b = pw.getBytes("UTF-8")
+    m.update(b, 0, b.length)
+    new java.math.BigInteger(1, m.digest()).toString(16)
+  }
+
   def contractStoryCategory(code: String): String =
     code match {
       case "1" => {"BRAND"}
