@@ -39,24 +39,29 @@ POST    /admin/contract_story_submit/:insertOrModify                controllers.
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
 
 
-GET     /admin/promotion                                  controllers._A_admin.AdminPromotionCtrl.promotion
-POST    /admin/promotion_list                             controllers._A_admin.AdminPromotionCtrl.promotion_list
-GET     /admin/promotion_write                            controllers._A_admin.AdminPromotionCtrl.promotion_write
-GET     /admin/promotion_modify/:idx                      controllers._A_admin.AdminPromotionCtrl.promotion_modify(idx:String)
-POST    /admin/promotion_submit/:insertOrModify           controllers._A_admin.AdminPromotionCtrl.promotion_submit(insertOrModify:Int)
-GET     /admin/promotion_delete/:idx                      controllers._A_admin.AdminPromotionCtrl.promotion_delete(idx:String)
-GET     /admin/space_story                                  controllers._A_admin.AdminSpaceStoryCtrl.space_story
-POST    /admin/space_story_list                             controllers._A_admin.AdminSpaceStoryCtrl.space_story_list
-GET     /admin/space_story_write                            controllers._A_admin.AdminSpaceStoryCtrl.space_story_write
-GET     /admin/space_story_modify/:idx                      controllers._A_admin.AdminSpaceStoryCtrl.space_story_modify(idx:String)
-POST    /admin/space_story_submit/:insertOrModify           controllers._A_admin.AdminSpaceStoryCtrl.space_story_submit(insertOrModify:Int)
-GET     /admin/space_story_delete/:idx                      controllers._A_admin.AdminSpaceStoryCtrl.space_story_delete(idx:String)
-GET     /admin/news                                       controllers._A_admin.AdminNewsCtrl.news
-POST    /admin/news_list                                  controllers._A_admin.AdminNewsCtrl.news_list
-GET     /admin/news_write                                 controllers._A_admin.AdminNewsCtrl.news_write
-GET     /admin/news_modify/:idx                           controllers._A_admin.AdminNewsCtrl.news_modify(idx:String)
-POST    /admin/news_submit/:insertOrModify                controllers._A_admin.AdminNewsCtrl.news_submit(insertOrModify:Int)
-GET     /admin/news_delete/:idx                           controllers._A_admin.AdminNewsCtrl.news_delete(idx:String)
+GET     /admin/promotion                                            controllers._A_admin.AdminPromotionCtrl.promotion
+POST    /admin/promotion_list                                       controllers._A_admin.AdminPromotionCtrl.promotion_list
+GET     /admin/promotion_write                                      controllers._A_admin.AdminPromotionCtrl.promotion_write
+GET     /admin/promotion_modify/:idx                                controllers._A_admin.AdminPromotionCtrl.promotion_modify(idx:String)
+POST    /admin/promotion_submit/:insertOrModify                     controllers._A_admin.AdminPromotionCtrl.promotion_submit(insertOrModify:Int)
+GET     /admin/promotion_delete/:idx                                controllers._A_admin.AdminPromotionCtrl.promotion_delete(idx:String)
+GET     /admin/space_story                                          controllers._A_admin.AdminSpaceStoryCtrl.space_story
+POST    /admin/space_story_list                                     controllers._A_admin.AdminSpaceStoryCtrl.space_story_list
+GET     /admin/space_story_write                                    controllers._A_admin.AdminSpaceStoryCtrl.space_story_write
+GET     /admin/space_story_modify/:idx                              controllers._A_admin.AdminSpaceStoryCtrl.space_story_modify(idx:String)
+POST    /admin/space_story_submit/:insertOrModify                   controllers._A_admin.AdminSpaceStoryCtrl.space_story_submit(insertOrModify:Int)
+GET     /admin/space_story_delete/:idx                              controllers._A_admin.AdminSpaceStoryCtrl.space_story_delete(idx:String)
+GET     /admin/news                                                 controllers._A_admin.AdminNewsCtrl.news
+POST    /admin/news_list                                            controllers._A_admin.AdminNewsCtrl.news_list
+GET     /admin/news_write                                           controllers._A_admin.AdminNewsCtrl.news_write
+GET     /admin/news_modify/:idx                                     controllers._A_admin.AdminNewsCtrl.news_modify(idx:String)
+POST    /admin/news_submit/:insertOrModify                          controllers._A_admin.AdminNewsCtrl.news_submit(insertOrModify:Int)
+GET     /admin/news_delete/:idx                                     controllers._A_admin.AdminNewsCtrl.news_delete(idx:String)
+
+GET     /user/register                                              controllers.UserCtrl.register
+POST    /user/id_check                                             controllers.UserCtrl.idCheck
+POST    /user/register_submit                                       controllers.UserCtrl.registerSubmit
+POST    /user/register_modify                                       controllers.UserCtrl.registerModify
 
 # An example controller showing how to use dependency injection
 #GET     /count                      controllers.CountController.count

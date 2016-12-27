@@ -1,0 +1,92 @@
+.register .centered_wrapper {
+    border-top: 2px solid #808080;
+    padding-top: 40px;
+}
+
+.register {
+    color: #808080;
+    font-size: 1.3em;
+}
+
+.register .columns > div {
+    width: 50%;
+}
+
+.register .item {
+    font-weight: bold;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.register .field {
+    height: 36px;
+}
+
+.register input {
+    border: 0;
+    border-bottom: 1px solid #cdcdcd;
+    outline: none;
+    color: #555555;
+    padding-left: 4px;
+    height: 30px;
+}
+
+.register span {
+    line-height: 36px;
+    margin: 0px 4px 0px 4px;
+}
+
+.register #user_id input {
+    width: 96px;
+}
+
+.register #id_check {
+    height: 28px;
+    line-height: 28px;
+    color: white;
+    background-color: #808080;
+    padding: 0px 8px 0px 8px;
+    margin: 4px 0px 0px 4px;
+    cursor: pointer;
+}
+
+.register #id_check:hover {
+    background-color: #555555;
+}
+
+.register span.instruction {
+    color: #bfbfbf;
+    font-size: 0.9em;
+    margin-left: 8px;
+}
+
+.register #phone input {
+    width: 52px;
+}
+
+.register #address_1 input,
+.register #address_2 input {
+    width: 360px;
+}
+
+.register #submit_button_container {
+    height: 72px;
+}
+
+.register #submit_button_container > div {
+    width: 100px;
+    font-size: 1.1em;
+    padding: 14px 0px 14px 0px;
+    color: white;
+    background-color: #666666;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.register #submit_button_container > div:hover {
+    background-color: #555555;
+}

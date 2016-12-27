@@ -1,0 +1,70 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]])
+
+@main(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_B_user.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/user.css")">
+
+    <div class="centered_wrapper">
+        <form name="register_form" action="@if(user_data.length > 0){/user/register_modify}else{/user/register_submit}" method="post">
+            <input id="created_input" type="hidden" name="created">
+            <div class="columns _float_con">
+                <div>
+                    <div class="field _float_con" id="user_id">
+                        <div class="item">아이디</div>
+                        <input type="text" name="user_id" maxlength="20" @if(user_data.length > 0){value="@user_data(0)("tbl_user.user_id")" readonly}>
+                        <span class="instruction">영문, 숫자, 혼용</span>
+                        <div id="id_check" @if(user_data.length > 0){style="display:none;"}>중복확인</div>
+                    </div>
+                    <div class="field _float_con" id="user_pw">
+                        <div class="item">비밀번호</div>
+                        <input type="password" name="user_pw" maxlength="20">
+                        <span class="instruction">6자 이상 영문 + 숫자</span>
+                    </div>
+                    <div class="field _float_con" id="user_pw_confirm">
+                        <div class="item">비밀번호 확인</div>
+                        <input type="password">
+                        <span class="instruction"></span>
+                    </div>
+                    <div class="field _float_con" id="email">
+                        <div class="item">이메일</div>
+                        <input type="text" name="user_email_1" class="required" data-name="이메일" maxlength="24" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_email").toString().split("@")(0)}">
+                        <span>@@</span>
+                        <input type="text" name="user_email_2" class="required" data-name="이메일" maxlength="24" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_email").toString().split("@")(1)}">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="field _float_con">
+                        <div class="item">성함</div>
+                        <input type="text" name="user_name" class="required" data-name="성함" maxlength="20" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_name")}">
+                    </div>
+                    <div class="field _float_con" id="date">
+                        <div class="item">생년월일</div>
+                        <input type="date" name="user_birth" class="required" data-name="생년월일" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_birth_year")-@user_data(0)("tbl_user.user_birth_month")-@user_data(0)("tbl_user.user_birth_day")}">
+                    </div>
+                    <div class="field _float_con" id="phone">
+                        <div class="item">전화번호</div>
+                        <input type="text" name="user_phone_1" class="required" data-name ="전화번호" maxlength="5" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_mobile").toString().split("-")(0)}">
+                        <span>-</span>
+                        <input type="text" name="user_phone_2" class="required" data-name ="전화번호" maxlength="5" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_mobile").toString().split("-")(1)}">
+                        <span>-</span>
+                        <input type="text" name="user_phone_3" class="required" data-name ="전화번호" maxlength="5" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_mobile").toString().split("-")(2)}">
+                    </div>
+                    <div class="field _float_con" id="address_1">
+                        <div class="item">주소1</div>
+                        <input type="text" name="user_address_1" class="required" data-name ="주소" maxlength="50" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_addr")}">
+                    </div>
+                    <div class="field _float_con" id="address_2">
+                        <div class="item">주소2</div>
+                        <input type="text" name="user_address_2" maxlength="50" maxlength="50" value="@if(user_data.length > 0){@user_data(0)("tbl_user.user_addr2")}">
+                    </div>
+                </div>
+            </div>
+
+            <div id="submit_button_container" class="_pos_rel">
+                <div>제출하기</div>
+            </div>
+
+        </form>
+    </div>
+}

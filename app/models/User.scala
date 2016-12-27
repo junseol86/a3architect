@@ -13,6 +13,21 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
       Right(map + (meta.column.qualified -> value))
     }
 
+  def idCheck(id: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        s"""SELECT tbl_user.user_id
+           |FROM tbl_user
+           |WHERE user_id = '$id'
+           |AND sts = 'I'
+         """.stripMargin
+      ).as(parser.*)
+    }
+    result
+  }
+
+
   def idPwCheck(id: String, pw: String) = {
     var saltRaw = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
@@ -20,6 +35,7 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
         s"""SELECT tbl_user.user_salt
            |FROM tbl_user
            |WHERE user_id = '$id'
+           |AND sts = 'I'
          """.stripMargin
       ).as(parser.*)
     }
@@ -37,12 +53,14 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
            |tbl_user.user_mobile,
            |tbl_user.user_email,
            |tbl_user.user_addr,
+           |tbl_user.user_addr2,
            |tbl_user.user_birth_year,
            |tbl_user.user_birth_month,
            |tbl_user.user_birth_day
            |FROM tbl_user
            |WHERE user_id = '$id'
            |AND user_pwd = '$hash'
+           |AND sts = 'I'
            |""".stripMargin).as(parser.*)
     }
     result
@@ -55,4 +73,47 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
     }
     result
   }
+
+  def registerUser(
+                  id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String
+                  ) = {
+    val salt = commonUtil.createSalt()
+    val hashedPw = commonUtil.passwordHashing(password + salt)
+
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          INSERT INTO tbl_user (
+          user_id, user_pwd, user_name, user_group, sts, user_mobile, user_email, cdate, udate, user_birth_year, user_birth_month, user_birth_day, user_addr, user_addr2, user_salt
+          ) values (
+          {id}, {pwd}, {name}, {group}, {sts}, {phone}, {email}, {date}, {date}, {birthYear}, {birthMonth}, {birthDay}, {address1}, {address2}, {salt}
+          )
+      """
+      )
+        .on(
+          'id -> id, 'pwd -> hashedPw, 'name -> name, 'group -> "HOST", 'sts -> "I", 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt
+        ).executeInsert()
+    }
+  }
+
+  def modifyUser(
+                    id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String
+                  ) = {
+    val salt = commonUtil.createSalt()
+    val hashedPw = commonUtil.passwordHashing(password + salt)
+
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          UPDATE tbl_user SET
+          user_pwd = {pwd}, user_name = {name}, user_mobile = {phone}, user_email = {email}, udate = {date}, user_birth_year = {birthYear}, user_birth_month = {birthMonth}, user_birth_day = {birthDay}, user_addr = {address1}, user_addr2 = {address2}, user_salt = {salt}
+          WHERE user_id = {id}
+      """
+      )
+        .on(
+          'id -> id, 'pwd -> hashedPw, 'name -> name, 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt
+        ).executeUpdate()
+    }
+  }
+
 }

@@ -21,7 +21,7 @@
                     </div>
                     <div class="login_and_register">
                         <span class="login_btn">로그인</span>
-                        <span>회원가입</span>
+                        <span class="register_btn">회원가입</span>
                     </div>
                 }
                 case default => {
@@ -29,6 +29,10 @@
                     @if(user_data(0)("tbl_user.user_group") == "ADMIN") {
                         <a href="/admin/myinfo">
                             <span>관리자 페이지</span>
+                        </a>
+                    }else{
+                        <a href="/user/register">
+                            <span>나의 정보</span>
                         </a>
                     }
                 }

@@ -15,6 +15,9 @@ $ ->
     $('.login_and_register').css 'display', 'none'
     $('#login_id_input').focus()
 
+  $('#account .register_btn').click ->
+    location.href = "/user/register"
+
   $('#account .login_cancel').click ->
     $('#account .login_interface').css 'display', 'none'
     $('#account .login_and_register').css 'display', 'block'

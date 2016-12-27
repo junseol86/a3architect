@@ -112,7 +112,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
       if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
         Ok(insert match {
           case Some(i: Long) => views.html.alert_and_move("게시물이 등록되었습니다.", "/admin/contract_story")
-          case None => views.html.alert_and_move("에러가 발생하여 게시물이 등록되지 않앗습니다.", "/admin/contract_story_write")
+          case None => views.html.alert_and_move("에러가 발생하여 게시물이 등록되지 않았습니다.", "/admin/contract_story_write")
         })
       else
         Redirect("/")
@@ -122,7 +122,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
       if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
         Ok(modify match {
           case 1 => views.html.alert_and_move("게시물이 수정되었습니다", "/admin/contract_story")
-          case default => views.html.alert_and_move("에러가 발생하여 게시물이 수정되지 않앗습니다.  다시 시도해 주십시오.", "/admin/contract_story_write")
+          case default => views.html.alert_and_move("에러가 발생하여 게시물이 수정되지 않았습니다.  다시 시도해 주십시오.", "/admin/contract_story_write")
         })
       else
         Redirect("/")
@@ -143,7 +143,7 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
       Ok(result match {
         case 1 => views.html.alert_and_move("게시물이 삭제되었습니다", "/admin/contract_story")
-        case default => views.html.alert_and_move("에러가 발생하여 게시물이 삭제되지 않앗습니다.  다시 시도해 주십시오.", "/admin/contract_story_write")
+        case default => views.html.alert_and_move("에러가 발생하여 게시물이 삭제되지 않았습니다.  다시 시도해 주십시오.", "/admin/contract_story_write")
       })
     else
       Redirect("/")
