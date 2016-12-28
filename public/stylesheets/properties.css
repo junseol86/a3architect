@@ -17,3 +17,7 @@
 ._hidden {
     display: none;
 }
+
+._pointer {
+    cursor: pointer;
+}

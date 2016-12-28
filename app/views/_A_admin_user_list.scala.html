@@ -1,0 +1,76 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, users: List[Map[String, Any]], count: Int, board_page: Int)
+
+<script src="@routes.Assets.versioned("js/_A_admin_user_list.js")" type="text/javascript"></script>
+<table>
+    @for(user <- users) {
+        <tr class="board_list_item no_border">
+            <td width="80">
+                <span class="toggle_sts _pointer" id="@user("tbl_user.user_id")" style="color:@if(user("tbl_user.sts")=="I"){dodgerblue}else{tomato};">
+                    @if(user("tbl_user.sts")=="I"){ON}else{OFF}
+                </span>
+            </td>
+            <td width="120" class="_left">
+            @user("tbl_user.user_id")
+            </td>
+            <td class="_left">
+            @user("tbl_user.user_email")
+            </td>
+            <td width="100">
+            @user("tbl_user.cdate").toString.split(' ')(0)
+            </td>
+            <td width="100">
+            @user("tbl_user.udate").toString.split(' ')(0)
+            </td>
+        </tr>
+        <tr>
+            <td width="80"></td>
+            <td colspan="2" class="_left user_desc">
+                <div>
+                    <span>@user("tbl_user.user_name")</span>
+                    <span>|</span>
+                    <span>@user("tbl_user.user_birth_year")-@user("tbl_user.user_birth_month")-@user("tbl_user.user_birth_day")</span>
+                    <span>|</span>
+                    <span>☎ @user("tbl_user.user_mobile")</span>
+                </div>
+                <div>
+                    <span>주소1: </span>
+                    <span>@user("tbl_user.user_addr")</span>
+                </div>
+                <div>
+                    <span>주소2: </span>
+                    <span>@user("tbl_user.user_addr2")</span>
+                </div>
+            </td>
+            <td width="100">
+                <span class="_pointer">
+                    비번초기화
+                </span>
+            </td>
+            <td width="100">
+                <span class="_pointer">
+                    삭제
+                </span>
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="pages_container">
+    <div id="pages" class="_float_con">
+        <img id="move_left" src="@routes.Assets.versioned("/images/interface/pages_left.png")">
+        <div id="numbers">
+            <div id="numbers_lined" class="_float_con">
+                @for(pageNo <- 1 to count) {
+                    @if(pageNo == board_page) {
+                        <div class="number -on">@pageNo</div>
+                    } else {
+                        <div class="number">@pageNo</div>
+                    }
+            }
+            </div>
+        </div>
+        <img id="move_right" src="@routes.Assets.versioned("/images/interface/pages_right.png")">
+    </div>
+</div>
+

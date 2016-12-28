@@ -30,6 +30,9 @@ POST    /news/space_story_list                                      controllers.
 GET     /news/space_story_view/:idx                                 controllers._5_news.SpaceStoryCtrl.space_story_view(idx: String)
 
 GET     /admin/myinfo                                               controllers._A_admin.AdminMyInfoCtrl.myinfo
+GET     /admin/user                                                 controllers._A_admin.AdminUserCtrl.user
+POST    /admin/user_list                                            controllers._A_admin.AdminUserCtrl.user_list
+POST    /admin/user_sts_toggle                                      controllers._A_admin.AdminUserCtrl.user_sts_toggle
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list

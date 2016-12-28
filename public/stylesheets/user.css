@@ -90,3 +90,21 @@
 .register #submit_button_container > div:hover {
     background-color: #555555;
 }
+
+td.user_desc {
+    padding-top: 8px;
+    line-height: 24px;
+}
+
+td span {
+    margin-right: 12px;
+}
+
+td {
+    vertical-align: bottom;
+    cursor: inherit;
+}
+
+tr:hover td {
+    color: inherit;
+}

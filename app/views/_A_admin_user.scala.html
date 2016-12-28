@@ -1,0 +1,30 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil)
+
+@with_left_menu(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_A_admin_user.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/user.css")">
+
+    <div>
+        <table>
+            <tr>
+                <th width="80">
+                    <div>활성</div>
+                </th>
+                <th width="120" class="_left">
+                    <div>아이디</div>
+                </th>
+                <th class="_left">
+                    <div>이메일</div>
+                </th>
+                <th width="100">
+                    <div>가입일</div>
+                </th>
+                <th width="100">
+                    <div>수정일</div>
+                </th>
+            </tr>
+        </table>
+        <div id="list_container" data-url="/admin/user_list"></div>
+    </div>
+}

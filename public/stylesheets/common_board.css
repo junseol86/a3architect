@@ -80,6 +80,11 @@ td {
     vertical-align: middle;
 }
 
+.no_border td {
+    border-bottom: 1px dashed #eaeaea;
+}
+
+
 th._left,
 td._left {
     text-align: left;

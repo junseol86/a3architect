@@ -13,6 +13,40 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
       Right(map + (meta.column.qualified -> value))
     }
 
+  val pageSize = 3
+
+  def userList(search: String, page: Int) = {
+    val pageOffset = (page - 1) * pageSize
+
+    var list = List[Map[String, Any]]()
+    var count = List[Map[String, Any]]()
+
+    val commonQuery =
+      f"""FROM tbl_user
+         WHERE (
+         user_id LIKE "%%$search%s%%"
+         OR user_id LIKE "%%$search%s%%"
+         )
+         AND user_group = "HOST"
+        """
+    val listQuery =
+      f"""SELECT *
+         $commonQuery%s
+         ORDER BY idx DESC
+         LIMIT $pageOffset%d, $pageSize%d"""
+    val countQuery =
+      f"""SELECT count(*) as total $commonQuery%s"""
+    db.withConnection{implicit conn =>
+      list = SQL(
+        listQuery.stripMargin).as(parser.*)
+    }
+    db.withConnection{implicit conn =>
+      count = SQL(
+        countQuery.stripMargin).as(parser.*)
+    }
+    (list, count)
+  }
+
   def idCheck(id: String) = {
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
@@ -20,7 +54,6 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
         s"""SELECT tbl_user.user_id
            |FROM tbl_user
            |WHERE user_id = '$id'
-           |AND sts = 'I'
          """.stripMargin
       ).as(parser.*)
     }
@@ -114,6 +147,45 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
           'id -> id, 'pwd -> hashedPw, 'name -> name, 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt
         ).executeUpdate()
     }
+  }
+
+  def stsToggle(id: String) = {
+
+    var stsRaw = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      stsRaw = SQL(
+        s"""SELECT tbl_user.sts
+           |FROM tbl_user
+           |WHERE user_id = '$id'
+         """.stripMargin
+      ).as(parser.*)
+    }
+    
+    val sts = if (stsRaw(0)("tbl_user.sts") == "I") "O" else "I"
+
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          UPDATE tbl_user SET
+          sts = {sts}
+          WHERE user_id = {id}
+      """
+      )
+        .on(
+          'id -> id, 'sts -> sts
+        ).executeUpdate()
+    }
+
+    var stsNew = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      stsNew = SQL(
+        s"""SELECT tbl_user.sts
+           |FROM tbl_user
+           |WHERE user_id = '$id'
+         """.stripMargin
+      ).as(parser.*)
+    }
+    stsNew
   }
 
 }
