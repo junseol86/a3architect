@@ -6,7 +6,7 @@
     @for(user <- users) {
         <tr class="board_list_item no_border">
             <td width="80">
-                <span class="toggle_sts _pointer" id="@user("tbl_user.user_id")" style="color:@if(user("tbl_user.sts")=="I"){dodgerblue}else{tomato};">
+                <span class="toggle_sts _pointer" id="sts_@user("tbl_user.user_id")" style="color:@if(user("tbl_user.sts")=="I"){dodgerblue}else{tomato};">
                     @if(user("tbl_user.sts")=="I"){ON}else{OFF}
                 </span>
             </td>
@@ -43,12 +43,12 @@
                 </div>
             </td>
             <td width="100">
-                <span class="_pointer">
+                <span class="pw_reset _pointer" id="pw_reset_@user("tbl_user.user_id")">
                     비번초기화
                 </span>
             </td>
             <td width="100">
-                <span class="_pointer">
+                <span class="delete _pointer" id="delete_@user("tbl_user.user_id")">
                     삭제
                 </span>
             </td>

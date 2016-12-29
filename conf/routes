@@ -33,6 +33,8 @@ GET     /admin/myinfo                                               controllers.
 GET     /admin/user                                                 controllers._A_admin.AdminUserCtrl.user
 POST    /admin/user_list                                            controllers._A_admin.AdminUserCtrl.user_list
 POST    /admin/user_sts_toggle                                      controllers._A_admin.AdminUserCtrl.user_sts_toggle
+POST    /admin/user_pw_reset                                        controllers._A_admin.AdminUserCtrl.user_password_reset
+POST    /admin/user_delete                                          controllers._A_admin.AdminUserCtrl.user_delete
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list
@@ -62,7 +64,7 @@ POST    /admin/news_submit/:insertOrModify                          controllers.
 GET     /admin/news_delete/:idx                                     controllers._A_admin.AdminNewsCtrl.news_delete(idx:String)
 
 GET     /user/register                                              controllers.UserCtrl.register
-POST    /user/id_check                                             controllers.UserCtrl.idCheck
+POST    /user/id_check                                              controllers.UserCtrl.idCheck
 POST    /user/register_submit                                       controllers.UserCtrl.registerSubmit
 POST    /user/register_modify                                       controllers.UserCtrl.registerModify
 

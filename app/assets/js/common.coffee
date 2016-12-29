@@ -92,8 +92,8 @@ $ ->
 @loginSubmit = ->
   $.post '/login',
     {
-      id: $('#login_id_input').val()
-      pw: $('#login_pw_input').val()
+      id: $('#login_id_input').val().toString()
+      pw: $('#login_pw_input').val().toString()
     }
     (data, status) ->
       console.log data

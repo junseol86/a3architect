@@ -188,4 +188,36 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
     stsNew
   }
 
+  def passwordReset(id:String) = {
+    val salt = commonUtil.createSalt()
+    val hashedPw = commonUtil.passwordHashing("0000" + salt)
+
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          UPDATE tbl_user SET
+          user_pwd = {pw},
+          user_salt = {salt}
+          WHERE user_id = {id}
+      """
+      )
+        .on(
+          'id -> id, 'pw -> hashedPw, 'salt -> salt
+        ).executeUpdate()
+    }
+  }
+
+  def userDelete(id: String) = {
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          DELETE FROM tbl_user
+          WHERE user_id = {id}
+      """
+      )
+        .on(
+          'id -> id
+        ).executeUpdate()
+    }
+  }
 }

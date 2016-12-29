@@ -25,7 +25,7 @@ class AdminMyInfoCtrl @Inject()(user: User, loginSession: LoginSession,
     page_data += "left_menu" -> "myinfo"
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_myinfo(page_data, user_data))
+      Redirect("/user/register")
     else
       Redirect("/")
   }

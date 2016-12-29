@@ -67,5 +67,39 @@ class AdminUserCtrl @Inject()(userMdl: User, commonUtil: CommonUtil, loginSessio
     else
       Redirect("/")
   }
-  
+
+  def user_password_reset()  = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN") {
+      val reset = userMdl.passwordReset(fp.get("id"))
+      Ok(reset match {
+        case 1 => "초기화되었습니다."
+        case default => "실패했습니다."
+      })
+    }
+    else
+      Redirect("/")
+  }
+
+  def user_delete()  = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN") {
+      val delete = userMdl.userDelete(fp.get("id"))
+      Ok(delete match {
+        case 1 => "success"
+        case default => "failed"
+      })
+    }
+    else
+      Redirect("/")
+  }
+
 }
