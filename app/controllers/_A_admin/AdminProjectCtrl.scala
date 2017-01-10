@@ -68,8 +68,11 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
 
     var project:Map[String, Any] = null
 
+    var options = Map[String, List[Map[String, Any]]]()
+    options = projectMdl.getOptions
+
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_project_write(page_data, user_data, project))
+      Ok(views.html._A_admin_project_write(page_data, user_data, project, options))
     else
       Redirect("/")
   }

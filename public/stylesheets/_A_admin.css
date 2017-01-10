@@ -18,14 +18,20 @@ form .item {
     line-height: 36px;
 }
 
-form input {
+form input,
+form select {
     padding-left: 4px;
     height: 30px;
+    border: 1px solid #bfbfbf;
 }
 
 form div.title input,
 form div.long_input input {
     width: 606px;
+}
+
+form div input:read-only {
+    border: 1px dotted #bfbfbf;
 }
 
 form iframe {
