@@ -36,6 +36,10 @@ POST    /admin/user_sts_toggle                                      controllers.
 POST    /admin/user_pw_reset                                        controllers._A_admin.AdminUserCtrl.user_password_reset
 POST    /admin/user_delete                                          controllers._A_admin.AdminUserCtrl.user_delete
 
+GET     /admin/project                                              controllers._A_admin.AdminProjectCtrl.project
+POST    /admin/project_list                                         controllers._A_admin.AdminProjectCtrl.project_list
+GET     /admin/project_write                                        controllers._A_admin.AdminProjectCtrl.project_write
+
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminContractStoryCtrl.contract_story_write

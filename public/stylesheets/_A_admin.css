@@ -23,7 +23,8 @@ form input {
     height: 30px;
 }
 
-form div.title input {
+form div.title input,
+form div.long_input input {
     width: 606px;
 }
 

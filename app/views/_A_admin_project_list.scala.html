@@ -1,0 +1,37 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, stories: List[Map[String, Any]], count: Int, board_page: Int)
+
+<table>
+    @for(project <- stories) {
+        <tr class="board_list_item url_link" data-url="/admin/news_modify/@project("tbl_project.pj_idx")">
+            <td width="72">
+            @project("tbl_project.pj_idx")
+            </td>
+            <td class="_left">
+            @project("tbl_project.pj_title")
+            </td>
+            <td width="100">
+            @project("tbl_project.pj_modified").toString.split(' ')(0)
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="pages_container">
+    <div id="pages" class="_float_con">
+        <img id="move_left" src="@routes.Assets.versioned("/images/interface/pages_left.png")">
+        <div id="numbers">
+            <div id="numbers_lined" class="_float_con">
+                @for(pageNo <- 1 to count) {
+                    @if(pageNo == board_page) {
+                        <div class="number -on">@pageNo</div>
+                    } else {
+                        <div class="number">@pageNo</div>
+                    }
+            }
+            </div>
+        </div>
+        <img id="move_right" src="@routes.Assets.versioned("/images/interface/pages_right.png")">
+    </div>
+</div>
+

@@ -7,7 +7,7 @@
         <form action="/admin/news_submit/@if(news==null){0}else{@news("tbl_news.news_idx")}" id="news_write" name="news_write" method="post">
             <input id="modified_input" type="hidden" name="modified">
 
-            <div id="title" class="_float_con">
+            <div id="title" class="long_input _float_con">
                 <div class="item">뉴스 제목</div>
                 <input type="text" name="title" maxlength="50" value="@if(news != null) {@news("tbl_news.news_title")}">
             </div>

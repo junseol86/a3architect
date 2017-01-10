@@ -23,11 +23,11 @@ class Consulting @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       yongdos = SQL(
         """
-          |SELECT * FROM tbl_consult_yongdo
+          |SELECT * FROM tbl_project_yongdo
           |""".stripMargin).as(parser.*)
       gujos = SQL(
         """
-          |SELECT * FROM tbl_consult_gujo
+          |SELECT * FROM tbl_project_gujo
           |""".stripMargin).as(parser.*)
       styles = SQL(
         """

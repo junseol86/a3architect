@@ -9,8 +9,9 @@
 }
 
 .left_menu > div {
-    font-size: 1.5em;
+    font-size: 1.4em;
     line-height: 1.8em;
+    letter-spacing: -1px;
     cursor: pointer;
     opacity: 0.3;
 }
@@ -26,7 +27,9 @@
 
 .left_menu > div.divider {
     width: 100%;
-    height: 12px;
+    height: 1px;
+    background-color: #808080;
+    margin: 16px 0px 16px 0px;
     padding: 0px;
 }
 

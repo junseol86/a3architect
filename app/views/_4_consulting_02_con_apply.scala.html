@@ -10,10 +10,10 @@
     <script language="JavaScript">
         var cafm = conApplyFormManager();
         @for(yongdo <- options("yongdos")) {
-            cafm.addYongdos("@yongdo("tbl_consult_yongdo.yongdo_main")", "@yongdo("tbl_consult_yongdo.yongdo_sub")");
+            cafm.addYongdos("@yongdo("tbl_project_yongdo.yongdo_main")", "@yongdo("tbl_project_yongdo.yongdo_sub")");
         }
         @for(gujo <- options("gujos")) {
-            cafm.addGujos("@gujo("tbl_consult_gujo.gujo_main")", "@gujo("tbl_consult_gujo.gujo_sub")");
+            cafm.addGujos("@gujo("tbl_project_gujo.gujo_main")", "@gujo("tbl_project_gujo.gujo_sub")");
         }
     </script>
 

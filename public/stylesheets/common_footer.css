@@ -13,15 +13,15 @@
     margin: 0 auto;
     color: white;
     text-align: center;
-    height: 176px;
-    width: 868px;
+    height: 150px;
+    width: 746px;
 }
 
 .footer .circles > div {
-    width: 176px;
-    height: 176px;
-    font-size: 1.8em;
-    border: 2px solid white;
+    width: 150px;
+    height: 150px;
+    font-size: 1.5em;
+    border: 1px solid white;
     border-radius: 100px;
     margin-right: 48px;
     box-sizing: border-box;

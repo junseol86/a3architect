@@ -1,0 +1,27 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], project:Map[String, Any])
+
+@with_left_menu(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/deleter.js")" type="text/javascript"></script>
+    <div>
+        <form action="/admin/project_submit/@if(project==null){0}else{@project("tbl_project.project_idx")}" id="project_write" name="project_write" method="post">
+            <div id="title" class="long_input _float_con">
+                <div class="item">프로젝트명</div>
+                <input type="text" name="title" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_title")}">
+            </div>
+            <div id="subtitle" class="long_input _float_con">
+                <div class="item">부제</div>
+                <input type="text" name="subtitle" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_subtitle")}">
+            </div>
+            <div id="client_name" class="_float_con">
+                <div class="item">고객 이름</div>
+                <input type="text" name="client_name" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_client_name")}">
+            </div>
+            <div id="client_id" class="_float_con">
+                <div class="item">고객 아이디</div>
+                <input type="text" name="client_id" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_client_id")}">
+            </div>
+        </form>
+    </div>
+
+}
+
