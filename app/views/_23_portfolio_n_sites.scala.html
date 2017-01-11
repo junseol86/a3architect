@@ -1,0 +1,48 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], options:Map[String, List[Map[String, Any]]], years: List[Map[String, Any]])(content: Html)
+
+@main(page_data, user_data) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_2_portfolio.css")">
+    <script src="@routes.Assets.versioned("js/_23_portfolio_n_sites.js")" type="text/javascript"></script>
+
+    <div class="centered_wrapper">
+        <div class="filters _float_con">
+            <div id="select_all">ALL</div>
+            <div>
+                <select id="select_yongdo">
+                    <option selected value="@@">건축물 용도 전체</option>
+                    @for(yongdo <- options("yongdos")) {
+                        <option value="@yongdo("tbl_project_yongdo.yongdo_main")">@yongdo("tbl_project_yongdo.yongdo_main")</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <select id="select_year">
+                    <option selected value="@@">건축년도 전체</option>
+                    @for(year <- years) {
+                        <option value="@year("tbl_project.pj_year")">@year("tbl_project.pj_year")</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <select id="select_gujo">
+                    <option selected value="@@">구조 전체</option>
+                    @for(gujo <- options("gujos")) {
+                        <option value="@gujo("tbl_project_gujo.gujo_main")">@gujo("tbl_project_gujo.gujo_main")</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <select id="select_gyumo">
+                    <option selected value="0~99999">규모 전체</option>
+                    <option value="0~30">30평 이하</option>
+                    <option value="30~150">30~150평</option>
+                    <option value="150~600">150~600평</option>
+                    <option value="600~99999">600평 이상</option>
+                </select>
+            </div>
+        </div>
+
+        @content
+    </div>
+
+}
