@@ -9,7 +9,7 @@ POST    /logout                                                     controllers.
 GET     /intro/about                                                controllers._1_intro.IntroCtrl.about
 GET     /intro/people                                               controllers._1_intro.IntroCtrl.people
 GET     /intro/contact                                              controllers._1_intro.IntroCtrl.contact
-GET     /portfolio/construction                                     controllers._2_portfolio.PortfolioCtrl.construction
+GET     /portfolio/:category                                        controllers._2_portfolio.PortfolioCtrl.portfolio(category: String)
 GET     /consulting/process                                         controllers._4_consulting.ConsultingCtrl.profess
 GET     /consulting/con_apply                                       controllers._4_consulting.ConsultingCtrl.con_apply
 POST    /consulting/con_apply_submit                                controllers._4_consulting.ConsultingCtrl.con_apply_submit
@@ -39,6 +39,8 @@ POST    /admin/user_delete                                          controllers.
 GET     /admin/project                                              controllers._A_admin.AdminProjectCtrl.project
 POST    /admin/project_list                                         controllers._A_admin.AdminProjectCtrl.project_list
 GET     /admin/project_write                                        controllers._A_admin.AdminProjectCtrl.project_write
+GET     /admin/project_modify/:idx                                  controllers._A_admin.AdminProjectCtrl.project_modify(idx:String)
+POST    /admin/project_submit/:insertOrModify                       controllers._A_admin.AdminProjectCtrl.project_submit(insertOrModify:Int)
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list

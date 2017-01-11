@@ -10,4 +10,5 @@ object TestCode extends App {
 //  println(imageTypes.getClass)
 //  println(new CommonUtil().passwordHashing("0000oUiGuXOaW7IoUL1pa88Y"))
 
+
 }

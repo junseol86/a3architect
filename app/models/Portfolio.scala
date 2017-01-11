@@ -14,15 +14,43 @@ class Portfolio @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  def getList = {
-    var result = List[Map[String, Any]]()
+  val pageSize = 5
+
+  def getPortfolios(hashtag: String, page: Int, yongdo: String, gujo: String, year: String, gyumo_min: String, gyumo_max: String) = {
+    val pageOffset = (page - 1) * pageSize
+
+    var list = List[Map[String, Any]]()
+    var count = List[Map[String, Any]]()
+
+    val commonQuery =
+      f"""FROM view_portfolio
+         WHERE (
+         (pj_title LIKE "%%$hashtag%s%%"
+         OR pj_subtitle LIKE "%%$hashtag%s%%"
+         OR pj_hashtag LIKE "%%$hashtag%s%%")
+         AND pj_yongdo LIKE "%%$yongdo%s%%"
+         AND pj_gujo LIKE  "%%$gujo%s%%"
+         AND pj_year LIKE "%%$year%s%%"
+         AND pj_gyumo > $gyumo_min%s
+         AND pj_gyumo <= $gyumo_max%s
+         )"""
+    val listQuery =
+      f"""SELECT *
+         $commonQuery%s
+         ORDER BY news_idx DESC
+         LIMIT $pageOffset%d, $pageSize%d"""
+    val countQuery =
+      f"""SELECT count(*) as total $commonQuery%s"""
     db.withConnection{implicit conn =>
-      result = SQL(
-        """
-          |SELECT * FROM tbl_portfolio
-          |ORDER BY idx DESC
-          |""".stripMargin).as(parser.*)
+      list = SQL(
+        listQuery.stripMargin).as(parser.*)
     }
-    result
+    db.withConnection{implicit conn =>
+      count = SQL(
+        countQuery.stripMargin).as(parser.*)
+    }
+
+    (list, count)
   }
+
 }

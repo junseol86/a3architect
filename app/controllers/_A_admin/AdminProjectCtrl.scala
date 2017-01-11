@@ -77,4 +77,76 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
       Redirect("/")
   }
 
+  def project_modify(idx:String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: 관리자 페이지"
+    page_data += "login" -> ""
+    page_data += "category" -> "admin"
+    page_data += "page" -> "project"
+    page_data += "left_menu" -> "project"
+
+    var project = Map[String, Any]()
+    project = projectMdl.getAProject(idx)
+
+    var options = Map[String, List[Map[String, Any]]]()
+    options = projectMdl.getOptions
+
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+      Ok(views.html._A_admin_project_write(page_data, user_data, project, options))
+    else
+      Redirect("/")
+  }
+
+  def project_submit(insertOrModify: Int) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+    var client_id = ""
+    request.session.get("user_id").map { id =>
+      client_id = id
+    }
+
+    if (insertOrModify == 0) {
+      val insert = projectMdl.projectWrite(
+        fp.get("title"), fp.get("subtitle"), fp.get("client_name"), fp.get("client_name"),
+        fp.get("yongdo"), fp.get("gujo"), fp.get("jaeryo"),
+        fp.get("year"), fp.get("location"),
+        fp.get("daeji"), fp.get("gunchuk"), fp.get("yeon"),
+        fp.get("gyumo"), fp.get("state"),
+        fp.get("modified"),
+        fp.get("hashtag")
+      )
+      if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+        Ok(insert match {
+          case Some(i: Long) => views.html.alert_and_move("게시물이 등록되었습니다.", "/admin/project")
+          case None => views.html.alert_and_move("에러가 발생하여 게시물이 등록되지 않았습니다.", "/admin/project_write")
+        })
+      else
+        Redirect("/")
+    }
+    else {
+      val modify = projectMdl.projectModify(insertOrModify.toString,
+        fp.get("title"), fp.get("subtitle"), fp.get("client_name"), fp.get("client_name"),
+        fp.get("yongdo"), fp.get("gujo"), fp.get("jaeryo"),
+        fp.get("year"), fp.get("location"),
+        fp.get("daeji"), fp.get("gunchuk"), fp.get("yeon"),
+        fp.get("gyumo"), fp.get("state"),
+        fp.get("modified"),
+        fp.get("hashtag")
+      )
+
+      if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+        Ok(modify match {
+          case 1 => views.html.alert_and_move("게시물이 수정되었습니다", "/admin/project")
+          case default => views.html.alert_and_move("에러가 발생하여 게시물이 수정되지 않았습니다.  다시 시도해 주십시오.", "/admin/project_write")
+        })
+      else
+        Redirect("/")
+    }
+  }
+
 }

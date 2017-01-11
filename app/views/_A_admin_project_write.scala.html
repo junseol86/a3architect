@@ -6,16 +6,13 @@
     
     <script language="JavaScript">
         var pfm = projectFormManager();
-        @for(yongdo <- options("yongdos")) {
-            pfm.addYongdos("@yongdo("tbl_project_yongdo.yongdo_main")", "@yongdo("tbl_project_yongdo.yongdo_sub")");
-        }
-        @for(gujo <- options("gujos")) {
-            pfm.addGujos("@gujo("tbl_project_gujo.gujo_main")", "@gujo("tbl_project_gujo.gujo_sub")");
-        }
+
     </script>
     
     <div>
-        <form action="/admin/project_submit/@if(project==null){0}else{@project("tbl_project.project_idx")}" id="project_write" name="project_write" method="post">
+        <form action="/admin/project_submit/@if(project==null){0}else{@project("tbl_project.pj_idx")}" id="project_write" name="project_write" method="post">
+            <input id="modified_input" type="hidden" name="modified">
+
             <div id="title" class="long_input _float_con">
                 <div class="item">프로젝트명</div>
                 <input type="text" name="title" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_title")}">
@@ -35,16 +32,22 @@
 
             <div id="yongdo" class="_float_con">
                 <div class="item">용도</div>
-                <input type="text" name="yongdo" maxlength="30" value="@if(project != null) {@project("tbl_project.pj_yongdo")}" readonly>
+                <input type="text" name="yongdo" id="yongdo_input" maxlength="30" value="@if(project != null) {@project("tbl_project.pj_yongdo")}" readonly>
                 <select id="yongdo_main" name="yongdo_main">
                     <option selected value="">-- 선택하세요 --</option>
+                    @for(yongdo <- options("yongdos")) {
+                        <option>@yongdo("tbl_project_yongdo.yongdo_main")</option>
+                    }
                 </select>
             </div>
             <div id="gujo" class="_float_con">
                 <div class="item">구조</div>
-                <input type="text" name="gujo" maxlength="30" value="@if(project != null) {@project("tbl_project.pj_gujo")}" readonly>
+                <input type="text" name="gujo" id="gujo_input" maxlength="30" value="@if(project != null) {@project("tbl_project.pj_gujo")}" readonly>
                 <select id="gujo_main" name="gujo_main">
                     <option selected value="">-- 선택하세요 --</option>
+                    @for(gujo <- options("gujos")) {
+                        <option>@gujo("tbl_project_gujo.gujo_main")</option>
+                    }
                 </select>
             </div>
 
@@ -81,9 +84,39 @@
                 <div class="item">상태</div>
                 <input type="text" name="state" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_state")}">
             </div>
+            <div id="state" class="long_input _float_con">
+                <div class="item">해시태그</div>
+                <input type="text" name="hashtag" maxlength="100" value="@if(project != null) {@project("tbl_project.pj_hashtag")}else{#태그1예시 #태그2예시 #태그3예시}">
+            </div>
 
         </form>
     </div>
+
+    @if(project != null) {
+        <div class="_float_con">
+            <div id="project_write_confirm" class="board_btn">
+                저장하기
+            </div>
+            <div id="project_sites" class="board_btn">
+                건축현장
+            </div>
+            <div id="project_interior" class="board_btn">
+                인테리어
+            </div>
+            <div id="project_design" class="board_btn">
+                건축설계
+            </div>
+            <div id="project_construction" class="board_btn">
+                건축시공
+            </div>
+        </div>
+    }else {
+        <div class="_float_con">
+            <div id="project_write_confirm" class="board_btn">
+                생성하기
+            </div>
+        </div>
+    }
 
 }
 

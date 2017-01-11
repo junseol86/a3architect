@@ -25,21 +25,27 @@ class Project @Inject()(db: Database) {
     db.withConnection{implicit conn =>
       yongdos = SQL(
         """
-          |SELECT * FROM tbl_project_yongdo
+          |SELECT DISTINCT yongdo_main FROM tbl_project_yongdo
           |""".stripMargin).as(parser.*)
       gujos = SQL(
         """
-          |SELECT * FROM tbl_project_gujo
-          |""".stripMargin).as(parser.*)
-      styles = SQL(
-        """
-          |SELECT * FROM tbl_consult_style
+          |SELECT DISTINCT gujo_main FROM tbl_project_gujo
           |""".stripMargin).as(parser.*)
     }
     options += "yongdos" -> yongdos
     options += "gujos" -> gujos
-    options += "styles" -> styles
     options
+  }
+
+  def getYears = {
+    var years = List[Map[String, Any]]()
+    db.withConnection {implicit  conn =>
+      years = SQL(
+        """SELECT DISTINCT pj_year FROM tbl_project""".stripMargin
+      ).as(parser.*)
+      years
+    }
+
   }
 
   def getProjects(page: Int) = {
@@ -77,6 +83,69 @@ class Project @Inject()(db: Database) {
            """.stripMargin).as(parser.*)
     }
     result(0)
+  }
+
+  def projectWrite(
+                 title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, created:String, hashtag: String
+               ) = {
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          INSERT INTO tbl_project (
+          pj_title, pj_subtitle, pj_client_name, pj_client_id,
+          pj_yongdo, pj_gujo, pj_jaeryo, pj_year, pj_location,
+          pj_daeji, pj_gunchuk, pj_yeon,
+          pj_gyumo, pj_state,
+          pj_created, pj_modified,
+          pj_hashtag
+          ) values (
+          {title}, {subtitle}, {client_name}, {client_id},
+          {yongdo}, {gujo}, {jaeryo}, {year}, {location},
+          {daeji}, {gunchuk}, {yeon},
+          {gyumo}, {state},
+          {created}, {modified},
+          {hashtag}
+          )
+      """
+      )
+        .on(
+          'title -> title, 'subtitle -> subtitle, 'client_name -> clientName, 'client_id -> clientId,
+          'yongdo -> yongdo, 'gujo -> gujo, 'jaeryo -> jaeryo, 'year -> year, 'location -> location,
+          'daeji -> daeji, 'gunchuk -> gunchuk, 'yeon -> yeon,
+          'gyumo -> gyumo, 'state -> state,
+          'created -> created, 'modified -> created,
+          'hashtag -> (hashtag + " ")
+        ).executeInsert()
+    }
+  }
+
+  def projectModify(
+                  idx:String,
+                  title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, created:String, hashtag: String
+                ) = {
+    db.withConnection { implicit conn =>
+      SQL(
+        """
+          UPDATE tbl_project SET
+          pj_title = {title}, pj_subtitle = {subtitle}, pj_client_name = {client_name}, pj_client_id = {client_id},
+          pj_yongdo = {yongdo}, pj_gujo = {gujo}, pj_jaeryo = {jaeryo}, pj_year = {year}, pj_location = {location},
+          pj_daeji = {daeji}, pj_gunchuk = {gunchuk}, pj_yeon = {yeon},
+          pj_gyumo = {gyumo}, pj_state = {state},
+          pj_created = {created}, pj_modified = {modified},
+          pj_hashtag = {hashtag}
+          WHERE pj_idx = {idx}
+      """
+      )
+        .on(
+          'idx -> idx,
+          'title -> title, 'subtitle -> subtitle, 'client_name -> clientName, 'client_id -> clientId,
+          'yongdo -> yongdo, 'gujo -> gujo, 'jaeryo -> jaeryo, 'year -> year, 'location -> location,
+          'daeji -> daeji, 'gunchuk -> gunchuk, 'yeon -> yeon,
+          'gyumo -> gyumo, 'state -> state,
+          'created -> created, 'modified -> created,
+          'hashtag -> (hashtag + " ")
+        ).executeUpdate()
+    }
   }
 
 }
