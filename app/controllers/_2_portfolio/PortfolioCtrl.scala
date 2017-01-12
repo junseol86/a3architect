@@ -65,4 +65,5 @@ class PortfolioCtrl @Inject()(user: User, projectMdl: Project, portfolioMdl: Por
     Ok(views.html._2_portfolio_list(page_data, user_data, commonUtil, portfolios, count, board_page))
   }
 
+
 }

@@ -52,4 +52,17 @@ class CommonUtil {
       case "1" => {"건축이 궁금해"}
       case "2" => {"자유로운 공간"}
     }
+
+  def portfolioCategory(code: String): String =
+    code match {
+      case "construction" => {
+        "건축시공"
+      }
+      case "design" => {
+        "건축설계"
+      }
+      case default => {
+        "인테리어"
+      }
+    }
 }

@@ -2,6 +2,7 @@ $ ->
   window.addEventListener('message', boardModule().asyncReceiveMessage, false)
   boardModule().putPickPhotoForm()
   boardModule().putPickThumbnailForm()
+  boardModule().putPickInChargePhotoForm()
 
 @boardModule = () -> {
   setPagesInterface: () ->
@@ -68,12 +69,11 @@ $ ->
     $('#uploadForm').remove()
     $('#uploadIframe').remove()
 
-
   asyncFileUploadCallback: (result) ->
     if (result == 'NOT IMAGE')
       alert '이미지 파일(jpg, png, 또는 gif)을 첨부하세요.'
       boardModule().putPickPhotoForm()
-    else if result.indexOf('@') < 0
+    else if (result.indexOf('@') < 0 && result.indexOf('$') < 0 && result.indexOf('#') < 0)
       image = "<img src=\"http://#{result}\" />"
       oEditors.getById["ir1"].exec("PASTE_HTML", [image])
       boardModule().putPickPhotoForm()
@@ -92,5 +92,11 @@ $ ->
     if (uploadThumbnailBtn.length > 0)
       pickThumbnailForm = $("<input id=\"thumbnailInput\" type=\"file\" name=\"picture\"/>")
       pickThumbnailForm.insertBefore(uploadThumbnailBtn)
+
+  putPickInChargePhotoForm: () ->
+    uploadInChargePhotoBtn = $('#inChargePhotoUploadBtn')
+    if (uploadInChargePhotoBtn.length > 0)
+      pickInChargePhotoForm = $("<input id=\"inChargePhotoInput\" type=\"file\" name=\"picture\"/>")
+      pickInChargePhotoForm.insertBefore(uploadInChargePhotoBtn)
 }
 

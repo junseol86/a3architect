@@ -5,8 +5,8 @@
     @for(portfolio <- portfolios) {
         <div class="_pointer">
             <div id="thumb_@portfolio("tbl_portfolio.pf_idx")" style="background-image: url('http://@portfolio("tbl_portfolio.pf_thumbnail")');" class="thumbnail"></div>
-            <div>@portfolio("tbl_project.pj_title")</div>
-            <div>@portfolio("tbl_project.pj_subtitle")</div>
+            <div class="title">@portfolio("tbl_project.pj_title")</div>
+            <div class="subtitle">@portfolio("tbl_project.pj_subtitle")</div>
         </div>
 
         <script>

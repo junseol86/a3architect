@@ -46,6 +46,34 @@ form iframe {
     margin-top: 8px;
 }
 
-#thumbnail_btns {
+#thumbnail_btns,
+#in_charge_photo_btns {
     margin: 8px 0px 16px 0px;
+}
+
+h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #808080;
+}
+
+h2 {
+    font-size: 1.3em;
+    margin-top: 32px;
+}
+
+#pf_in_charge_photo,
+#sts_in_charge_photo {
+    width: 210px;
+    height: 320px;
+    border: 1px solid #dedede;
+    margin-top: 8px;
+}
+
+#pf_thumbnail,
+#sts_thumbnail {
+    width: 306px;
+    height: 240px;
+    border: 1px solid #dedede;
+    margin-top: 8px;
 }

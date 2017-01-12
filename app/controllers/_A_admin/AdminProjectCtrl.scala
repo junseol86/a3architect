@@ -74,8 +74,11 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
     var options = Map[String, List[Map[String, Any]]]()
     options = projectMdl.getOptions
 
+    var children = Map[String, Any]()
+    children = null
+
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_project_write(page_data, user_data, project, options))
+      Ok(views.html._A_admin_project_write(page_data, user_data, project, options, children))
     else
       Redirect("/")
   }
@@ -97,8 +100,16 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
     var options = Map[String, List[Map[String, Any]]]()
     options = projectMdl.getOptions
 
+    var childrenRaw = projectMdl.projectChildren(idx)
+
+    var children = Map[String, Any]()
+    children += "construction" -> childrenRaw._1.toString
+    children += "design" -> childrenRaw._2.toString
+    children += "interior" -> childrenRaw._3.toString
+    children += "sites" -> childrenRaw._4.toString
+
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
-      Ok(views.html._A_admin_project_write(page_data, user_data, project, options))
+      Ok(views.html._A_admin_project_write(page_data, user_data, project, options, children))
     else
       Redirect("/")
   }

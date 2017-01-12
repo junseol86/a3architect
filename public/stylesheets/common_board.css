@@ -106,6 +106,10 @@ tr:hover td {
     cursor: pointer;
 }
 
+.board_btn.light {
+    background-color: #808080;
+}
+
 .board_btn:hover {
     background-color: #333333;
 }

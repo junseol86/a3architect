@@ -9,6 +9,9 @@ $ ->
   $('#project_write_confirm').click ->
     pfm.projectSubmit()
 
+  $('.write_child_btn').click ->
+    location.href = $(this).data('url')
+
 @projectFormManager = () ->
   {
     "projectSubmit": () ->

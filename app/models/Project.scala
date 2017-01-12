@@ -84,6 +84,35 @@ class Project @Inject()(db: Database) {
     }
     result(0)
   }
+  
+  def projectChildren(idx: String) = {
+    var construction = List[Map[String, Any]]()
+    var design = List[Map[String, Any]]()
+    var interior = List[Map[String, Any]]()
+    var sites = List[Map[String, Any]]()
+    
+    db.withConnection{implicit conn =>
+      construction = SQL(
+        f"""
+            SELECT COUNT(*) AS total FROM view_portfolio WHERE pj_idx = $idx%s AND pf_category = "construction"
+         """.stripMargin).as(parser.*)
+      design = SQL(
+        f"""
+            SELECT COUNT(*) AS total FROM view_portfolio WHERE pj_idx = $idx%s AND pf_category = "design"
+         """.stripMargin).as(parser.*)
+      interior = SQL(
+        f"""
+            SELECT COUNT(*) AS total FROM view_portfolio WHERE pj_idx = $idx%s AND pf_category = "interior"
+         """.stripMargin).as(parser.*)
+      sites = SQL(
+        f"""
+            SELECT COUNT(*) AS total FROM view_sites WHERE pj_idx = $idx%s AND sts_idx != ""
+         """.stripMargin).as(parser.*)
+    }
+
+    (construction(0)(".total"), design(0)(".total"), interior(0)(".total"), sites(0)(".total"))
+    
+  }
 
   def projectWrite(
                  title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, created:String, hashtag: String

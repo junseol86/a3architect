@@ -1,8 +1,8 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], project:Map[String, Any], options:Map[String, List[Map[String, Any]]])
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], project:Map[String, Any], options:Map[String, List[Map[String, Any]]], children: Map[String, Any])
 
 @with_left_menu(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/deleter.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/_A_admin_project_options.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/_A_admin_project_modify.js")" type="text/javascript"></script>
     
     <script language="JavaScript">
         var pfm = projectFormManager();
@@ -97,18 +97,46 @@
             <div id="project_write_confirm" class="board_btn">
                 저장하기
             </div>
-            <div id="project_sites" class="board_btn">
-                건축현장
-            </div>
-            <div id="project_interior" class="board_btn">
-                인테리어
-            </div>
-            <div id="project_design" class="board_btn">
-                건축설계
-            </div>
-            <div id="project_construction" class="board_btn">
-                건축시공
-            </div>
+            @if(children("sites")=="0") {
+                <div data-url="/admin/sites_write/@project("tbl_project.pj_idx")" class="write_child_btn board_btn">
+                    건축현장 입력
+                </div>
+            }else {
+                <div data-url="/admin/sites_modify/@project("tbl_project.pj_idx")" class="light write_child_btn board_btn">
+                    건축현장 변경
+                </div>
+            }
+
+            @if(children("interior")=="0") {
+                <div data-url="/admin/portfolio_write/@project("tbl_project.pj_idx")/interior" class="write_child_btn board_btn">
+                    인테리어 입력
+                </div>
+            }else{
+                <div data-url="/admin/portfolio_modify/@project("tbl_project.pj_idx")/interior" class="light write_child_btn board_btn">
+                    인테리어 변경
+                </div>
+            }
+
+            @if(children("design")=="0") {
+                <div data-url="/admin/portfolio_write/@project("tbl_project.pj_idx")/design" class="write_child_btn board_btn">
+                    건축설계 입력
+                </div>
+            }else{
+                <div data-url="/admin/portfolio_modify/@project("tbl_project.pj_idx")/design" class="light write_child_btn board_btn">
+                    건축설계 변경
+                </div>
+            }
+
+            @if(children("construction")=="0") {
+                <div data-url="/admin/portfolio_write/@project("tbl_project.pj_idx")/construction" class="write_child_btn board_btn">
+                    건축시공 입력
+                </div>
+            }else{
+                <div data-url="/admin/portfolio_modify/@project("tbl_project.pj_idx")/construction" class="light write_child_btn board_btn">
+                    건축시공 변경
+                </div>
+            }
+
         </div>
     }else {
         <div class="_float_con">
