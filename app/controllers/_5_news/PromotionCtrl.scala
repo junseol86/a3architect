@@ -42,8 +42,11 @@ class PromotionCtrl@Inject()(user: User, loginSession: LoginSession,
 
     var promotions = List[Map[String, Any]]()
     var totalCount = 0
-    promotions = promotionMdl.getPromotions(category.replace("@", ""), board_page)._1
-    totalCount = promotionMdl.getPromotions(category.replace("@", ""), board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = promotionMdl.getPromotions(category.replace("@", ""), board_page)
+
+    promotions = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / promotionMdl.pageSize + (if (totalCount % promotionMdl.pageSize == 0) 0 else 1)
 
     Ok(views.html._5_news_01_promotion_list(page_data, user_data, commonUtil, promotions, count, board_page))

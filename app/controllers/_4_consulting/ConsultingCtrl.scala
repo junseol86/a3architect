@@ -128,8 +128,11 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
 
     var stories = List[Map[String, Any]]()
     var totalCount = 0
-    stories = contractStory.getContractStories(category.replace("@", ""), "", board_page)._1
-    totalCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)
+
+    stories = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
     Ok(views.html._4_consulting_03_contract_story_list(page_data, user_data, commonUtil, stories, count, board_page))

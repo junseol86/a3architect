@@ -46,7 +46,7 @@
 }
 
 .top #account span:hover {
-    color: sandybrown;
+    color: #00ffff;
 }
 
 .top #account .login_interface {
@@ -93,7 +93,7 @@
 }
 
 .top #navigate li:hover {
-    color: sandybrown;
+    color: #00ffff;
 }
 
 .top #navigate li.-on {

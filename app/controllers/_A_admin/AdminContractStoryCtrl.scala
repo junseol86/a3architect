@@ -48,8 +48,11 @@ class AdminContractStoryCtrl @Inject()(user: User, loginSession: LoginSession,
 
     var stories = List[Map[String, Any]]()
     var totalCount = 0
-    stories = contractStory.getContractStories(category.replace("@", ""), "", board_page)._1
-    totalCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)
+
+    stories = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")

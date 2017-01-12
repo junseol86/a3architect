@@ -45,8 +45,11 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
 
     var projects = List[Map[String, Any]]()
     var totalCount = 0
-    projects = projectMdl.getProjects(board_page)._1
-    totalCount = projectMdl.getProjects(board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = projectMdl.getProjects(board_page)
+
+    projects = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / projectMdl.pageSize + (if (totalCount % projectMdl.pageSize == 0) 0 else 1)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")

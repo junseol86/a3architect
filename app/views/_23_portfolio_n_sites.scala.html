@@ -1,8 +1,10 @@
 @(page_data: Map[String, Any], user_data: List[Map[String, Any]], options:Map[String, List[Map[String, Any]]], years: List[Map[String, Any]])(content: Html)
 
 @main(page_data, user_data) {
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_2_portfolio.css")">
     <script src="@routes.Assets.versioned("js/_23_portfolio_n_sites.js")" type="text/javascript"></script>
+
+    <input id="category" value="@page_data("category")" hidden>
+    <input id="hashtag" value="@@" hidden>
 
     <div class="centered_wrapper">
         <div class="filters _float_con">

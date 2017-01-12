@@ -42,8 +42,11 @@ class SpaceStoryCtrl@Inject()(user: User, loginSession: LoginSession,
 
     var spacestories = List[Map[String, Any]]()
     var totalCount = 0
-    spacestories = SpaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)._1
-    totalCount = SpaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = SpaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)
+
+    spacestories = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / SpaceStoryMdl.pageSize + (if (totalCount % SpaceStoryMdl.pageSize == 0) 0 else 1)
 
     Ok(views.html._5_news_02_space_story_list(page_data, user_data, commonUtil, spacestories, count, board_page))

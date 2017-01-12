@@ -48,8 +48,11 @@ class AdminSpaceStoryCtrl @Inject()(user: User, loginSession: LoginSession,
 
     var stories = List[Map[String, Any]]()
     var totalCount = 0
-    stories = spaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)._1
-    totalCount = spaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = spaceStoryMdl.getSpaceStories(category.replace("@", ""), board_page)
+
+    stories = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / spaceStoryMdl.pageSize + (if (totalCount % spaceStoryMdl.pageSize == 0) 0 else 1)
 
     if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")

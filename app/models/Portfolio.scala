@@ -16,7 +16,7 @@ class Portfolio @Inject()(db: Database) {
 
   val pageSize = 5
 
-  def getPortfolios(hashtag: String, page: Int, yongdo: String, gujo: String, year: String, gyumo_min: String, gyumo_max: String) = {
+  def getPortfolios(category: String, hashtag: String, page: Int, yongdo: String, year: String, gujo: String,  gyumo_min: String, gyumo_max: String) = {
     val pageOffset = (page - 1) * pageSize
 
     var list = List[Map[String, Any]]()
@@ -25,7 +25,8 @@ class Portfolio @Inject()(db: Database) {
     val commonQuery =
       f"""FROM view_portfolio
          WHERE (
-         (pj_title LIKE "%%$hashtag%s%%"
+         pf_category = "$category%s"
+         AND (pj_title LIKE "%%$hashtag%s%%"
          OR pj_subtitle LIKE "%%$hashtag%s%%"
          OR pj_hashtag LIKE "%%$hashtag%s%%")
          AND pj_yongdo LIKE "%%$yongdo%s%%"
@@ -37,7 +38,7 @@ class Portfolio @Inject()(db: Database) {
     val listQuery =
       f"""SELECT *
          $commonQuery%s
-         ORDER BY news_idx DESC
+         ORDER BY pj_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""
     val countQuery =
       f"""SELECT count(*) as total $commonQuery%s"""

@@ -41,8 +41,11 @@ class NewsCtrl@Inject()(user: User, loginSession: LoginSession,
 
     var newses = List[Map[String, Any]]()
     var totalCount = 0
-    newses = newsMdl.getNewses("", board_page)._1
-    totalCount = newsMdl.getNewses("", board_page)._2(0)(".total").toString.toInt
+
+    val listAndCount = newsMdl.getNewses("", board_page)
+
+    newses = listAndCount._1
+    totalCount = listAndCount._2(0)(".total").toString.toInt
     val count = totalCount / newsMdl.pageSize + (if (totalCount % newsMdl.pageSize == 0) 0 else 1)
 
     Ok(views.html._5_news_03_news_list(page_data, user_data, commonUtil, newses, count, board_page))

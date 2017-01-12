@@ -10,6 +10,7 @@ GET     /intro/about                                                controllers.
 GET     /intro/people                                               controllers._1_intro.IntroCtrl.people
 GET     /intro/contact                                              controllers._1_intro.IntroCtrl.contact
 GET     /portfolio/:category                                        controllers._2_portfolio.PortfolioCtrl.portfolio(category: String)
+POST    /portfolio_list                                             controllers._2_portfolio.PortfolioCtrl.portfolio_list
 GET     /consulting/process                                         controllers._4_consulting.ConsultingCtrl.profess
 GET     /consulting/con_apply                                       controllers._4_consulting.ConsultingCtrl.con_apply
 POST    /consulting/con_apply_submit                                controllers._4_consulting.ConsultingCtrl.con_apply_submit

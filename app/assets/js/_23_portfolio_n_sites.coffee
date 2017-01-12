@@ -5,6 +5,12 @@ $ ->
     $('#select_gujo option:eq(0)').attr 'selected', 'selected'
     $('#select_year option:eq(0)').attr 'selected', 'selected'
     $('#select_gyumo option:eq(0)').attr 'selected', 'selected'
+    getPortfolioOrSitesList()
+
+  $('select').change () ->
+    getPortfolioOrSitesList()
+
+  getPortfolioOrSitesList()
 
 
 @getExtraHash = () ->
@@ -43,6 +49,8 @@ $ ->
   url = $('#list_container').data("url")
   $.post url,
     {
+      category: $('#category').val()
+      hashtag: $('#hashtag').val()
       yongdo: getYongdo()
       year: getYear()
       gujo: getGujo()
@@ -51,3 +59,6 @@ $ ->
     }
     (data, status) ->
       boardModule().afterAjaxLoad(data)
+
+@pageMove = () ->
+  getPortfolioOrSitesList()
