@@ -1,0 +1,12 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], pics: List[Map[String, Any]])
+
+@for(pic <- pics) {
+    <div class="_pos_rel">
+        <div id="thumb_@pic("tbl_portfolio_pic.pfp_idx")" style="background-image: url('http://@pic("tbl_portfolio_pic.pfp_url")')"></div>
+        <div data-idx="@pic("tbl_portfolio_pic.pfp_idx")" class="delete_btn _pointer">X</div>
+        <script>
+            imageProcessor().image_process("#thumb_@pic("tbl_portfolio_pic.pfp_idx")")
+        </script>
+    </div>
+}
+

@@ -1,3 +1,26 @@
+$ ->
+  showPicList()
+
+
+@showPicList = () ->
+  $.post '/admin/portfolio_pic_list',
+    {
+      pj_idx: $('#pj_idx').val()
+      pf_category: $('#pf_category').val()
+    }
+    (data, status) ->
+      $('#portfolio_pics_container').html(data)
+      $('.delete_btn').click ->
+        $.post '/admin/portfolio_pic_delete',
+          {
+            idx: $(this).data('idx')
+          }
+          (data, status) ->
+            if (data == 'success')
+              showPicList()
+            else
+              alert '사진 삭제가 실패했습니다.'
+
 @uploadedImageProcess = (result) ->
   if (result.indexOf('@') > -1)
     url = result.replace('@', '')
@@ -10,7 +33,7 @@
     url = result.replace('$', '')
     $('#pf_in_charge_photo').css 'background-image', "url('http://#{url}')"
     imageProcessor().image_process('#pf_in_charge_photo')
-    $('#thumbnail_to_submit').val(url)
+    $('#in_charge_photo_to_submit').val(url)
     boardModule().putPickInChargePhotoForm()
 
   if (result.indexOf('#') > -1)
@@ -21,6 +44,7 @@
         urls: result
       }
       (data, status) ->
-        alert data
+        if (data == 'success')
+          showPicList()
 
     boardModule().putPickPicsForm()

@@ -13,8 +13,8 @@
     <div>
         <form action="/admin/portfolio_submit/@if(portfolio==null){0}else{@portfolio("tbl_portfolio.pf_idx")}" id="portfolio_write" name="portfolio_write" method="post">
             <input id="modified_input" type="hidden" name="modified">
-            <input id="pj_idx" value="@page_data("pj_idx")" hidden>
-            <input id="pf_category" value="@page_data("pf_category")" hidden>
+            <input id="pj_idx" name="pj_idx" value="@page_data("pj_idx")" hidden>
+            <input id="pf_category"  name="pf_category" value="@page_data("pf_category")" hidden>
 
             <h2>
                 @commonUtil.portfolioCategory(page_data("pf_category").toString)
@@ -25,15 +25,15 @@
                 <div>
                     <input id="inChargePhotoUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#inChargePhotoInput'), 'http://115.68.110.118:9000/a3architect/portfolio_in_charge_photo')" value="담당자 사진 등록">
                 </div>
-                <input id="inChargePhoto_to_submit" name="inChargePhoto" value="@if(portfolio == null){}else{@portfolio("tbl_portfolio.pf_inChargePhoto")}" hidden>
+                <input id="in_charge_photo_to_submit" name="in_charge_photo" value="@if(portfolio == null){}else{@portfolio("tbl_portfolio.pf_in_charge_photo")}" hidden>
             </div>
             <div>
                 <span>담당자 이름</span>
-                <input type="text" name="in_charge">
+                <input type="text" name="in_charge" value="@if(portfolio == null){}else{@portfolio("tbl_portfolio.pf_in_charge")}">
             </div>
             <div>
                 <span>담당자 소속</span>
-                <input type="text" name="in_charge_from">
+                <input type="text" name="in_charge_from" value="@if(portfolio == null){}else{@portfolio("tbl_portfolio.pf_in_charge_from")}">
             </div>
 
 
