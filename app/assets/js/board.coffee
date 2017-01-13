@@ -3,6 +3,7 @@ $ ->
   boardModule().putPickPhotoForm()
   boardModule().putPickThumbnailForm()
   boardModule().putPickInChargePhotoForm()
+  boardModule().putPickPicsForm()
 
 @boardModule = () -> {
   setPagesInterface: () ->
@@ -98,5 +99,11 @@ $ ->
     if (uploadInChargePhotoBtn.length > 0)
       pickInChargePhotoForm = $("<input id=\"inChargePhotoInput\" type=\"file\" name=\"picture\"/>")
       pickInChargePhotoForm.insertBefore(uploadInChargePhotoBtn)
+
+  putPickPicsForm: () ->
+    uploadPicsBtn = $('#picsUploadBtn')
+    if (uploadPicsBtn.length > 0)
+      pickPicsForm = $("<input id=\"picsInput\" type=\"file\" name=\"picture\" multiple/>")
+      pickPicsForm.insertBefore(uploadPicsBtn)
 }
 

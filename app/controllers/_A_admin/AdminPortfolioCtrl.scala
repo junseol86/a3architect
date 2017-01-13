@@ -55,5 +55,17 @@ class AdminPortfolioCtrl @Inject()(user: User, loginSession: LoginSession,
 //      Redirect("/")
 //  }
 
+  def portfolioPicsUpload() = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+      Ok(portfolioMdl.portfolioPicsWrite(fp.get("pj_idx"), fp.get("pf_category"), fp.get("urls")).toString)
+    else
+      Redirect("/")
+  }
+
 
 }

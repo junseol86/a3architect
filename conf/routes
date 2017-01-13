@@ -43,6 +43,7 @@ GET     /admin/project_write                                        controllers.
 GET     /admin/project_modify/:idx                                  controllers._A_admin.AdminProjectCtrl.project_modify(idx:String)
 POST    /admin/project_submit/:insertOrModify                       controllers._A_admin.AdminProjectCtrl.project_submit(insertOrModify:Int)
 GET     /admin/portfolio_write/:pj_idx/:pf_category                 controllers._A_admin.AdminPortfolioCtrl.portfolio_write(pj_idx: String, pf_category: String)
+POST    /admin/portfolio_pics_upload                                controllers._A_admin.AdminPortfolioCtrl.portfolioPicsUpload
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list

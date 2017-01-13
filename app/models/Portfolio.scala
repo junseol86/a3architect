@@ -54,4 +54,21 @@ class Portfolio @Inject()(db: Database) {
     (list, count)
   }
 
+  def portfolioPicsWrite(pj_idx: String, pf_category: String, urls: String) = {
+    val urlArray = urls.tail.split("#")
+    for (url <- urlArray) {
+      db.withConnection { implicit  conn =>
+        SQL(
+          """
+            INSERT INTO tbl_portfolio_pic (
+            pfp_pj_idx, pfp_pf_category, pfp_url
+            ) VALUES (
+            {pj_idx}, {pf_category}, {url}
+            )
+          """).on('pj_idx -> pj_idx, 'pf_category -> pf_category, 'url -> url).executeInsert()
+      }
+    }
+    "success"
+  }
+
 }

@@ -12,3 +12,15 @@
     imageProcessor().image_process('#pf_in_charge_photo')
     $('#thumbnail_to_submit').val(url)
     boardModule().putPickInChargePhotoForm()
+
+  if (result.indexOf('#') > -1)
+    $.post '/admin/portfolio_pics_upload',
+      {
+        pj_idx: $('#pj_idx').val()
+        pf_category: $('#pf_category').val()
+        urls: result
+      }
+      (data, status) ->
+        alert data
+
+    boardModule().putPickPicsForm()

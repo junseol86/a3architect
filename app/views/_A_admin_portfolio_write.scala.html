@@ -39,15 +39,29 @@
 
             <h2>
                 @commonUtil.portfolioCategory(page_data("pf_category").toString)
-                썸네일
+                메인사진
             </h2>
             <div id="pf_thumbnail" class="image_fit" style="background-image: @if(portfolio == null){none}else{url('http://@portfolio("tbl_portfolio.pf_thumbnail")')};"></div>
             <div id="thumbnail_btns" class="_float_con">
                 <div>
-                    <input id="thumbnailUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#thumbnailInput'), 'http://115.68.110.118:9000/a3architect/portfolio_thumbnail')" value="썸네일 등록">
+                    <input id="thumbnailUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#thumbnailInput'), 'http://115.68.110.118:9000/a3architect/portfolio_thumbnail')" value="메인사진 등록">
                 </div>
                 <input id="thumbnail_to_submit" name="thumbnail" value="@if(portfolio == null){}else{@portfolio("tbl_portfolio.pf_thumbnail")}" hidden>
             </div>
+
+            <h2>
+                @commonUtil.portfolioCategory(page_data("pf_category").toString)
+                사진들
+            </h2>
+            <div id="portfolio_pics_container" class="_float_con">
+
+            </div>
+            <div id="pics_btns" class="_float_con">
+                <div>
+                    <input id="picsUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#picsInput'), 'http://115.68.110.118:9000/a3architect/portfolio_pics')" value="사진(들) 추가">
+                </div>
+            </div>
+    
 
             <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:698px; height:412px; display:none;"></textarea>
                 <!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
