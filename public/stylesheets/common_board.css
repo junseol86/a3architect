@@ -120,6 +120,7 @@ tr:hover td {
 
 #board_btns {
     margin-top: 4px;
+    width: 100%;
 }
 
 #board_btns > div {

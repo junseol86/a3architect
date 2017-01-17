@@ -47,7 +47,12 @@ GET     /admin/portfolio_modify/:pj_idx/:pf_category                controllers.
 POST    /admin/portfolio_pics_upload                                controllers._A_admin.AdminPortfolioCtrl.portfolioPicsUpload
 POST    /admin/portfolio_pic_list                                   controllers._A_admin.AdminPortfolioCtrl.portfolioPicsList
 POST    /admin/portfolio_pic_delete                                 controllers._A_admin.AdminPortfolioCtrl.portfolioPicDelete
-POST    /admin/portfolio_submit/:idx                                controllers._A_admin.AdminPortfolioCtrl.portfolio_submit(idx:Int)
+POST    /admin/portfolio_submit/:insertOrModify                     controllers._A_admin.AdminPortfolioCtrl.portfolio_submit(insertOrModify:Int)
+GET     /admin/sites_write/:pj_idx                                  controllers._A_admin.AdminSitesCtrl.sites_write(pj_idx:String)
+GET     /admin/sites_modify/:pj_idx                                 controllers._A_admin.AdminSitesCtrl.sites_modify(pj_idx: String)
+POST    /admin/sites_scene_upload                                   controllers._A_admin.AdminSitesCtrl.sitesSceneUpload
+POST    /admin/sites_scene_list                                     controllers._A_admin.AdminSitesCtrl.sitesSceneList
+POST    /admin/sites_submit/:insertOrModify                         controllers._A_admin.AdminSitesCtrl.sites_submit(insertOrModify:Int)
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list

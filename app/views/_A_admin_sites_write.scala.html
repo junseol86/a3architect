@@ -1,0 +1,94 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, sites:Map[String, Any])
+
+@with_left_menu(page_data, user_data) {
+
+    <h1>
+    </h1>
+
+    <script src="@routes.Assets.versioned("js/deleter.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/_A_admin_sites_write.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("se2/js/HuskyEZCreator.js")" charset="utf-8"></script>
+    <div>
+        <form action="/admin/sites_submit/@if(sites==null){0}else{@sites("tbl_sites.sts_idx")}" id="sites_write" name="sites_write" method="post">
+            <input id="modified_input" type="hidden" name="modified">
+            <input id="pj_idx" name="pj_idx" value="@page_data("pj_idx")" hidden>
+
+            <h2>
+                현장 상태
+            </h2>
+            <div id="site_category" class="_float_con">
+                <input type="radio" name="sites_category" value="in_progress" checked><span>진행중</span>
+                <input type="radio" name="sites_category" value="finished"><span>완공</span>
+            </div>
+
+            <h2>
+                담장자
+            </h2>
+            <div id="sts_in_charge_photo" class="image_fit" style="background-image: @if(sites == null){none}else{url('http://@sites("tbl_sites.sts_in_charge_photo")')};"></div>
+            <div id="in_charge_photo_btns" class="_float_con">
+                <div>
+                    <input id="inChargePhotoUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#inChargePhotoInput'), 'http://115.68.110.118:9000/a3architect/sites_in_charge_photo')" value="담당자 사진 등록">
+                </div>
+                <input id="in_charge_photo_to_submit" name="in_charge_photo" value="@if(sites == null){}else{@sites("tbl_sites.sts_in_charge_photo")}" hidden>
+            </div>
+            <div>
+                <span>담당자 이름</span>
+                <input type="text" name="in_charge" value="@if(sites == null){}else{@sites("tbl_sites.sts_in_charge")}">
+            </div>
+            <div>
+                <span>담당자 소속</span>
+                <input type="text" name="in_charge_from" value="@if(sites == null){}else{@sites("tbl_sites.sts_in_charge_from")}">
+            </div>
+
+
+            <h2>
+                메인사진
+            </h2>
+            <div id="sts_thumbnail" class="image_fit" style="background-image: @if(sites == null){none}else{url('http://@sites("tbl_sites.sts_thumbnail")')};"></div>
+            <div id="thumbnail_btns" class="_float_con">
+                <div>
+                    <input id="thumbnailUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#thumbnailInput'), 'http://115.68.110.118:9000/a3architect/sites_thumbnail')" value="메인사진 등록">
+                </div>
+                <input id="thumbnail_to_submit" name="thumbnail" value="@if(sites == null){}else{@sites("tbl_sites.sts_thumbnail")}" hidden>
+            </div>
+
+            <h2>
+                사진들
+            </h2>
+            <div id="sites_scene_container">
+            </div>
+
+
+            <div id="scene_btns">
+                <div class="_float_con">
+                    <input type="radio" name="category" value="기초공사" checked><span>기초공사</span>
+                    <input type="radio" name="category" value="외부공사"><span>외부공사</span>
+                    <input type="radio" name="category" value="내부공사"><span>내부공사</span>
+                    <input type="radio" name="category" value="배수설비 공사"><span>배수설비 공사</span>
+                </div>
+                <div class="_float_con">
+                    <input type="radio" name="category" value="외부시설"><span>외부시설</span>
+                    <input type="radio" name="category" value="내부시설"><span>내부시설</span>
+                    <input type="radio" name="category" value="" id="category_custome_radio"><input type="text" id="category_custome_input">
+                </div>
+            </div>
+            <div>
+                <span>사진 제목</span>
+                <input type="text" id="pic_title">
+            </div>
+
+            <div>
+                <input id="sceneUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#sceneInput'), 'http://115.68.110.118:9000/a3architect/sites_scene')" value="사진 추가">
+            </div>
+
+            <div id="board_btns" class="_float_con">
+                <input type="button" onclick="submitContents(this);" value="작성완료" />
+                @if(sites != null) {
+                    <input type="button" onclick="deleteThis('/admin/sites_delete', '@sites("tbl_sites.pf_idx")');" value="게시물 삭제" />
+                }
+            </div>
+        </form>
+    </div>
+
+}

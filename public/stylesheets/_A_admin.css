@@ -83,7 +83,6 @@ h2 {
     border: 1px solid #dedede;
     padding: 8px;
     margin: 10px 0px 10px 0px;
-
 }
 
 #portfolio_pics_container > div {
@@ -92,12 +91,39 @@ h2 {
     margin: 10px;
 }
 
+#sites_scene_container h3 {
+    font-size: 1.3em;
+    margin: 36px 0px 12px 8px;
+    font-weight: bold;
+
+}
+#sites_scene_container h3:first-child {
+    margin-top: 8px;
+}
+
+#sites_scene_container h4 {
+    font-size: 1.1em;
+    margin: 8px;
+}
+
+.scenes_container > div {
+    width: 150px;
+    height: 180px;
+    margin: 10px;
+}
+
 #portfolio_pics_container > div > div {
     width: 100%;
     height: 100%;
 }
 
-#portfolio_pics_container .delete_btn {
+.scenes_container > div > div {
+    width: 150px;
+    height: 150px;
+}
+
+#portfolio_pics_container .delete_btn,
+.scenes_container .delete_btn {
     position: absolute;
     top: 4px;
     right: 4px;
@@ -113,8 +139,31 @@ h2 {
     opacity: 0.7;
 }
 
-#portfolio_pics_container .delete_btn:hover {
+#portfolio_pics_container .delete_btn:hover,
+.scenes_container .delete_btn:hover {
     opacity: 1;
     color: #00ffff;
     border-color: #00ffff;
 }
+
+#sites_scene_container {
+    height: auto;
+    border: 1px solid #dedede;
+    padding: 8px;
+    margin: 10px 0px 10px 0px;
+}
+
+#scene_btns {
+    height: 60px;
+    margin-bottom: 24px;
+}
+
+#site_category span,
+#scene_btns span {
+    margin-right: 24px;
+}
+
+#scene_btns input {
+    height: 30px;
+}
+
