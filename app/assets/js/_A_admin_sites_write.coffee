@@ -18,7 +18,7 @@ $ ->
     (data, status) ->
       $('#sites_scene_container').html(data)
       $('.delete_btn').click ->
-        $.post '/admin/sites_pic_delete',
+        $.post '/admin/sites_scene_delete',
           {
             idx: $(this).data('idx')
           }

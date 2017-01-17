@@ -53,6 +53,7 @@ GET     /admin/sites_modify/:pj_idx                                 controllers.
 POST    /admin/sites_scene_upload                                   controllers._A_admin.AdminSitesCtrl.sitesSceneUpload
 POST    /admin/sites_scene_list                                     controllers._A_admin.AdminSitesCtrl.sitesSceneList
 POST    /admin/sites_submit/:insertOrModify                         controllers._A_admin.AdminSitesCtrl.sites_submit(insertOrModify:Int)
+POST    /admin/sites_scene_delete                                   controllers._A_admin.AdminSitesCtrl.sitesSceneDelete
 
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list

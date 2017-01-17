@@ -124,4 +124,24 @@ class AdminSitesCtrl @Inject()(user: User, loginSession: LoginSession,
       Redirect("/")
   }
 
+  def sitesSceneDelete = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+    var client_id = ""
+    request.session.get("user_id").map { id =>
+      client_id = id
+    }
+
+    val result = deleter.deleteAContent("tbl_sites_pic", "stsp_idx", fp.get("idx"))
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+      Ok(result match {
+        case 1 => "success"
+        case default => "fail"
+      })
+    else
+      Redirect("/")
+  }
+
 }
