@@ -148,4 +148,24 @@ class AdminPortfolioCtrl @Inject()(user: User, loginSession: LoginSession,
       Redirect("/")
   }
 
+  def portfolio_delete(idx: String, pj_idx: String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    val fp = new commonUtil.FromPost(request)
+    var client_id = ""
+    request.session.get("user_id").map { id =>
+      client_id = id
+    }
+
+    val result = deleter.deleteAContent("tbl_portfolio", "pf_idx", idx)
+    if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
+      Ok(result match {
+        case 1 => views.html.alert_and_move("게시물이 삭제되었습니다", "/admin/project_modify/" + pj_idx)
+        case default => views.html.alert_and_move("에러가 발생하여 게시물이 삭제되지 않았습니다.  다시 시도해 주십시오.", "/admin/project_modify/" + pj_idx)
+      })
+    else
+      Redirect("/")
+  }
+
 }

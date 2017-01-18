@@ -85,7 +85,7 @@
             <div id="board_btns" class="_float_con">
                 <input type="button" onclick="submitContents(this);" value="작성완료" />
                 @if(sites != null) {
-                    <input type="button" onclick="deleteThis('/admin/sites_delete', '@sites("tbl_sites.sts_idx")');" value="게시물 삭제" />
+                    <input type="button" onclick="deleteThisFromProject('/admin/sites_delete', '@sites("tbl_sites.sts_idx")', @page_data("pj_idx"));" value="게시물 삭제" />
                 }
             </div>
         </form>

@@ -71,7 +71,7 @@
                 </div>
                 <input type="button" onclick="submitContents(this);" value="작성완료" />
                 @if(portfolio != null) {
-                    <input type="button" onclick="deleteThis('/admin/portfolio_delete', '@portfolio("tbl_portfolio.pf_idx")');" value="게시물 삭제" />
+                    <input type="button" onclick="deleteThisFromProject('/admin/portfolio_delete', '@portfolio("tbl_portfolio.pf_idx")', @page_data("pj_idx"));" value="게시물 삭제" />
                 }
             </div>
         </form>
