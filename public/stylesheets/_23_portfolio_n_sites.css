@@ -101,4 +101,15 @@ h2 {
     margin: 32px 0px 32px 0px;
 }
 
+#project_spec {
+    font-size: 1.4em;
+}
 
+#project_spec > div {
+    margin-bottom: 12px;
+}
+
+#project_spec > div > div:first-child {
+    width: 100px;
+    font-weight: bold;
+}
