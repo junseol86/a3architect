@@ -28,6 +28,18 @@ class Portfolio @Inject()(db: Database) {
     result(0)
   }
 
+  def getAPortfolioView(idx: String, category: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""SELECT * FROM view_portfolio
+           WHERE pf_pj_idx = '$idx'
+           AND pf_category = '$category%s'
+           """.stripMargin).as(parser.*)
+    }
+    result(0)
+  }
+
   def getPortfolios(category: String, hashtag: String, page: Int, yongdo: String, year: String, gujo: String,  gyumo_min: String, gyumo_max: String) = {
     val pageOffset = (page - 1) * pageSize
 

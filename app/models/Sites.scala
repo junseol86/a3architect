@@ -27,6 +27,44 @@ class Sites @Inject()(db: Database) {
     result(0)
   }
 
+  def getSiteses(category: String, hashtag: String, page: Int, yongdo: String, year: String, gujo: String,  gyumo_min: String, gyumo_max: String) = {
+    val pageOffset = (page - 1) * pageSize
+
+    var list = List[Map[String, Any]]()
+    var count = List[Map[String, Any]]()
+
+    val commonQuery =
+      f"""FROM view_sites
+         WHERE (
+         sts_category = "$category%s"
+         AND (pj_title LIKE "%%$hashtag%s%%"
+         OR pj_subtitle LIKE "%%$hashtag%s%%"
+         OR pj_hashtag LIKE "%%$hashtag%s%%")
+         AND pj_yongdo LIKE "%%$yongdo%s%%"
+         AND pj_gujo LIKE  "%%$gujo%s%%"
+         AND pj_year LIKE "%%$year%s%%"
+         AND pj_gyumo > $gyumo_min%s
+         AND pj_gyumo <= $gyumo_max%s
+         )"""
+    val listQuery =
+      f"""SELECT *
+         $commonQuery%s
+         ORDER BY pj_idx DESC
+         LIMIT $pageOffset%d, $pageSize%d"""
+    val countQuery =
+      f"""SELECT count(*) as total $commonQuery%s"""
+    db.withConnection{implicit conn =>
+      list = SQL(
+        listQuery.stripMargin).as(parser.*)
+    }
+    db.withConnection{implicit conn =>
+      count = SQL(
+        countQuery.stripMargin).as(parser.*)
+    }
+
+    (list, count)
+  }
+
   def sitesWrite(
                       pj_idx: String, thumbnail:String, created:String, category: String, inCharge: String, inChargeFrom: String, inChargePhoto: String
                     ) = {

@@ -100,8 +100,7 @@ class AdminProjectCtrl @Inject()(user: User, loginSession: LoginSession, project
     var options = Map[String, List[Map[String, Any]]]()
     options = projectMdl.getOptions
 
-    var childrenRaw = projectMdl.projectChildren(idx)
-
+    val childrenRaw = projectMdl.projectChildren(idx)
     var children = Map[String, Any]()
     children += "construction" -> childrenRaw._1.toString
     children += "design" -> childrenRaw._2.toString

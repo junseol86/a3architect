@@ -17,6 +17,16 @@ class Promotion @Inject()(db: Database) {
 
   val pageSize = 3
 
+  def getRecents() = {
+    val query = "SELECT * FROM tbl_promotion ORDER BY prom_idx DESC LIMIT 3"
+    var list = List[Map[String, Any]]()
+
+    db.withConnection {implicit  conn =>
+      list = SQL(query.stripMargin).as(parser.*)
+    }
+    list
+  }
+
   def getPromotions(category: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 
@@ -28,7 +38,7 @@ class Promotion @Inject()(db: Database) {
          WHERE prom_category LIKE "%%$category%s%%"
          """
     val listQuery =
-      f"""SELECT prom_idx, prom_category, prom_title, prom_subtitle, prom_thumbnail, prom_modified
+      f"""SELECT *
          $commonQuery%s
          ORDER BY prom_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""

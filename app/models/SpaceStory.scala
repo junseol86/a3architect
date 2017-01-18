@@ -17,6 +17,16 @@ class SpaceStory @Inject()(db: Database) {
 
   val pageSize = 9
 
+  def getRecents() = {
+    val query = "SELECT * FROM tbl_space_story ORDER BY ss_idx DESC LIMIT 3"
+    var list = List[Map[String, Any]]()
+
+    db.withConnection {implicit  conn =>
+      list = SQL(query.stripMargin).as(parser.*)
+    }
+    list
+  }
+
   def getSpaceStories(category: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 
@@ -28,7 +38,7 @@ class SpaceStory @Inject()(db: Database) {
          WHERE ss_category LIKE "%%$category%s%%"
          """
     val listQuery =
-      f"""SELECT ss_idx, ss_category, ss_title, ss_thumbnail, ss_modified
+      f"""SELECT *
          $commonQuery%s
          ORDER BY ss_idx DESC
          LIMIT $pageOffset%d, $pageSize%d"""

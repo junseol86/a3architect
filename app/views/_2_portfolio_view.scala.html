@@ -1,0 +1,64 @@
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], portfolio: Map[String, Any], children: Map[String, Any], pics: List[Map[String, Any]], promotion: List[Map[String, Any]], spaceStory: List[Map[String, Any]])
+
+@main(page_data, user_data) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_23_portfolio_n_sites.css")">
+    <script src="@routes.Assets.versioned("js/_2_portfolio_pics.js")" type="text/javascript"></script>
+
+    <div class="centered_wrapper">
+        <div id="top_margin"></div>
+        <div class="_float_con">
+            <div class="p_n_s_left">
+                <h1>@portfolio("view_portfolio.pj_title")</h1>
+                <h2>@portfolio("view_portfolio.pj_subtitle")</h2>
+                <div id="p_n_s_thumbnail" style="background-image: url('http://@portfolio("view_portfolio.pf_thumbnail")')"></div>
+                <script>
+                    imageProcessor().image_process('#p_n_s_thumbnail')
+                </script>
+
+                <div class="_float_con">
+                    <div id="pics_left" class="_pointer"><img src="@routes.Assets.versioned("images/interface/pics_left.png")"></div>
+                    <div id="pics">
+                        <div id="pics_container" class="_float_con">
+                            @for(pic <- pics) {
+                                <div class="_pointer">
+                                    <div class="image_fit" style="background-image: url('http://@pic("tbl_portfolio_pic.pfp_url")')"></div>
+                                </div>
+                        }
+                        </div>
+                        <script>
+                            $('#pics_container').css('width', (140 * @pics.length) + 'px')
+                        </script>
+                    </div>
+                    <div id="pics_right" class="_pointer"><img src="@routes.Assets.versioned("images/interface/pics_right.png")"></div>
+                </div>
+
+
+
+            </div>
+            <div class="p_n_s_right"></div>
+        </div>
+
+        <div class="p_n_s_divider"></div>
+
+        <div class="_float_con">
+
+        </div>
+
+        <div class="p_n_s_divider"></div>
+
+        <div class="_float_con">
+            <div class="p_n_s_left">
+                <div id="board_content_container">
+                    <div id="width_checker"></div>
+                    @Html(portfolio("view_portfolio.pf_content").toString)
+                </div>
+            </div>
+
+            <div class="p_n_s_right">
+
+            </div>
+
+        </div>
+
+    </div>
+}

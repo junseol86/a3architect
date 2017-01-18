@@ -1,0 +1,104 @@
+#p_n_s_thumb_container > div {
+    width: 306px;
+    height: 320px;
+    margin: 10px;
+}
+
+#p_n_s_thumb_container > div:hover {
+    color: #00ffff;
+}
+
+#p_n_s_thumb_container > div > .thumbnail {
+    width: 100%;
+    height: 240px;
+}
+
+#p_n_s_thumb_container > div > .title {
+    margin: 16px 0px 0px 8px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+#p_n_s_thumb_container > div > .subtitle {
+    margin: 8px;
+    font-size: 1.3em;
+    color: #808080;
+}
+
+#top_margin {
+    width: 100%;
+    margin-bottom: 100px;
+    border-top: 2px solid #bfbfbf;
+}
+
+.p_n_s_left {
+    width: 640px;
+    margin-right: 80px;
+}
+
+.p_n_s_right {
+    width: 260px;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 48px;
+}
+
+#p_n_s_thumbnail {
+    width: 640px;
+    height: 480px;
+    margin-bottom: 20px;
+}
+
+#pics_left,
+#pics_right {
+    width: 40px;
+    height: 140px;
+    opacity: 0.5;
+}
+
+#pics_left:hover,
+#pics_right:hover {
+    opacity: 1;
+}
+
+#pics {
+    width: 560px;
+    height: 140px;
+    overflow: hidden;
+}
+
+#pics_container {
+    height: 140px;
+}
+
+#pics_container > div {
+    width: 140px;
+    height: 140px;
+    padding: 4px;
+}
+
+#pics_container > div:hover {
+    background-color: #00ffff;
+}
+
+#pics_container > div > div {
+    width: 100%;
+    height: 100%;
+}
+
+.p_n_s_divider {
+    width: 100%;
+    height: 1px;
+    background-color: #cdcdcd;
+    margin: 32px 0px 32px 0px;
+}
+
+

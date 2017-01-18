@@ -5,16 +5,18 @@ $ ->
     $('#select_gujo option:eq(0)').attr 'selected', 'selected'
     $('#select_year option:eq(0)').attr 'selected', 'selected'
     $('#select_gyumo option:eq(0)').attr 'selected', 'selected'
+    location.hash = ''
     getPortfolioOrSitesList()
 
   $('select').change () ->
+    location.hash = ''
     getPortfolioOrSitesList()
 
   getPortfolioOrSitesList()
 
 
 @getExtraHash = () ->
-  '^' + getYongdo() + '^' + getYear() + '^' + getGujo + '^' + getGyumo
+  '^' + getYongdo() + '^' + getYear() + '^' + getGujo() + '^' + getGyumo()
 
 @getYongdo = () ->
   if (location.hash.replace('#', '') != '')

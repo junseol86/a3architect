@@ -1,16 +1,16 @@
 @import utils.CommonUtil
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, portfolios: List[Map[String, Any]], count: Int, board_page: Int)
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, siteses: List[Map[String, Any]], count: Int, board_page: Int)
 
 <div id="p_n_s_thumb_container" class="_float_con">
-    @for(portfolio <- portfolios) {
-        <div class="url_link _pointer" data-url="/portfolio_view/@portfolio("tbl_portfolio.pf_pj_idx")/@portfolio("tbl_portfolio.pf_category")">
-            <div id="thumb_@portfolio("tbl_portfolio.pf_idx")" style="background-image: url('http://@portfolio("tbl_portfolio.pf_thumbnail")');" class="thumbnail"></div>
-            <div class="title">@portfolio("tbl_project.pj_title")</div>
-            <div class="subtitle">@portfolio("tbl_project.pj_subtitle")</div>
+    @for(sites <- siteses) {
+        <div class="_pointer">
+            <div id="thumb_@sites("tbl_sites.sts_idx")" style="background-image: url('http://@sites("tbl_sites.sts_thumbnail")');" class="thumbnail"></div>
+            <div class="title">@sites("tbl_project.pj_title")</div>
+            <div class="subtitle">@sites("tbl_project.pj_subtitle")</div>
         </div>
 
         <script>
-            imageProcessor().image_process("#thumb_@portfolio("tbl_portfolio.pf_idx")");
+            imageProcessor().image_process("#thumb_@sites("tbl_sites.sts_idx")");
         </script>
     }
 </div>

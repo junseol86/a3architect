@@ -1,5 +1,6 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]])
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], options:Map[String, List[Map[String, Any]]], years: List[Map[String, Any]])
 
-@main(page_data, user_data) {
-
+@_23_portfolio_n_sites(page_data, user_data, options, years) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_23_portfolio_n_sites.css")">
+    <div id="list_container" data-url="/sites_list"></div>
 }

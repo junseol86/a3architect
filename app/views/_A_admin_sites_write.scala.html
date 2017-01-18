@@ -18,8 +18,8 @@
                 현장 상태
             </h2>
             <div id="site_category" class="_float_con">
-                <input type="radio" name="sites_category" value="in_progress" @if(sites("tbl_sites.sts_category")=="in_progress"){checked}><span>진행중</span>
-                <input type="radio" name="sites_category" value="finished" @if(sites("tbl_sites.sts_category")=="finished"){checked}><span>완공</span>
+                <input type="radio" name="sites_category" value="in_progress" @if(sites==null){checked} @if(sites!=null&&sites("tbl_sites.sts_category")=="in_progress"){checked}><span>진행중</span>
+                <input type="radio" name="sites_category" value="completed" @if(sites!=null&&sites("tbl_sites.sts_category")=="completed"){checked}><span>완공</span>
             </div>
 
             <h2>
