@@ -27,6 +27,17 @@ class Sites @Inject()(db: Database) {
     result(0)
   }
 
+  def getASitesView(idx: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""SELECT * FROM view_sites
+           WHERE sts_pj_idx = '$idx'
+           """.stripMargin).as(parser.*)
+    }
+    result(0)
+  }
+
   def getSiteses(category: String, hashtag: String, page: Int, yongdo: String, year: String, gujo: String,  gyumo_min: String, gyumo_max: String) = {
     val pageOffset = (page - 1) * pageSize
 

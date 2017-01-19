@@ -3,14 +3,14 @@ package controllers._3_sites
 import javax.inject._
 
 import controllers.LoginSession
-import models.{User, Project, Sites}
+import models.{User, Project, Sites, SpaceStory, Promotion}
 import utils.CommonUtil
 import play.api.mvc._
 
 /**
   * Created by Hyeonmin on 2017-01-16.
   */
-class SitesCtrl @Inject()(user: User, projectMdl: Project, sitesMdl: Sites, commonUtil: CommonUtil, loginSession: LoginSession) extends Controller {
+class SitesCtrl @Inject()(user: User, projectMdl: Project, sitesMdl: Sites, promotionMdl: Promotion, spaceStoryMdl: SpaceStory, commonUtil: CommonUtil, loginSession: LoginSession) extends Controller {
 
   def sites_default(category:String) = sites(category, "@")
   def sites(category:String, hashtag: String) = Action { request =>
@@ -64,6 +64,38 @@ class SitesCtrl @Inject()(user: User, projectMdl: Project, sitesMdl: Sites, comm
     val count = totalCount / sitesMdl.pageSize + (if (totalCount % sitesMdl.pageSize == 0) 0 else 1)
 
     Ok(views.html._3_sites_list(page_data, user_data, commonUtil, sitess, count, board_page))
+  }
+
+  def sites_view(pj_idx: String) = Action { request =>
+    var user_data = List[Map[String, Any]]()
+    user_data = loginSession.userData(request)
+
+    var page_data = Map[String, Any]()
+    page_data += "title" -> "A3 :: 건축시공"
+    page_data += "login" -> ""
+    page_data += "category" -> "sites"
+    page_data += "page" -> "construction"
+    page_data += "category" -> "sites"
+
+    var sites = Map[String, Any]()
+    sites = sitesMdl.getASitesView(pj_idx)
+
+    val childrenRaw = projectMdl.projectChildren(pj_idx)
+    var children = Map[String, Any]()
+    children += "construction" -> childrenRaw._1.toString
+    children += "design" -> childrenRaw._2.toString
+    children += "interior" -> childrenRaw._3.toString
+    children += "sites" -> childrenRaw._4.toString
+
+    var pics = List[Map[String, Any]]()
+    pics = sitesMdl.getSitesScenes(pj_idx)
+
+    var promotion = List[Map[String, Any]]()
+    promotion = promotionMdl.getRecents()
+    var spaceStory = List[Map[String, Any]]()
+    spaceStory = spaceStoryMdl.getRecents()
+
+    Ok(views.html._3_sites_view(page_data, user_data, sites, children, pics, promotion, spaceStory, commonUtil))
   }
 
 }

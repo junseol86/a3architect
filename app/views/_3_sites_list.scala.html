@@ -3,7 +3,7 @@
 
 <div id="p_n_s_thumb_container" class="_float_con">
     @for(sites <- siteses) {
-        <div class="_pointer">
+        <div class="url_link _pointer" data-url="/sites_view/@sites("tbl_sites.sts_pj_idx")">
             <div id="thumb_@sites("tbl_sites.sts_idx")" style="background-image: url('http://@sites("tbl_sites.sts_thumbnail")');" class="thumbnail"></div>
             <div class="title">@sites("tbl_project.pj_title")</div>
             <div class="subtitle">@sites("tbl_project.pj_subtitle")</div>

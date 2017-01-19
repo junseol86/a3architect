@@ -57,6 +57,22 @@ h2 {
     margin-bottom: 20px;
 }
 
+#siblings {
+    width: 100%;
+    margin-top: 100px;
+    color: #ababab;
+    text-align: right;
+    font-size: 1.6em;
+}
+
+#siblings > div {
+    margin-bottom: 16px;
+}
+
+#siblings > div:hover {
+    color: #333333;
+}
+
 #pics_left,
 #pics_right {
     width: 40px;
@@ -112,4 +128,126 @@ h2 {
 #project_spec > div > div:first-child {
     width: 100px;
     font-weight: bold;
+}
+
+#in_charge_info {
+    width: 140px;
+    height: 150px;
+    font-size: 1.3em;
+}
+
+#in_charge_info .title {
+    font-weight: bold;
+    margin: 4px 0px 28px 0px;
+}
+
+#in_charge_info span {
+    font-size: 1.1em;
+    line-height: 24px;
+    letter-spacing: -1px;
+}
+
+#in_charge_info .contact {
+    position: absolute;
+    bottom: 0px;
+    color: #bfbfbf;
+    font-weight: bold;
+}
+
+#in_charge_photo {
+    width: 120px;
+    height: 150px;
+}
+
+.prom_n_ss_list_item {
+    width: 100%;
+    height: 120px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.prom_n_ss_list_item:first-child {
+    margin-top: 20px;
+
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail .dark {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4;
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail:hover .dark {
+    opacity: 0.7;
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail .prom_n_ss_title {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: table;
+    color: white;
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail .prom_n_ss_title > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.prom_n_ss_list_item .prom_n_ss_thumbnail .prom_n_ss_title > div > div {
+    font-size: 1.6em;
+    margin: 0 auto;
+    display: inline-block;
+    max-width: 120px;
+    line-height: 1.3em;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+.prom_n_ss_list_item:hover .prom_n_ss_thumbnail .prom_n_ss_title > div > div {
+    border-bottom: 2px solid white;
+}
+
+.scenes_category {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 48px 0px 8px 12px;
+}
+
+.scenes_category:first-child {
+    margin-top: 0px;
+}
+
+.scenes_container > div {
+    width: 210px;
+    height: 200px;
+    padding: 10px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.scenes_container > div:hover {
+    background-color: #00ffff;
+}
+
+.scenes_container > div > div {
+    width: 190px;
+    height: 150px;
+}
+
+.scenes_container h4 {
+    margin-top: 12px;
 }

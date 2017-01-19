@@ -16,6 +16,7 @@ GET     /portfolio_view/:pj_idx/:category                           controllers.
 GET     /sites/:category                                            controllers._3_sites.SitesCtrl.sites_default(category: String)
 GET     /sites/:category/:hashtag                                   controllers._3_sites.SitesCtrl.sites(category: String, hashtag: String)
 POST    /sites_list                                                 controllers._3_sites.SitesCtrl.sites_list
+GET     /sites_view/:pj_idx                                         controllers._3_sites.SitesCtrl.sites_view(pj_idx:String)
 GET     /consulting/process                                         controllers._4_consulting.ConsultingCtrl.profess
 GET     /consulting/con_apply                                       controllers._4_consulting.ConsultingCtrl.con_apply
 POST    /consulting/con_apply_submit                                controllers._4_consulting.ConsultingCtrl.con_apply_submit

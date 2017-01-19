@@ -96,8 +96,7 @@ class PortfolioCtrl @Inject()(user: User, projectMdl: Project, portfolioMdl: Por
     var spaceStory = List[Map[String, Any]]()
     spaceStory = spaceStoryMdl.getRecents()
 
-    Ok(views.html._2_portfolio_view(page_data, user_data, portfolio, children, pics, promotion, spaceStory))
+    Ok(views.html._2_portfolio_view(page_data, user_data, portfolio, children, pics, promotion, spaceStory, commonUtil))
   }
-
 
 }
