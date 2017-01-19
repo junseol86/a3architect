@@ -84,9 +84,17 @@
                 <div class="item">상태</div>
                 <input type="text" name="state" maxlength="50" value="@if(project != null) {@project("tbl_project.pj_state")}">
             </div>
+            <div id="latitude" class="_float_con">
+                <div class="item">위도</div>
+                <input type="text" name="latitude" maxlength="20" value="@if(project != null) {@project("tbl_project.pj_latitude")}">
+            </div>
+            <div id="longitude" class="_float_con">
+                <div class="item">경도</div>
+                <input type="text" name="longitude" maxlength="20" value="@if(project != null) {@project("tbl_project.pj_longitude")}">
+            </div>
             <div id="state" class="long_input _float_con">
                 <div class="item">해시태그</div>
-                <input type="text" name="hashtag" maxlength="100" value="@if(project != null) {@project("tbl_project.pj_hashtag")}else{#태그1예시 #태그2예시 #태그3예시}">
+                <input type="text" name="hashtag" maxlength="100" value="@if(project != null) {@project("tbl_project.pj_hashtag")}else{스페이스로 구분하여 입력하세요}">
             </div>
 
         </form>
@@ -96,6 +104,9 @@
         <div class="_float_con">
             <div id="project_write_confirm" class="board_btn">
                 저장하기
+            </div>
+            <div onclick="deleteThis('/admin/project_delete', '@project("tbl_project.pj_idx")');" style="margin-left: 12px" class="board_btn">
+                삭제하기
             </div>
             @if(children("sites")=="0") {
                 <div data-url="/admin/sites_write/@project("tbl_project.pj_idx")" class="write_child_btn board_btn">

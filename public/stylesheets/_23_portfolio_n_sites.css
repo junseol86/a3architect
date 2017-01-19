@@ -251,3 +251,26 @@ h2 {
 .scenes_container h4 {
     margin-top: 12px;
 }
+
+#map {
+    width: 100%;
+    height: 400px;
+    margin-top: 48px;
+}
+
+#map_desc {
+    margin-top: 12px;
+    font-size: 1.3em;
+}
+
+#hashtags > div {
+    font-size: 1.3em;
+    margin-right: 12px;
+    height: 19px;
+    line-height: 19px;
+}
+
+#hashtags > div:hover {
+    color: #00ffff;
+}
+

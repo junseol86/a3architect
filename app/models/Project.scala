@@ -15,7 +15,7 @@ class Project @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 2
+  val pageSize = 15
 
   def getOptions = {
     var options = Map[String, List[Map[String, Any]]]()
@@ -115,7 +115,7 @@ class Project @Inject()(db: Database) {
   }
 
   def projectWrite(
-                 title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, created:String, hashtag: String
+                 title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, latitude: String, longitude: String, created:String, hashtag: String
                ) = {
     db.withConnection { implicit conn =>
       SQL(
@@ -125,6 +125,7 @@ class Project @Inject()(db: Database) {
           pj_yongdo, pj_gujo, pj_jaeryo, pj_year, pj_location,
           pj_daeji, pj_gunchuk, pj_yeon,
           pj_gyumo, pj_state,
+          pj_latitude, pj_longitude,
           pj_created, pj_modified,
           pj_hashtag
           ) values (
@@ -132,6 +133,7 @@ class Project @Inject()(db: Database) {
           {yongdo}, {gujo}, {jaeryo}, {year}, {location},
           {daeji}, {gunchuk}, {yeon},
           {gyumo}, {state},
+          {latitude}, {longitude},
           {created}, {modified},
           {hashtag}
           )
@@ -142,6 +144,7 @@ class Project @Inject()(db: Database) {
           'yongdo -> yongdo, 'gujo -> gujo, 'jaeryo -> jaeryo, 'year -> year, 'location -> location,
           'daeji -> daeji, 'gunchuk -> gunchuk, 'yeon -> yeon,
           'gyumo -> gyumo, 'state -> state,
+          'latitude -> latitude, 'longitude -> longitude,
           'created -> created, 'modified -> created,
           'hashtag -> (hashtag + " ")
         ).executeInsert()
@@ -150,7 +153,9 @@ class Project @Inject()(db: Database) {
 
   def projectModify(
                   idx:String,
-                  title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String, created:String, hashtag: String
+                  title: String, subtitle: String, clientName: String, clientId: String, yongdo: String, gujo: String, jaeryo: String, year: String, location: String, daeji: String, gunchuk: String, yeon: String, gyumo: String, state: String,
+                  latitude: String, longitude: String,
+                  created:String, hashtag: String
                 ) = {
     db.withConnection { implicit conn =>
       SQL(
@@ -160,6 +165,7 @@ class Project @Inject()(db: Database) {
           pj_yongdo = {yongdo}, pj_gujo = {gujo}, pj_jaeryo = {jaeryo}, pj_year = {year}, pj_location = {location},
           pj_daeji = {daeji}, pj_gunchuk = {gunchuk}, pj_yeon = {yeon},
           pj_gyumo = {gyumo}, pj_state = {state},
+          pj_latitude = {latitude}, pj_longitude = {longitude},
           pj_created = {created}, pj_modified = {modified},
           pj_hashtag = {hashtag}
           WHERE pj_idx = {idx}
@@ -171,6 +177,7 @@ class Project @Inject()(db: Database) {
           'yongdo -> yongdo, 'gujo -> gujo, 'jaeryo -> jaeryo, 'year -> year, 'location -> location,
           'daeji -> daeji, 'gunchuk -> gunchuk, 'yeon -> yeon,
           'gyumo -> gyumo, 'state -> state,
+          'latitude -> latitude, 'longitude -> longitude,
           'created -> created, 'modified -> created,
           'hashtag -> (hashtag + " ")
         ).executeUpdate()

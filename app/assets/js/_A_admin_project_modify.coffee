@@ -15,7 +15,7 @@ $ ->
 @projectFormManager = () ->
   {
     "projectSubmit": () ->
-      $('.project #created_input').val(new Date().getTimeString())
+      $('.project #modified_input').val(new Date().getTimeString())
       category = 0
       $.each $('.circles > div'), (idx, circle) ->
         if $(circle).hasClass('-on')

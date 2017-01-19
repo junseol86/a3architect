@@ -48,6 +48,7 @@ POST    /admin/project_list                                         controllers.
 GET     /admin/project_write                                        controllers._A_admin.AdminProjectCtrl.project_write
 GET     /admin/project_modify/:idx                                  controllers._A_admin.AdminProjectCtrl.project_modify(idx:String)
 POST    /admin/project_submit/:insertOrModify                       controllers._A_admin.AdminProjectCtrl.project_submit(insertOrModify:Int)
+GET     /admin/project_delete/:idx                                  controllers._A_admin.AdminProjectCtrl.project_delete(idx: String)
 GET     /admin/portfolio_write/:pj_idx/:pf_category                 controllers._A_admin.AdminPortfolioCtrl.portfolio_write(pj_idx: String, pf_category: String)
 GET     /admin/portfolio_modify/:pj_idx/:pf_category                controllers._A_admin.AdminPortfolioCtrl.portfolio_modify(pj_idx: String, pf_category: String)
 POST    /admin/portfolio_pics_upload                                controllers._A_admin.AdminPortfolioCtrl.portfolioPicsUpload

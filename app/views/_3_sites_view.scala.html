@@ -94,7 +94,7 @@
                 <h3 class="scenes_category">@set("category")</h3>
                 <div class="scenes_container _float_con">
                 @for(scene <- set("scenes").asInstanceOf[List[Map[String, Any]]]) {
-                    <div class="_pos_rel _pointer">
+                    <div class="_pos_rel _pointer" onclick="showPopup('http://@scene("tbl_sites_pic.stsp_url")')">
                         <div id="thumb_@scene("tbl_sites_pic.stsp_idx")" style="background-image: url('http://@scene("tbl_sites_pic.stsp_url")')"></div>
                         <h4>@scene("tbl_sites_pic.stsp_title")</h4>
                         <script>

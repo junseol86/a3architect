@@ -1,0 +1,18 @@
+#popup {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    z-index: 200;
+}
+
+#popup #black_bg {
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.75;
+}
+
+#popup #pic {
+    position: absolute;
+}
