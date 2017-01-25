@@ -3,7 +3,7 @@ package controllers._A_admin
 import javax.inject._
 
 import controllers.LoginSession
-import models.{Consulting, Promotion, Deleter, User}
+import models.{Promotion, Deleter, User}
 import play.api.mvc._
 import utils.CommonUtil
 
@@ -11,7 +11,7 @@ import utils.CommonUtil
   * Created by Hyeonmin on 2016-11-28.
   */
 class AdminPromotionCtrl @Inject()(user: User, loginSession: LoginSession,
-                                   consulting: Consulting, promotionMdl: Promotion,
+                                   promotionMdl: Promotion,
                                    deleter: Deleter,
                                    commonUtil: CommonUtil) extends Controller  {
 

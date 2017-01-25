@@ -14,6 +14,86 @@ class Consulting @Inject()(db: Database) {
     SqlParser.folder(Map.empty[String, Any]) { (map, value, meta) =>
       Right(map + (meta.column.qualified -> value))
     }
+  
+  val pageSize = 15
+
+  def getConApplies(category: String, page: Int) = {
+    val pageOffset = (page - 1) * pageSize
+
+    var list = List[Map[String, Any]]()
+    var count = List[Map[String, Any]]()
+
+    val commonQuery =
+      f"""FROM tbl_con_apply
+         WHERE ca_category LIKE "%%$category%s%%"
+         """
+    val listQuery =
+      f"""SELECT *
+         $commonQuery%s
+         ORDER BY ca_idx DESC
+         LIMIT $pageOffset%d, $pageSize%d"""
+    val countQuery =
+      f"""SELECT count(*) as total $commonQuery%s"""
+    db.withConnection{implicit conn =>
+      list = SQL(
+        listQuery.stripMargin).as(parser.*)
+    }
+    db.withConnection{implicit conn =>
+      count = SQL(
+        countQuery.stripMargin).as(parser.*)
+    }
+    (list, count)
+  }
+
+  def getAConApply(idx: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        s"""SELECT * FROM tbl_con_apply
+           WHERE ca_idx = '$idx'
+           """.stripMargin).as(parser.*)
+    }
+    result(0)
+  }
+
+  def getAsApplies(page: Int) = {
+    val pageOffset = (page - 1) * pageSize
+
+    var list = List[Map[String, Any]]()
+    var count = List[Map[String, Any]]()
+
+    val commonQuery =
+      f"""FROM tbl_as_apply
+         """
+    val listQuery =
+      f"""SELECT *
+         $commonQuery%s
+         ORDER BY aa_idx DESC
+         LIMIT $pageOffset%d, $pageSize%d"""
+    val countQuery =
+      f"""SELECT count(*) as total $commonQuery%s"""
+    db.withConnection{implicit conn =>
+      list = SQL(
+        listQuery.stripMargin).as(parser.*)
+    }
+    db.withConnection{implicit conn =>
+      count = SQL(
+        countQuery.stripMargin).as(parser.*)
+    }
+    (list, count)
+  }
+
+  def getAAsApply(idx: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        s"""SELECT * FROM tbl_as_apply
+           WHERE aa_idx = '$idx'
+           """.stripMargin).as(parser.*)
+    }
+    result(0)
+  }
+
 
   def getOptions = {
     var options = Map[String, List[Map[String, Any]]]()
@@ -86,8 +166,6 @@ class Consulting @Inject()(db: Database) {
         ).executeInsert()
     }
   }
-
-
 
   def as_apply(
                  client_id: String, client_name: String, client_phone: String,

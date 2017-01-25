@@ -15,7 +15,7 @@ class ContractStory @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 2
+  val pageSize = 15
 
   def getContractStories(category: String, search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize

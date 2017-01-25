@@ -1,0 +1,52 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, as_apply: Map[String, Any])
+
+@with_left_menu(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/deleter.js")" type="text/javascript"></script>
+    <div>
+        <div id="as_apply_view" class="_float_con">
+
+            <div>
+                <div class="item">올린날짜</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_created")</span>
+            </div>
+            <div class="half">
+                <div class="item">고객 ID</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_client_id")</span>
+            </div>
+            <div class="half">
+                <div class="item">고객명</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_client_name")</span>
+            </div>
+            <div>
+                <div class="item">전화번호</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_client_phone")</span>
+            </div>
+            <div>
+                <div class="item">주소 1</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_address_1")</span>
+            </div>
+            <div>
+                <div class="item">주소 2</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_address_2")</span>
+            </div>
+            <div>
+                <div class="item">주소 3</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_address_3")</span>
+            </div>
+            <div>
+                <div class="item">프로젝트명</div>
+                <span class="content">@as_apply("tbl_as_apply.aa_project_name")</span>
+            </div>
+        </div>
+        <div id="as_apply_others">
+            @as_apply("tbl_as_apply.aa_content")
+        </div>
+
+        <div class="_float_con">
+            <div id="delete_btn" class="board_btn" onclick="deleteThis('/admin/as_apply_delete', '@as_apply("tbl_as_apply.aa_idx")');">
+                삭제하기
+            </div>
+        </div>
+    </div>
+}

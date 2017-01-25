@@ -1,0 +1,47 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil)
+
+@with_left_menu(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_A_admin_con_apply.js")" type="text/javascript"></script>
+
+    <div>
+        <table>
+            <tr>
+                <th width="72">
+                    <div>번호</div>
+                </th>
+                <th width="112">
+                    <select id="filter_category">
+                        <option value="@@">전체</option>
+                        <option value="1">
+                            @commonUtil.contractStoryCategory("1")
+                        </option>
+                        <option value="2">
+                            @commonUtil.contractStoryCategory("2")
+                        </option>
+                        <option value="3">
+                            @commonUtil.contractStoryCategory("3")
+                        </option>
+                        <option value="4">
+                            @commonUtil.contractStoryCategory("4")
+                        </option>
+                    </select>
+                </th>
+                <th>
+                    <div>신청 제목</div>
+                </th>
+                <th width="100">
+                    <div>날짜</div>
+                </th>
+            </tr>
+        </table>
+        <div id="list_container" data-url="/admin/con_apply_list"></div>
+
+        <div class="_float_con">
+            <div id="contract_story_write" class="board_btn">
+                스토리 올리기
+            </div>
+        </div>
+
+    </div>
+}

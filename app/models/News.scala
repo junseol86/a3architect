@@ -15,7 +15,7 @@ class News @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 5
+  val pageSize = 15
 
   def getNewses(search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize

@@ -64,13 +64,20 @@ POST    /admin/sites_submit/:insertOrModify                         controllers.
 POST    /admin/sites_scene_delete                                   controllers._A_admin.AdminSitesCtrl.sitesSceneDelete
 GET     /admin/sites_delete/:sts_idx/:pj_idx                        controllers._A_admin.AdminSitesCtrl.sites_delete(sts_idx:String, pj_idx: String)
 
+GET     /admin/con_apply                                            controllers._A_admin.AdminConApplyCtrl.con_apply
+POST    /admin/con_apply_list                                       controllers._A_admin.AdminConApplyCtrl.con_apply_list
+GET     /admin/con_apply_view/:idx                                  controllers._A_admin.AdminConApplyCtrl.con_apply_view(idx:String)
+GET     /admin/con_apply_delete/:idx                                controllers._A_admin.AdminConApplyCtrl.con_apply_delete(idx:String)
 GET     /admin/contract_story                                       controllers._A_admin.AdminContractStoryCtrl.contract_story
 POST    /admin/contract_story_list                                  controllers._A_admin.AdminContractStoryCtrl.contract_story_list
 GET     /admin/contract_story_write                                 controllers._A_admin.AdminContractStoryCtrl.contract_story_write
 GET     /admin/contract_story_modify/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_modify(idx:String)
 POST    /admin/contract_story_submit/:insertOrModify                controllers._A_admin.AdminContractStoryCtrl.contract_story_submit(insertOrModify:Int)
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
-
+GET     /admin/as_apply                                             controllers._A_admin.AdminAsApplyCtrl.as_apply
+POST    /admin/as_apply_list                                        controllers._A_admin.AdminAsApplyCtrl.as_apply_list
+GET     /admin/as_apply_view/:idx                                   controllers._A_admin.AdminAsApplyCtrl.as_apply_view(idx:String)
+GET     /admin/as_apply_delete/:idx                                 controllers._A_admin.AdminAsApplyCtrl.as_apply_delete(idx:String)
 
 GET     /admin/promotion                                            controllers._A_admin.AdminPromotionCtrl.promotion
 POST    /admin/promotion_list                                       controllers._A_admin.AdminPromotionCtrl.promotion_list

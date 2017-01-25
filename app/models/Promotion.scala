@@ -15,7 +15,7 @@ class Promotion @Inject()(db: Database) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 3
+  val pageSize = 15
 
   def getRecents() = {
     val query = "SELECT * FROM tbl_promotion ORDER BY prom_idx DESC LIMIT 3"

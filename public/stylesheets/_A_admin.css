@@ -167,3 +167,35 @@ h2 {
     height: 30px;
 }
 
+#con_apply_view,
+#as_apply_view {
+    font-size: 1.4em;
+    color: #555555;
+}
+
+#con_apply_view > div,
+#as_apply_view > div {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#con_apply_view > div.half,
+#as_apply_view > div.half {
+    width: 50%;
+}
+
+#con_apply_view .item,
+#as_apply_view .item {
+    display: inline-block;
+    width: 88px;
+    font-weight: bold;
+}
+
+#con_apply_others,
+#as_apply_others {
+    font-size: 1.4em;
+    margin-top: 20px;
+    line-height: 20px;
+}

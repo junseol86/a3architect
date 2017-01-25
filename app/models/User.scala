@@ -13,7 +13,7 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
       Right(map + (meta.column.qualified -> value))
     }
 
-  val pageSize = 3
+  val pageSize = 5
 
   def userList(search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
