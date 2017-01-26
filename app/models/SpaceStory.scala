@@ -18,7 +18,7 @@ class SpaceStory @Inject()(db: Database) {
   val pageSize = 9
 
   def getRecents() = {
-    val query = "SELECT * FROM tbl_space_story ORDER BY ss_idx DESC LIMIT 3"
+    val query = "SELECT * FROM tbl_space_story ORDER BY ss_idx DESC LIMIT 4"
     var list = List[Map[String, Any]]()
 
     db.withConnection {implicit  conn =>

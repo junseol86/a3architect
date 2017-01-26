@@ -62,6 +62,15 @@ h2 {
     margin-top: 48px;
 }
 
+#portfolio_rank {
+    font-size: 1.2em;
+}
+
+#portfolio_rank input {
+    text-align: center;
+    width: 40px;
+}
+
 #pf_in_charge_photo,
 #sts_in_charge_photo {
     width: 210px;

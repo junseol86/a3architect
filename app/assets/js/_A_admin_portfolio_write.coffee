@@ -1,6 +1,11 @@
 $ ->
   showPicList()
 
+  $('#portfolio_rank #up').click ->
+    $('#portfolio_rank #rank').val (Number($('#portfolio_rank #rank').val()) + 1)
+  $('#portfolio_rank #down').click ->
+    $('#portfolio_rank #rank').val (Number($('#portfolio_rank #rank').val()) - 1)
+
 
 @showPicList = () ->
   $.post '/admin/portfolio_pic_list',

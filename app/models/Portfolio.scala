@@ -79,38 +79,39 @@ class Portfolio @Inject()(db: Database) {
   }
 
   def portfolioWrite(
-                 pj_idx: String, content:String, thumbnail:String, created:String, category: String, inCharge: String, inChargeFrom: String, inChargePhoto: String
+                 pj_idx: String, pf_rank: Int, content:String, thumbnail:String, created:String, category: String, inCharge: String, inChargeFrom: String, inChargePhoto: String
                ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
           INSERT INTO tbl_portfolio (
-          pf_pj_idx, pf_thumbnail, pf_content, pf_created, pf_modified, pf_category, pf_in_charge, pf_in_charge_from, pf_in_charge_photo
+          pf_pj_idx, pf_rank, pf_thumbnail, pf_content, pf_created, pf_modified, pf_category, pf_in_charge, pf_in_charge_from, pf_in_charge_photo
           ) values (
-          {pj_idx}, {thumbnail}, {content}, {created}, {modified}, {category}, {in_charge}, {in_charge_from}, {in_charge_photo}
+          {pj_idx}, {pf_rank}, {thumbnail}, {content}, {created}, {modified}, {category}, {in_charge}, {in_charge_from}, {in_charge_photo}
           )
       """
       )
         .on(
-          'pj_idx -> pj_idx, 'content -> content, 'thumbnail -> thumbnail, 'created -> created, 'modified -> created, 'category -> category, 'in_charge -> inCharge, 'in_charge_from -> inChargeFrom, 'in_charge_photo -> inChargePhoto
+          'pj_idx -> pj_idx, 'pf_rank -> pf_rank, 'content -> content, 'thumbnail -> thumbnail, 'created -> created, 'modified -> created, 'category -> category, 'in_charge -> inCharge, 'in_charge_from -> inChargeFrom, 'in_charge_photo -> inChargePhoto
         ).executeInsert()
     }
   }
 
   def portfolioModify(
-                     idx: String,
+                     idx: String, pf_rank: Int,
                        content:String, thumbnail:String, created:String, inCharge: String, inChargeFrom: String, inChargePhoto: String
                 ) = {
     db.withConnection { implicit conn =>
       SQL(
         """
           UPDATE tbl_portfolio SET
+          pf_rank = {pf_rank},
           pf_content = {content}, pf_thumbnail = {thumbnail}, pf_modified = {modified}, pf_in_charge = {in_charge}, pf_in_charge_from = {in_charge_from}, pf_in_charge_photo = {in_charge_photo}
           WHERE pf_idx = {idx}
       """
       )
         .on(
-          'idx -> idx, 'content -> content, 'thumbnail -> thumbnail, 'modified -> created, 'in_charge -> inCharge, 'in_charge_from -> inChargeFrom, 'in_charge_photo -> inChargePhoto
+          'idx -> idx, 'pf_rank -> pf_rank, 'content -> content, 'thumbnail -> thumbnail, 'modified -> created, 'in_charge -> inCharge, 'in_charge_from -> inChargeFrom, 'in_charge_photo -> inChargePhoto
         ).executeUpdate()
     }
   }

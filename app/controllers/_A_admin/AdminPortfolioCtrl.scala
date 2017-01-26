@@ -68,7 +68,7 @@ class AdminPortfolioCtrl @Inject()(user: User, loginSession: LoginSession,
     }
 
     if (insertOrModify == 0) {
-      val insert = portfolioMdl.portfolioWrite(fp.get("pj_idx"), fp.get("ir1"), fp.get("thumbnail"), fp.get("modified"), fp.get("pf_category"), fp.get("in_charge"), fp.get("in_charge_from"), fp.get("in_charge_photo"))
+      val insert = portfolioMdl.portfolioWrite(fp.get("pj_idx"), fp.get("pf_rank").toInt, fp.get("ir1"), fp.get("thumbnail"), fp.get("modified"), fp.get("pf_category"), fp.get("in_charge"), fp.get("in_charge_from"), fp.get("in_charge_photo"))
       if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
         Ok(insert match {
           case Some(i: Long) => views.html.alert_and_move("게시물이 등록되었습니다.", "/admin/project_modify/" + fp.get("pj_idx"))
@@ -78,7 +78,7 @@ class AdminPortfolioCtrl @Inject()(user: User, loginSession: LoginSession,
         Redirect("/")
     }
     else {
-      val modify = portfolioMdl.portfolioModify(insertOrModify.toString, fp.get("ir1"), fp.get("thumbnail"), fp.get("modified"), fp.get("in_charge"), fp.get("in_charge_from"), fp.get("in_charge_photo"))
+      val modify = portfolioMdl.portfolioModify(insertOrModify.toString, fp.get("pf_rank").toInt, fp.get("ir1"), fp.get("thumbnail"), fp.get("modified"), fp.get("in_charge"), fp.get("in_charge_from"), fp.get("in_charge_photo"))
       if (user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN")
         Ok(modify match {
           case 1 => views.html.alert_and_move("게시물이 수정되었습니다", "/admin/project_modify/" + fp.get("pj_idx"))

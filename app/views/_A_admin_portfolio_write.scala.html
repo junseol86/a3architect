@@ -16,9 +16,16 @@
             <input id="pj_idx" name="pj_idx" value="@page_data("pj_idx")" hidden>
             <input id="pf_category"  name="pf_category" value="@page_data("pf_category")" hidden>
 
+            <div id="portfolio_rank">
+                <span>포트폴리오 랭크 점수</span>
+                <input id="rank" type="text" name="pf_rank" value="@if(portfolio == null){0}else{@portfolio("tbl_portfolio.pf_rank")}" readonly>
+                <span id="up" class="_pointer">▲</span>
+                <span id="down" class="_pointer">▼</span>
+            </div>
+
             <h2>
                 @commonUtil.portfolioCategory(page_data("pf_category").toString)
-                담장자
+                담당자
             </h2>
             <div id="pf_in_charge_photo" class="image_fit" style="background-image: @if(portfolio == null){none}else{url('http://@portfolio("tbl_portfolio.pf_in_charge_photo")')};"></div>
             <div id="in_charge_photo_btns" class="_float_con">

@@ -1,4 +1,56 @@
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]])
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], promotions: List[Map[String, Any]], spaceStories: List[Map[String, Any]])
 
 @main(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_0_dashboard.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_0_dashboard.css")">
+    <div class="centered_wrapper">
+        <div id="slide_n_ss" class="_float_con">
+            <div id="slide" class="_pos_rel">
+                <div id="slide_item_container" class="_float_con">
+                    @for(promotion <- promotions) {
+                        <div class="item _pointer"
+                        onclick="navigate('/news/promotion_view/@promotion("tbl_promotion.prom_idx")')"
+                        >
+                            <div class="_pos_rel"
+                            id="slide_@promotion("tbl_promotion.prom_idx")"
+                            style="background-image: url('http://@promotion("tbl_promotion.prom_thumbnail")');">
+                            </div>
+                            <script>
+                                imageProcessor().image_process("#slide_@promotion("tbl_promotion.prom_idx")")
+                            </script>
+                        </div>
+                    }
+                </div>
+                <img id="left_btn" class="_pointer" src="@routes.Assets.versioned("images/interface/slide_left.png")">
+                <img id="right_btn" class="_pointer" src="@routes.Assets.versioned("images/interface/slide_right.png")">
+            </div>
+            <div id="space_stories">
+                @for(space_story <- spaceStories) {
+                    <div class="prom_n_ss_list_item url_link"
+                    onclick="navigate('/news/space_story_view/@space_story("tbl_space_story.ss_idx")')"
+                    >
+
+                        <div class="prom_n_ss_thumbnail image_fit _pos_rel"
+                        id="thumb_ss_@space_story("tbl_space_story.ss_idx")"
+                        style="background-image: url('http://@space_story("tbl_space_story.ss_thumbnail")');">
+
+                            <div class="dark"></div>
+                            <div class="prom_n_ss_title">
+                                <div>
+                                    <div>
+                                    @space_story("tbl_space_story.ss_title")
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <script>
+                            imageProcessor().image_process("#thumb_ss_@space_story("tbl_space_story.ss_idx")")
+                        </script>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 }
