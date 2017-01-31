@@ -44,7 +44,6 @@ class UserCtrl @Inject()(user: User, commonUtil: CommonUtil, loginSession: Login
     val user_email = fp.get("user_email_1") + "@" + fp.get("user_email_2")
 
     val insert = user.registerUser(fp.get("user_id"), fp.get("user_pw"), fp.get("user_name"), user_birth(0), user_birth(1), user_birth(2), user_phone, user_email, fp.get("user_address_1"), fp.get("user_address_2"), fp.get("created"))
-    println(insert)
     Ok(insert match {
       case Some(i: Long) => views.html.alert_and_move("가입이 완료되었습니다.  로그인해주세요.", "/")
       case None => views.html.alert_and_move("에러가 발생하여 가입이 완료되지 않았습니다.", "/user/register")

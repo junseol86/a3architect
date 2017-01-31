@@ -1,0 +1,18 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, portfolios: List[Map[String, Any]])
+
+<div id="portfolio_container" class="_float_con">
+    @for(portfolio <- portfolios) {
+        <div id="dash_pf_@portfolio("view_portfolio.pf_idx")" style="background-image: url('http://@portfolio("view_portfolio.pf_thumbnail")');"
+        class="url_link _pointer _pos_rel" onclick="navigate('/portfolio_view/@portfolio("view_portfolio.pf_pj_idx")/@portfolio("view_portfolio.pf_category")')">
+
+            <div>
+                <div class="title">@portfolio("view_portfolio.pj_title")</div>
+                <div class="category">| @commonUtil.portfolioCategory(portfolio("view_portfolio.pf_category").toString)</div>
+            </div>
+            <script>
+                imageProcessor().image_process("#dash_pf_@portfolio("view_portfolio.pf_idx")");
+            </script>
+        </div>
+    }
+</div>

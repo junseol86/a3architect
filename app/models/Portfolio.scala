@@ -40,6 +40,26 @@ class Portfolio @Inject()(db: Database) {
     result(0)
   }
 
+  def getTopPortfolios() = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""SELECT * FROM view_portfolio ORDER BY pf_rank DESC LIMIT 4
+           """.stripMargin).as(parser.*)
+    }
+    result
+  }
+
+  def getDashboardPortfolios(category: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""SELECT * FROM view_portfolio WHERE pf_category LIKE '%%${category.replace("@", "")}%s%%' ORDER BY pf_idx DESC LIMIT 8
+           """.stripMargin).as(parser.*)
+    }
+    result
+  }
+
   def getPortfolios(category: String, hashtag: String, page: Int, yongdo: String, year: String, gujo: String,  gyumo_min: String, gyumo_max: String) = {
     val pageOffset = (page - 1) * pageSize
 
@@ -56,8 +76,8 @@ class Portfolio @Inject()(db: Database) {
          AND pj_yongdo LIKE "%%$yongdo%s%%"
          AND pj_gujo LIKE  "%%$gujo%s%%"
          AND pj_year LIKE "%%$year%s%%"
-         AND pj_gyumo > $gyumo_min%s
-         AND pj_gyumo <= $gyumo_max%s
+         AND pj_yeon > $gyumo_min%s
+         AND pj_yeon <= $gyumo_max%s
          )"""
     val listQuery =
       f"""SELECT *

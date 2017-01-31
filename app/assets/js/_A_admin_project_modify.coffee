@@ -7,7 +7,18 @@ $ ->
     $('#gujo_input').val $(this).val()
 
   $('#project_write_confirm').click ->
-    pfm.projectSubmit()
+    items = []
+    $('input.number_only').each () ->
+      if ($(this).val().charAt(0) == '.')
+        $(this).val('0' + $(this).val())
+      if ($(this).val().charAt($(this).val().length - 1) == '.')
+        $(this).val($(this).val() + '0')
+      if (!Number($(this).val()))
+        items.push $(this).data('item')
+    if (items.length == 0)
+      pfm.projectSubmit()
+    else
+      alert items + '에는 숫자만 입력하세요.'
 
   $('.write_child_btn').click ->
     location.href = $(this).data('url')

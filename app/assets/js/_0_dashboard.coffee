@@ -8,6 +8,9 @@ $ ->
   slide = $('#slide_item_container .item:eq(2)').detach()
   slide.insertBefore($('#slide_item_container .item:eq(0)'))
 
+  $('#slide span').css 'color', 'white'
+  $('#slide span:eq(0)').css 'color', 'black'
+
   $('#slide #left_btn').click ->
     slideLeft()
   $('#slide #right_btn').click ->
@@ -15,9 +18,21 @@ $ ->
 
   @timeout = setTimeout(slideLeft, 5000)
 
+  $('#portfolio_tabs > div').click ->
+    $('#portfolio_tabs > div').removeClass 'on'
+    $(this).addClass 'on'
+    getPortfolioList()
+  getPortfolioList()
+
+  $('#sites_tabs > div').click ->
+    $('#sites_tabs > div').removeClass 'on'
+    $(this).addClass 'on'
+    getSitesList()
+  getSitesList()
+
 @timeout
 
-@slideLeft = () ->
+@slideRight = () ->
   clearTimeout(@timeout)
   $('#slide_item_container').animate {
     left: "-=700px"
@@ -25,10 +40,14 @@ $ ->
     $('#slide_item_container').css 'left', '-700px'
     slide = $('#slide_item_container .item:eq(0)').detach()
     slide.insertAfter($('#slide_item_container .item:eq(1)'))
+    slideOn = $('#slide_item_container .item:eq(1)').attr 'id'
+    $('#slide span').css 'color', 'white'
+    $('#slide span:eq(' + slideOn + ')').css 'color', 'black'
+
     clearTimeout(@timeout)
     @timeout = setTimeout(slideLeft, 5000)
 
-@slideRight = () ->
+@slideLeft = () ->
   clearTimeout(@timeout)
   $('#slide_item_container').animate {
     left: "+=700px"
@@ -36,5 +55,31 @@ $ ->
     $('#slide_item_container').css 'left', '-700px'
     slide = $('#slide_item_container .item:eq(2)').detach()
     slide.insertBefore($('#slide_item_container .item:eq(0)'))
+    slideOn = $('#slide_item_container .item:eq(1)').attr 'id'
+    $('#slide span').css 'color', 'white'
+    $('#slide span:eq(' + slideOn + ')').css 'color', 'black'
     clearTimeout(@timeout)
     @timeout = setTimeout(slideLeft, 5000)
+
+
+@getPortfolioList = () ->
+  category = $('#portfolio_tabs > div.on').attr 'id'
+  page = boardModule().getCurrentPage()
+  url = $('#portfolio_list_container').data("url")
+  $.post url,
+    {
+      category: category
+    }
+    (data, status) ->
+      boardModule().afterAjaxLoadSpecific(data, '#portfolio_list_container')
+
+@getSitesList = () ->
+  category = $('#sites_tabs > div.on').attr 'id'
+  page = boardModule().getCurrentPage()
+  url = $('#sites_list_container').data("url")
+  $.post url,
+    {
+      category: category
+    }
+    (data, status) ->
+      boardModule().afterAjaxLoadSpecific(data, '#sites_list_container')

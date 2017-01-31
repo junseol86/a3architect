@@ -50,6 +50,10 @@
     color: #00ffff;
 }
 
+.tabs div.on {
+    color: #333333;
+}
+
 .filters span {
     color: #bfbfbf;
 }

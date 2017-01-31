@@ -35,7 +35,10 @@ $ ->
       pageNoScroll.animate({scrollLeft: '-=' + pageNoScroll.width()}, 300);
 
   afterAjaxLoad: (data) ->
-    $('#list_container').html(data)
+    this.afterAjaxLoadSpecific(data, '#list_container')
+
+  afterAjaxLoadSpecific: (data, id) ->
+    $(id).html(data)
     this.setPagesInterface()
     $('.url_link').click () ->
       location.hash = boardModule().getCurrentPage() + getExtraHash()

@@ -18,6 +18,12 @@ form .item {
     line-height: 36px;
 }
 
+form .after {
+    height: 36px;
+    line-height: 36px;
+    margin-left: 4px;
+}
+
 form input,
 form select {
     padding-left: 4px;

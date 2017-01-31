@@ -46,6 +46,19 @@
     right: 0px;
 }
 
+#slide #dots {
+    position: absolute;
+    width: 700px;
+    left: 0px;
+    bottom: 20px;
+    text-align: center;
+}
+
+#slide #dots span {
+    margin-right: 6px;
+    font-size: 0.2em;
+}
+
 #slide_item_container {
     position: absolute;
     top: 0px;
@@ -111,4 +124,89 @@
 
 .prom_n_ss_list_item:hover .prom_n_ss_thumbnail .prom_n_ss_title > div > div {
     border-bottom: 2px solid white;
+}
+
+#create_experience {
+    text-align: center;
+    margin: 64px 0px 32px 0px;
+    font-size: 4em;
+}
+
+#topPortfolios > div {
+    width: 236px;
+    height: 172px;
+    margin-right: 12px;
+}
+
+#topPortfolios > div:last-child {
+    margin-right: 0px;
+}
+
+#topPortfolios > div > div {
+    width: 236px;
+    height: 172px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: none;
+}
+
+#topPortfolios > div:hover > div {
+    display: block;
+}
+
+#topPortfolios > div > div > div.title {
+    padding: 64px 0px 0px 24px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+#topPortfolios > div > div > div.category {
+    padding: 8px 0px 0px 24px;
+    font-size: 1.3em;
+}
+
+.list_top {
+    margin-top: 64px;
+    padding-bottom: 10px;
+    font-size: 1.4em;
+    text-align: right;
+    font-weight: bold;
+}
+
+#portfolio_container > div,
+#sites_container > div {
+    width: 236px;
+    height: 236px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+#portfolio_container > div:nth-child(4n + 4),
+#sites_container > div:nth-child(4n + 4) {
+    margin-right: 0;
+}
+
+#portfolio_container > div > div,
+#sites_container > div > div {
+    width: 236px;
+    height: 236px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: none;
+}
+
+#portfolio_container > div:hover > div,
+#sites_container > div:hover > div {
+    display: block;
+}
+
+#portfolio_container > div > div > div.title,
+#sites_container > div > div > div.title {
+    padding: 48px 0px 0px 24px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+#portfolio_container > div > div > div.category,
+#sites_container > div > div > div.category {
+    padding: 8px 0px 0px 24px;
+    font-size: 1.3em;
 }

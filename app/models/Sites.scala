@@ -27,6 +27,16 @@ class Sites @Inject()(db: Database) {
     result(0)
   }
 
+  def getDashboardSiteses(category: String) = {
+    var result = List[Map[String, Any]]()
+    db.withConnection{implicit conn =>
+      result = SQL(
+        f"""SELECT * FROM view_sites WHERE sts_category LIKE '%%${category.replace("@", "")}%s%%' ORDER BY sts_idx DESC LIMIT 4
+           """.stripMargin).as(parser.*)
+    }
+    result
+  }
+
   def getASitesView(idx: String) = {
     var result = List[Map[String, Any]]()
     db.withConnection{implicit conn =>
@@ -54,8 +64,8 @@ class Sites @Inject()(db: Database) {
          AND pj_yongdo LIKE "%%$yongdo%s%%"
          AND pj_gujo LIKE  "%%$gujo%s%%"
          AND pj_year LIKE "%%$year%s%%"
-         AND pj_gyumo > $gyumo_min%s
-         AND pj_gyumo <= $gyumo_max%s
+         AND pj_yeon > $gyumo_min%s
+         AND pj_yeon <= $gyumo_max%s
          )"""
     val listQuery =
       f"""SELECT *
@@ -143,10 +153,6 @@ class Sites @Inject()(db: Database) {
   }
 
   def sitesSceneWrite(pj_idx: String, stsp_category: String, stsp_title: String,  url: String) = {
-    println(pj_idx)
-    println(stsp_category)
-    println(stsp_title)
-    println(url)
     db.withConnection { implicit conn =>
       SQL(
         """
