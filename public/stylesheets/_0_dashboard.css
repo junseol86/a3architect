@@ -172,6 +172,10 @@
     font-weight: bold;
 }
 
+.list_top.bordered {
+    border-bottom: 2px solid #bfbfbf;
+}
+
 #portfolio_container > div,
 #sites_container > div {
     width: 236px;
@@ -209,4 +213,13 @@
 #sites_container > div > div > div.category {
     padding: 8px 0px 0px 24px;
     font-size: 1.3em;
+}
+
+#news_n_story > div {
+    width: 50%;
+}
+
+#news_n_story > div > .title {
+    font-size: 1.4em;
+    margin: 16px 0px 24px 28px;
 }
