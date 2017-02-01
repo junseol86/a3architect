@@ -52,6 +52,7 @@ $ ->
       page = $(this).attr('id')
       navigate('/' + category + '/' + page)
 
+
   # 컨텐츠 화면 최소높이
   $('.content_wrapper').css 'min-height', ($(window).height() - $('.top').height() - $('.footer_wrapper').height()) + 'px'
 
@@ -102,3 +103,10 @@ $ ->
         location.reload()
       else
         alert "아이디와 비밀번호를 확인하세요."
+
+# 하단 원형 버튼에서 로그인 필요한 항목 클릭시
+@goToApply = (page) ->
+  if ($('#i_am_logged_in').length < 1)
+    alert '로그인이 필요합니다.'
+  else
+    navigate('/consulting/' + page)

@@ -35,16 +35,16 @@
             </div>
             <div class="p_n_s_right">
                 <div id="siblings">
-                    @if(page_data("category")!="construction"&&children("construction")!="0") {
+                    @if(page_data("pf_category")!="construction"&&children("construction")!="0") {
                         <div class="_pointer" onclick="navigate('/portfolio_view/@portfolio("view_portfolio.pj_idx")/construction')">→ 시공과정 보기</div>
                     }
-                    @if(page_data("category")!="design"&&children("design")!="0") {
+                    @if(page_data("pf_category")!="design"&&children("design")!="0") {
                         <div class="_pointer" onclick="navigate('/portfolio_view/@portfolio("view_portfolio.pj_idx")/design')">→ 설계과정 보기</div>
                     }
-                    @if(page_data("category")!="interior"&&children("interior")!="0") {
+                    @if(page_data("pf_category")!="interior"&&children("interior")!="0") {
                         <div class="_pointer" onclick="navigate('/portfolio_view/@portfolio("view_portfolio.pj_idx")/interior')">→ 인테리어 보기</div>
                     }
-                    @if(page_data("category")!="sites"&&children("sites")!="0") {
+                    @if(page_data("pf_category")!="sites"&&children("sites")!="0") {
                         <div class="_pointer" onclick="navigate('/sites_view/@portfolio("view_portfolio.pj_idx")')">→ 현장모습 보기</div>
                     }
                 </div>
@@ -110,7 +110,7 @@
                 <div id="hashtags" class="_float_con">
                     <div><img src="@routes.Assets.versioned("images/interface/hashtag.png")"></div>
                     @for(hashtag <- portfolio("view_portfolio.pj_hashtag").toString.split(" ")) {
-                        <div class="_pointer" onclick="navigate('/portfolio/@page_data("category")/@hashtag')">#@hashtag</div>
+                        <div class="_pointer" onclick="navigate('/portfolio/@page_data("pf_category")/@hashtag')">#@hashtag</div>
                     }
 
                 </div>

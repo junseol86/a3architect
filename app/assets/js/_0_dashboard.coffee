@@ -91,3 +91,4 @@ $ ->
 @seeMoreSites = () ->
   category = ($('#sites_tabs > div.on').attr 'id').replace('@', 'in_progress')
   navigate('/sites/' + category)
+

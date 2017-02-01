@@ -75,8 +75,8 @@ class PortfolioCtrl @Inject()(user: User, projectMdl: Project, portfolioMdl: Por
     page_data += "title" -> "A3 :: 건축시공"
     page_data += "login" -> ""
     page_data += "category" -> "portfolio"
-    page_data += "page" -> "construction"
-    page_data += "category" -> category
+    page_data += "page" -> category
+    page_data += "pf_category" -> category
 
     var portfolio = Map[String, Any]()
     portfolio = portfolioMdl.getAPortfolioView(pj_idx, category)
