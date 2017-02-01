@@ -17,6 +17,15 @@ class ContractStory @Inject()(db: Database) {
 
   val pageSize = 15
 
+  def getDashboardContractStories() = {
+    var list = List[Map[String, Any]]()
+    val query = "SELECT * FROM tbl_contract_story ORDER BY cs_idx DESC LIMIT 3"
+    db.withConnection{implicit conn =>
+      list = SQL(query.stripMargin).as(parser.*)
+    }
+    list
+  }
+
   def getContractStories(category: String, search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 

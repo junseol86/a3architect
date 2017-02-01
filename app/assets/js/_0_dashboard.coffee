@@ -16,7 +16,7 @@ $ ->
   $('#slide #right_btn').click ->
     slideRight()
 
-  @timeout = setTimeout(slideLeft, 5000)
+  @timeout = setTimeout(slideRight, 5000)
 
   $('#portfolio_tabs > div').click ->
     $('#portfolio_tabs > div').removeClass 'on'
@@ -45,7 +45,7 @@ $ ->
     $('#slide span:eq(' + slideOn + ')').css 'color', 'black'
 
     clearTimeout(@timeout)
-    @timeout = setTimeout(slideLeft, 5000)
+    @timeout = setTimeout(slideRight, 5000)
 
 @slideLeft = () ->
   clearTimeout(@timeout)
@@ -59,7 +59,7 @@ $ ->
     $('#slide span').css 'color', 'white'
     $('#slide span:eq(' + slideOn + ')').css 'color', 'black'
     clearTimeout(@timeout)
-    @timeout = setTimeout(slideLeft, 5000)
+    @timeout = setTimeout(slideRight, 5000)
 
 
 @getPortfolioList = () ->
@@ -73,6 +73,10 @@ $ ->
     (data, status) ->
       boardModule().afterAjaxLoadSpecific(data, '#portfolio_list_container')
 
+@seeMorePortfolios = () ->
+  category = ($('#portfolio_tabs > div.on').attr 'id').replace('@', 'construction')
+  navigate('/portfolio/' + category)
+
 @getSitesList = () ->
   category = $('#sites_tabs > div.on').attr 'id'
   page = boardModule().getCurrentPage()
@@ -83,3 +87,7 @@ $ ->
     }
     (data, status) ->
       boardModule().afterAjaxLoadSpecific(data, '#sites_list_container')
+
+@seeMoreSites = () ->
+  category = ($('#sites_tabs > div.on').attr 'id').replace('@', 'in_progress')
+  navigate('/sites/' + category)

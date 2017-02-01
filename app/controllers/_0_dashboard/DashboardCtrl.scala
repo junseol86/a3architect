@@ -3,7 +3,7 @@ package controllers._0_dashboard
 import javax.inject._
 
 import controllers.LoginSession
-import models.{Portfolio, Sites, Promotion, SpaceStory}
+import models.{Portfolio, Sites, Promotion, SpaceStory, News, ContractStory}
 import play.api.mvc._
 import models.User
 import utils.CommonUtil
@@ -12,7 +12,12 @@ import utils.CommonUtil
   * Created by Hyeonmin on 2016-11-01.
   */
 @Singleton
-class DashboardCtrl @Inject()(user: User, loginSession: LoginSession, commonUtil: CommonUtil, promotionMdl: Promotion, spaceStoryMdl: SpaceStory, portfolioMdl: Portfolio, sitesMdl: Sites) extends Controller {
+class DashboardCtrl @Inject()(
+                               user: User, loginSession: LoginSession, commonUtil: CommonUtil,
+                               promotionMdl: Promotion, spaceStoryMdl: SpaceStory,
+                               portfolioMdl: Portfolio, sitesMdl: Sites,
+                               newsMdl: News, contractStoryMdl: ContractStory)
+  extends Controller {
 
   def index = Action { request =>
     var user_data = List[Map[String, Any]]()
@@ -31,7 +36,13 @@ class DashboardCtrl @Inject()(user: User, loginSession: LoginSession, commonUtil
     var topPortfolios = List[Map[String, Any]]()
     topPortfolios = portfolioMdl.getTopPortfolios()
 
-    Ok(views.html._0_dashboard(page_data, user_data, commonUtil, promotion, spaceStory, topPortfolios))
+    var newses = List[Map[String, Any]]()
+    newses = newsMdl.getDashboardNewses()
+
+    var contractStories = List[Map[String, Any]]()
+    contractStories = contractStoryMdl.getDashboardContractStories()
+
+    Ok(views.html._0_dashboard(page_data, user_data, commonUtil, promotion, spaceStory, topPortfolios, newses, contractStories))
   }
 
   def portfolioList = Action {request =>

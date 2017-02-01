@@ -17,6 +17,15 @@ class News @Inject()(db: Database) {
 
   val pageSize = 15
 
+  def getDashboardNewses() = {
+    var list = List[Map[String, Any]]()
+    val query = "SELECT * FROM tbl_news ORDER BY news_idx DESC LIMIT 3"
+    db.withConnection{implicit conn =>
+      list = SQL(query.stripMargin).as(parser.*)
+    }
+    list
+  }
+
   def getNewses(search: String, page: Int) = {
     val pageOffset = (page - 1) * pageSize
 

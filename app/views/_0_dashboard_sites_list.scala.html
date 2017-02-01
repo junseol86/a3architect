@@ -4,7 +4,7 @@
 <div id="sites_container" class="_float_con">
     @for(sites <- siteses) {
         <div id="dash_sts_@sites("view_sites.sts_idx")" style="background-image: url('http://@sites("view_sites.sts_thumbnail")');"
-        class="url_link _pointer _pos_rel" onclick="navigate('/sites_view/@sites("view_sites.sts_pj_idx")/@sites("view_sites.sts_category")')">
+        class="url_link _pointer _pos_rel" onclick="navigate('/sites_view/@sites("view_sites.sts_pj_idx")')">
 
             <div>
                 <div class="title">@sites("view_sites.pj_title")</div>

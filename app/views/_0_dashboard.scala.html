@@ -1,5 +1,7 @@
 @import utils.CommonUtil
-@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, promotions: List[Map[String, Any]], spaceStories: List[Map[String, Any]], topPortfolios: List[Map[String, Any]])
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil,
+        promotions: List[Map[String, Any]], spaceStories: List[Map[String, Any]], topPortfolios: List[Map[String, Any]],
+        newses: List[Map[String, Any]], contractStories: List[Map[String, Any]])
 
 @main(page_data, user_data) {
     <script src="@routes.Assets.versioned("js/_0_dashboard.js")" type="text/javascript"></script>
@@ -90,6 +92,9 @@
         </div>
         <div id="portfolio_list_container" data-url="/dashboard/portfolio_list">
         </div>
+        <div class="see_more_container _pos_rel">
+            <div onclick="seeMorePortfolios();" class="see_more _pointer">+ 더보기</div>
+        </div>
 
         <div class="list_top">실시간 현장 공개</div>
         <div id="sites_tabs" class="tabs _float_con">
@@ -99,16 +104,43 @@
         </div>
         <div id="sites_list_container" data-url="/dashboard/sites_list">
         </div>
+        <div class="see_more_container _pos_rel">
+            <div onclick="seeMoreSites();" class="see_more _pointer">+ 더보기</div>
+        </div>
 
-        <div class="list_top bordered">최신글 보기</div>
+        <div class="list_top">최신글 보기</div>
         <div id="news_n_story" class="_float_con">
             <div>
-                <div class="title">A3 소식</div>
-
+                <div class="tabs _float_con">
+                    <div class="on">A3 소식</div>
+                    <div onclick="navigate('/news/news')">소식 더 보기</div>
+                </div>
+                <div class="news_story_list">
+                    @for(news <- newses) {
+                        <div onclick="navigate('/news/news_view/@news("tbl_news.news_idx")')" class="_pos_rel _pointer">
+                            <span class="title">@news("tbl_news.news_title")</span>
+                            <span class="date">@news("tbl_news.news_modified").toString.split(" ")(0)</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="space">
+                <div class="tabs _float_con">
+                </div>
             </div>
             <div>
-                <div class="title">계약 스토리</div>
-
+                <div class="tabs _float_con">
+                    <div class="on">계약 스토리</div>
+                    <div onclick="navigate('/consulting/contract_story')">스토리 더 보기</div>
+                </div>
+                <div class="news_story_list">
+                    @for(story <- contractStories) {
+                        <div onclick="navigate('/consulting/contract_story_view/@story("tbl_contract_story.cs_idx")')" class="_pos_rel _pointer">
+                            <span class="title">@story("tbl_contract_story.cs_title")</span>
+                            <span class="date">@story("tbl_contract_story.cs_modified").toString.split(" ")(0)</span>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
 
