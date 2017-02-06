@@ -11,8 +11,29 @@ $ ->
     black_bg.css 'height', winH + 'px'
 
     pic = $('#popup #pic')
-    pic.css 'top', ((winH - pic.height())/2) + 'px'
-    pic.css 'left', ((winW - pic.width())/2) + 'px'
+    if(pic.length > 0)
+      pic.css 'top', ((winH - pic.height())/2) + 'px'
+      pic.css 'left', ((winW - pic.width())/2) + 'px'
+
+    department = $('#department')
+    if(department.length > 0)
+      department.css 'left', (winW - department.width())/2 + 'px'
+      department.css 'top', (winH - department.height())/2 + 'px'
+
+@showAboutPopup = () ->
+  popup = $('#popup')
+  department = $('#department')
+  winW = $(window).width()
+  winH = $(window).height()
+
+  popup.css 'display', 'block'
+  popup.css 'width', winW + 'px'
+  popup.css 'height', winH + 'px'
+
+  department.css 'left', (winW - department.width())/2 + 'px'
+  department.css 'top', (winH - department.height())/2 + 'px'
+
+
 
 @showPopup = (url) ->
   popup = $('#popup')

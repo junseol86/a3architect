@@ -1,8 +1,31 @@
+@(page_data: Map[String, Any])
+
 <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_0_popup.css")">
 <script src="@routes.Assets.versioned("js/_0_popup.js")" type="text/javascript"></script>
 
 <div id="popup" onclick="hidePopup()">
-    <div id="black_bg"></div>
-    <img id="pic"/>
-
+    @if(page_data("category")=="portfolio"||page_data("category")=="sites"){
+        <div id="black_bg"></div>
+        <img id="pic"/>
+    }else{
+        <div id="black_bg"></div>
+        <div id="department">
+            <div class="_pos_rel">
+                <div id="title">
+                    <div id="work"></div>
+                    <div id="name_n_alias">
+                        <span id="name"></span>
+                        <span id="alias"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="brief"></div>
+            <div id="desc"></div>
+            <div>
+                <div id="link" onclick="navigate('/intro/people')">A3 사람들 만나기</div>
+            </div>
+            <img id="department_left" src="@routes.Assets.versioned("images/interface/department_left.png")">
+            <img id="department_right" src="@routes.Assets.versioned("images/interface/department_right.png")">
+        </div>
+    }
 </div>

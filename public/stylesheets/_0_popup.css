@@ -16,3 +16,86 @@
 #popup #pic {
     position: absolute;
 }
+
+#popup #department {
+    position: absolute;
+    width: 980px;
+    height: 490px;
+    background-color: #666666;
+    color: white;
+    text-align: center;
+}
+
+#popup #department > div > div {
+    margin: auto;
+}
+
+#popup #department #title {
+    width: 320px;
+    margin-top: 48px;
+    font-size: 1.8em;
+}
+
+#popup #department #work {
+    border-bottom: 1px solid white;
+    height: 60px;
+    line-height: 60px;
+}
+
+#popup #department #name_n_alias {
+    margin-top: 20px;
+}
+
+#popup #department #alias {
+    font-size: 0.8em;
+    margin-left: 8px;
+}
+
+
+#popup #department #brief {
+    margin-top: 64px;
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+#popup #department #desc {
+    padding: 24px 180px 0 180px;
+    font-size: 1.8em;
+    line-height: 1.5em;
+}
+
+#popup #department #link {
+    width: 180px;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid white;
+    margin-top: 48px;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+#popup #department #link:hover {
+    background-color: white;
+    color: #333333;
+}
+
+#popup #department_left {
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+#popup #department_right {
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#popup #department_left:hover,
+#popup #department_right:hover {
+    opacity: 1;
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 @(page_data: Map[String, Any], user_data: List[Map[String, Any]])
 
 @main(page_data, user_data) {
+    <script src="@routes.Assets.versioned("js/_1_intro.js")" type="text/javascript"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_1_intro.css")">
 
     <div class="centered_wrapper">
@@ -42,6 +43,81 @@
 
         <div class="about_subtitle">
             A3그룹 사업부 소개
+        </div>
+        <div id="about_circles" class="_float_con">
+            <div class="circle">
+                <div>
+                    <div class="work">
+                        <div>DEVELOPERS</div>
+                    </div>
+                    <div class="department">
+                        ㈜A3D&D
+                    </div>
+                    <div class="desc">
+                        부동산개발사업부
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="circle">
+                <div>
+                    <div class="work">
+                        <div>BUILDING<br>CONSTRUCTION</div>
+                    </div>
+                    <div class="department">
+                        ㈜A3건설
+                    </div>
+                    <div class="desc">
+                        건설사업부
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="circle">
+                <div>
+                    <div class="work">
+                        <div>ARCHITECTURE<br>DESIGN</div>
+                    </div>
+                    <div class="department">
+                        ㈜건축사사무소A3
+                    </div>
+                    <div class="desc">
+                        건축설계사업부
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="circle">
+                <div>
+                    <div class="work">
+                        <div>INTERIOR<br>DESIGN</div>
+                    </div>
+                    <div class="department">
+                        ㈜A3디자인
+                    </div>
+                    <div class="desc">
+                        인테리어사업부
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="circle">
+                <div>
+                    <div class="work">
+                        <div>CONTAIN<br>MODULAR</div>
+                    </div>
+                    <div class="department">
+                        ㈜A3박스
+                    </div>
+                    <div class="desc">
+                        컨테이너사업부
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about_subtitle">
+            걸어온 길
         </div>
 
     </div>
