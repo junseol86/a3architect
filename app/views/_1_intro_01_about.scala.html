@@ -1,5 +1,48 @@
 @(page_data: Map[String, Any], user_data: List[Map[String, Any]])
 
 @main(page_data, user_data) {
-    <h1>hohoho</h1>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/_1_intro.css")">
+
+    <div class="centered_wrapper">
+        <div id="company_motto" class="_right_align">
+            <h1>CREATE FUN</h1>
+            <h1>EXPERIENCE NEW</h1>
+        </div>
+
+        <div id="sites_tabs" class="tabs _float_con">
+            <div class="on" id="@@">A3그룹 가치</div>
+            <div id="in_progress">BI&사업부 소개</div>
+            <div id="completed">걸어온 길</div>
+        </div>
+
+        <div class="about_subtitle">
+            BRAND IDENTITY
+        </div>
+        <div id="about_bi" class="_float_con _right_align">
+            <img src="@routes.Assets.versioned("images/interface/about_bi.png")">
+            <br><br><br><br>
+            CONNECTING WITH OTHERS<br>BY CREATING SPACE
+        </div>
+
+        <div id="about_desc" class="_float_con">
+            <div>
+                <div class="_right_align">
+                    우리, 나 <span>US, ME</span><br>
+                    상대방, 고객 <span>OTHERS</span><br>
+                    지표면, 연결 다리 <span>CONNECTION</span><br>
+                    공간 창조 <span>CREATING SPACE</span><br>
+                </div>
+            </div>
+            <div>
+                <div>
+                    A3는 ‘우리’, ‘나’가 모여 만들어집니다. 상대방의 다름을<br>인정하고 격려와 칭찬으로 주인정신과 도전정신 가득한<br>A3인이 탄생합니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="about_subtitle">
+            A3그룹 사업부 소개
+        </div>
+
+    </div>
 }
