@@ -1,6 +1,16 @@
 $ ->
 
 #about
+
+  $('#sites_tabs > div').click ->
+    $(this).siblings().removeClass('on')
+    $(this).addClass('on')
+    selected = $(this).attr 'id'
+    $('.section').css 'display', 'none'
+    $('#' + selected + '_section').css 'display', 'block'
+
+
+
   $('.about_a').mouseenter ->
     $(this).children('div').children('img').each (index, element) ->
       $(element).attr 'src', $(element).attr('src').replace('_off', '_on')
@@ -8,8 +18,6 @@ $ ->
   $('.about_a').mouseleave ->
     $(this).children('div').children('img').each (index, element) ->
       $(element).attr 'src', $(element).attr('src').replace('_on', '_off')
-
-
 
   $('#about_circles .circle').each (index, element) ->
     $(element).click ->

@@ -173,6 +173,45 @@
     line-height: 2em;
 }
 
+#history_div {
+    width:980px;
+    height: 400px;
+    background-image: url("/assets/images/interface/history_bg.jpg");
+    height: 400px;
+}
+
+#history_div > div {
+    width: 326px;
+    height: 400px;
+}
+
+#history_div > div > div {
+    margin: 6px 0 24px 36px;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    color: #b6b6b6;
+    letter-spacing: -1px;
+}
+
+#history_div > div div h1 {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    color: #555555;
+}
+
+#bi_n_departments_section {
+    display: none;
+}
+
+#history_section {
+    display: none;
+}
+
+#history_div > div > div:hover {
+    color: #333333;
+}
+
 
 .people_gallery  {
     overflow: hidden;
