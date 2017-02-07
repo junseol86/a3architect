@@ -1,3 +1,73 @@
+.about_values h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #808080;
+}
+
+.about_values .long {
+    width: 840px;
+}
+
+.about_values .long div {
+    font-size: 1.2em;
+    color: #bfbfbf;
+    margin: 18px 0 64px 0;
+}
+
+.about_values .short {
+    width: 140px;
+    line-height: 2em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.about_a:first-child {
+    margin-top: 64px;
+}
+
+.about_a {
+    margin-bottom: 144px;
+    height: 200px;
+    overflow: visible;
+}
+
+.about_a .long {
+    width: 808px;
+    height: 200px;
+}
+
+.about_a .long div {
+    position: absolute;
+    bottom: 4px;
+    left: 36px;
+    font-size: 1.3em;
+    line-height: 1.6em;
+    color: #b3b3b3;
+}
+
+.about_a .long._right_align div {
+    left: auto;
+    right: 36px
+}
+
+.about_a .long h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+.about_a .long img {
+    position: absolute;
+    left: 56px;
+    top: -56px;
+}
+
+.about_a .short {
+    width: 172px;
+    height: 200px;
+}
+
 #company_motto {
     padding: 48px 0 36px 0;
     font-size: 6em;
