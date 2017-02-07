@@ -10,6 +10,7 @@ import play.api.mvc._
 /**
   * Created by Hyeonmin on 2016-12-07.
   */
+//이미지 서버를 따로 두게 되어 사용하지 않게 된 클래스
 class UploadCtrl extends Controller {
 
   def checkIfImage(picture: MultipartFormData.FilePart[Files.TemporaryFile]):Int = {

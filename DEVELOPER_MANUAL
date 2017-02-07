@@ -1,1 +1,32 @@
 A3그룹 웹사이트 개발자 메뉴얼
+Written by 고현민 2017-02-07
+
+A3 그룹 웹사이트는 두 개의 온 서버 어플리케이션을 구성되어 있다.
+하나는 Scala-Play2 기반으로 웹사이트를 전반적으로 구성하는 본 프로젝트(AWS 서버에 위치),
+다른 하나는 업로드되는 이미지들을 처리하고 보여주기 위한 이미지 서버(회사 개발서버에 위치)다.
+
+본 프로젝트는 스칼라와 커피스크립트를 주 언어로 사용하는 Play2 프레임워크 어플리케이션이다.
+
+사이트의 주요 구성요소는 다음과 같다.
+
+app/
+    assets/                 .js파일로 컴파일 될 커피스크립트 파일들
+    controllers/            MVC 구조상 Controller
+        _0_dashboard/       대시보드, 즉 사이트의 첫 화면 컨트롤
+        _1_intro/           대메뉴 'A3'의 하위 페이지들 컨트롤
+        _2_portfolio/       대메뉴 '포트폴리오'의 하위 페이지들 컨트롤
+        _3_sites/           대메뉴 '현장이야기'의 하위 페이지들 컨트롤
+        _4_consulting/      대메뉴 '컨설팅'의 하위 페이지들 컨트롤
+        _5_news/            대메뉴 '뉴스'의 하위 페이지들 컨트롤
+        _A_Admin/           관리자 페이지의 하위 페이지들 컨트롤
+        LoginCtrl           로그인 과정 컨트롤
+        LoginSession        로그인 후 세션 컨트롤
+        UserCtrl            회원가입에 필요한 컨트롤
+    models/                 MVC 구조상 Model
+    utils/CommonUtil        몇몇 기능들을 수행하기 위한 스칼라 클래스
+    views/                  MVC 구조상 View - .scala.html 파일들
+/public
+    /images
+    /javascripts            assets 폴더의 커피스크립트로부터 컴파일되는 .js 파일들
+    /se2                    네이버 에디터
+    /stylesheets            css 파일들
