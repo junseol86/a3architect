@@ -85,6 +85,10 @@
     text-decoration: underline;
 }
 
+#process_2, #process_3, #process_4 {
+    display: none;
+}
+
 .con_apply .circles,
 .contract_story .circles {
     color: white;

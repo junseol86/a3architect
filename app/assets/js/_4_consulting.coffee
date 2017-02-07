@@ -34,3 +34,6 @@ $ ->
       $('.as_apply #created_input').val(new Date().getTimeString())
       document.as_apply_form.submit()
   }
+
+@showProcess = (num) ->
+  $('#process_' + number).css 'display', 'block' for number in [1..num]

@@ -1,4 +1,5 @@
 $ ->
+  #대시보드 내용부 상단 좌측의 슬라이드를 컨트롤하는 부분
   #슬라이드 하단 세개 점 중에 현 위치를 표시하기 위해 슬라이드 아이템마다 번호를 지정해놓음
   $('#slide_item_container .item:eq(0)').attr 'id', '0'
   $('#slide_item_container .item:eq(1)').attr 'id', '1'
