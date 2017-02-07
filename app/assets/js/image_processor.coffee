@@ -1,3 +1,4 @@
+#사이트에서 배경이미지로 사용되는 이미지들의 크기와 위치 등을 처리하는 스크립트
 $ ->
   imageProcessor().image_process('.image_fit')
   imageProcessor().set_max_width()

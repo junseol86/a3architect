@@ -1,3 +1,4 @@
+#회원가입시 input 컨트로를 위한 모듈
 $ ->
   ivm = new inputValidModule()
 
@@ -17,12 +18,12 @@ $ ->
   userPwConfirmInput.keyup () ->
     ivm.indicateValidPasswordConfirm(userPwInput.val(), userPwConfirmInput.val(), userPwConformIndicator)
 
+  #아이디 중복확인
   idCheckBtn = $('#id_check')
   idCheckBtn.click () ->
     if (userIdInput).val().length == 0
       alert '아이디를 입력하세요.'
       return
-
     $.post '/user/id_check',
       {
         id: userIdInput.val()
@@ -36,6 +37,7 @@ $ ->
           alert "사용할 수 있는 아이디입니다."
           idCheckBtn.css 'display', 'none'
 
+  #회원가입 제출
   registerSubmitBtn = $('.register #submit_button_container div')
   registerSubmitBtn.click () ->
 

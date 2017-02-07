@@ -1,5 +1,9 @@
+#게시판 형식으로 된 페이지들의 공통적 부분들을 처리하는 스크립트
 $ ->
+  #이미지를 이미지 서버로 올리고 그로부터 회신 메시지를 받았을 때, 임시제거한 이미지 input을 다시 넣어준다
   window.addEventListener('message', boardModule().asyncReceiveMessage, false)
+
+  #ajax로 이미지를 올리는 작업이 있는 페이지에서, 해당 작업을 실행하기 위한 input 요소들을 넣어준다.
   boardModule().putPickPhotoForm()
   boardModule().putPickThumbnailForm()
   boardModule().putPickInChargePhotoForm()
@@ -13,12 +17,12 @@ $ ->
     pageNoWidth = pageNumbers.width()
     pageNoScroll = $('#pages_container #pages #numbers')
 
+    #게시판의 페이지 이동
     pageNumbers.click () ->
       location.hash = ''
       $(this).siblings().removeClass '-on'
       $(this).addClass '-on'
       pageMove()
-
     if (pagesCount <= 5)
       $('#pages_container img').css 'display', 'none'
       $('#pages_container #pages').css 'width', pageNoWidth * pagesCount + 'px'
@@ -27,13 +31,12 @@ $ ->
       $('#pages_container #pages #numbers #numbers_lined').css 'width', pageNoWidth * pagesCount + 'px'
       pageNoScroll.scrollLeft(($('#pages_container #pages #numbers .number.-on').text() - 3) * pageNoWidth)
 
-
     $('#pages_container #pages #move_right').click () ->
       pageNoScroll.animate({scrollLeft: '+=' + pageNoScroll.width()}, 300);
-
     $('#pages_container #pages #move_left').click () ->
       pageNoScroll.animate({scrollLeft: '-=' + pageNoScroll.width()}, 300);
 
+  #게시판 리스트들은 ajax를 통해 페이지 내용을 받은 뒤 #list_container란 아이디의 div 내에 삽입된다.
   afterAjaxLoad: (data) ->
     this.afterAjaxLoadSpecific(data, '#list_container')
 
@@ -69,6 +72,7 @@ $ ->
 
     uploadForm.submit()
 
+  #이미지를 업로드하고 이미지 서버에서 응답을 받으면, 이미지를 올릴 때 사용된 임시 input과 iframe 삭제한다.
   asyncReceiveMessage: (event) ->
     boardModule().asyncFileUploadCallback event.data
     $('#uploadForm').remove()
@@ -85,6 +89,8 @@ $ ->
 #    게시판 내용으로 들어가는 사진이 아닐 경우
     else
       uploadedImageProcess(result)
+
+  #페이지마다 업로드하는 이미지들이 다르므로, 요소 존재 여부에 따라 중에서 실행된다.
 
   putPickPhotoForm: () ->
     uploadPhotoBtn = $('#photoUploadBtn')

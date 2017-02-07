@@ -1,5 +1,5 @@
 $ ->
-#  주용도, 주구조 선택장 내용 받아오기
+#  주용도, 주구조 select 내용 받아오기
   $('#yongdo_main').change ->
     $('#yongdo_input').val $(this).val()
 
