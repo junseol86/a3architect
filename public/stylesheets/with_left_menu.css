@@ -10,8 +10,8 @@
 
 .left_menu > div {
     font-size: 1.4em;
-    line-height: 1.8em;
-    letter-spacing: -1px;
+    font-weight: bold;
+    line-height: 2.2em;
     cursor: pointer;
     opacity: 0.3;
 }

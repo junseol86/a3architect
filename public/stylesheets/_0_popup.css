@@ -21,7 +21,7 @@
     position: absolute;
     width: 980px;
     height: 490px;
-    background-color: #666666;
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
     text-align: center;
 }
@@ -60,7 +60,7 @@
 
 #popup #department #desc {
     padding: 24px 180px 0 180px;
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1.5em;
 }
 
@@ -75,8 +75,8 @@
 }
 
 #popup #department #link:hover {
-    background-color: white;
-    color: #333333;
+    color: #00ffff;
+    border: 1px solid #00ffff;
 }
 
 #popup #department_left {
