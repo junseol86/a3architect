@@ -40,6 +40,9 @@ $ ->
   #회원가입 제출
   registerSubmitBtn = $('.register #submit_button_container div')
   registerSubmitBtn.click () ->
+    if ($('input:checked').length < $('input[type=checkbox]').length)
+      alert '약관에 모두 동의하셔야 가입을 진행할 수 있습니다.'
+      return
 
     if (userIdInput.val().length < 1)
       return alert '아이디를 입력하세요'

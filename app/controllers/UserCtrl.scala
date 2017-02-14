@@ -43,7 +43,7 @@ class UserCtrl @Inject()(user: User, commonUtil: CommonUtil, loginSession: Login
     val user_phone = fp.get("user_phone_1") + "-" + fp.get("user_phone_2") + "-" +  fp.get("user_phone_3")
     val user_email = fp.get("user_email_1") + "@" + fp.get("user_email_2")
 
-    val insert = user.registerUser(fp.get("user_id"), fp.get("user_pw"), fp.get("user_name"), user_birth(0), user_birth(1), user_birth(2), user_phone, user_email, fp.get("user_address_1"), fp.get("user_address_2"), fp.get("created"))
+    val insert = user.registerUser(fp.get("user_id"), fp.get("user_pw"), fp.get("user_name"), user_birth(0), user_birth(1), user_birth(2), user_phone, user_email, fp.get("user_address_1"), fp.get("user_address_2"), fp.get("created"), fp.get("ssn_1"), fp.get("ssn_2"))
     Ok(insert match {
       case Some(i: Long) => views.html.alert_and_move("가입이 완료되었습니다.  로그인해주세요.", "/")
       case None => views.html.alert_and_move("에러가 발생하여 가입이 완료되지 않았습니다.", "/user/register")
@@ -60,7 +60,7 @@ class UserCtrl @Inject()(user: User, commonUtil: CommonUtil, loginSession: Login
     val user_phone = fp.get("user_phone_1") + "-" + fp.get("user_phone_2") + "-" +  fp.get("user_phone_3")
     val user_email = fp.get("user_email_1") + "@" + fp.get("user_email_2")
 
-    val modify = user.modifyUser(fp.get("user_id"), fp.get("user_pw"), fp.get("user_name"), user_birth(0), user_birth(1), user_birth(2), user_phone, user_email, fp.get("user_address_1"), fp.get("user_address_2"), fp.get("created"))
+    val modify = user.modifyUser(fp.get("user_id"), fp.get("user_pw"), fp.get("user_name"), user_birth(0), user_birth(1), user_birth(2), user_phone, user_email, fp.get("user_address_1"), fp.get("user_address_2"), fp.get("created"), fp.get("ssn_1"), fp.get("ssn_2"))
     Ok(modify match {
       case 1 => views.html.alert_and_move("회원정보가 수정되었습니다.", "/user/register")
       case default => views.html.alert_and_move("에러가 발생하여 회원정보가 수정되지 않았습니다.", "/user/register")

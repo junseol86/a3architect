@@ -89,7 +89,9 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
            |tbl_user.user_addr2,
            |tbl_user.user_birth_year,
            |tbl_user.user_birth_month,
-           |tbl_user.user_birth_day
+           |tbl_user.user_birth_day,
+           |tbl_user.ssn_1,
+           |tbl_user.ssn_2
            |FROM tbl_user
            |WHERE user_id = '$id'
            |AND user_pwd = '$hash'
@@ -108,7 +110,7 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
   }
 
   def registerUser(
-                  id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String
+                  id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String, ssn_1: String, ssn_2: String
                   ) = {
     val salt = commonUtil.createSalt()
     val hashedPw = commonUtil.passwordHashing(password + salt)
@@ -117,20 +119,21 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
       SQL(
         """
           INSERT INTO tbl_user (
-          user_id, user_pwd, user_name, user_group, sts, user_mobile, user_email, cdate, udate, user_birth_year, user_birth_month, user_birth_day, user_addr, user_addr2, user_salt
+          user_id, user_pwd, user_name, user_group, sts, user_mobile, user_email, cdate, udate, user_birth_year, user_birth_month, user_birth_day, user_addr, user_addr2, user_salt, ssn_1, ssn_2
           ) values (
-          {id}, {pwd}, {name}, {group}, {sts}, {phone}, {email}, {date}, {date}, {birthYear}, {birthMonth}, {birthDay}, {address1}, {address2}, {salt}
+          {id}, {pwd}, {name}, {group}, {sts}, {phone}, {email}, {date}, {date}, {birthYear}, {birthMonth}, {birthDay}, {address1}, {address2}, {salt}, {ssn_1}, {ssn_2}
           )
       """
       )
         .on(
-          'id -> id, 'pwd -> hashedPw, 'name -> name, 'group -> "HOST", 'sts -> "I", 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt
+          'id -> id, 'pwd -> hashedPw, 'name -> name, 'group -> "HOST", 'sts -> "I", 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt,
+          'ssn_1 -> ssn_1, 'ssn_2 -> ssn_2
         ).executeInsert()
     }
   }
 
   def modifyUser(
-                    id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String
+                    id: String, password: String, name: String, birthYear: String, birthMonth: String, birthDay: String, phone: String, email: String, address1: String, address2: String, date: String, ssn_1: String, ssn_2: String
                   ) = {
     val salt = commonUtil.createSalt()
     val hashedPw = commonUtil.passwordHashing(password + salt)
@@ -139,12 +142,14 @@ class User @Inject()(db: Database, commonUtil: CommonUtil) {
       SQL(
         """
           UPDATE tbl_user SET
-          user_pwd = {pwd}, user_name = {name}, user_mobile = {phone}, user_email = {email}, udate = {date}, user_birth_year = {birthYear}, user_birth_month = {birthMonth}, user_birth_day = {birthDay}, user_addr = {address1}, user_addr2 = {address2}, user_salt = {salt}
+          user_pwd = {pwd}, user_name = {name}, user_mobile = {phone}, user_email = {email}, udate = {date}, user_birth_year = {birthYear}, user_birth_month = {birthMonth}, user_birth_day = {birthDay}, user_addr = {address1}, user_addr2 = {address2}, user_salt = {salt},
+          ssn_1 = {ssn_1}, ssn_2 = {ssn_2}
           WHERE user_id = {id}
       """
       )
         .on(
-          'id -> id, 'pwd -> hashedPw, 'name -> name, 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt
+          'id -> id, 'pwd -> hashedPw, 'name -> name, 'phone -> phone, 'email -> email, 'date -> date, 'date -> date, 'birthYear -> birthYear, 'birthMonth -> birthMonth, 'birthDay -> birthDay, 'address1 -> address1, 'address2 -> address2, 'salt -> salt,
+          'ssn_1 -> ssn_1, 'ssn_2 -> ssn_2
         ).executeUpdate()
     }
   }

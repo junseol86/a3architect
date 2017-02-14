@@ -108,3 +108,25 @@ td {
 tr:hover td {
     color: inherit;
 }
+
+.terms {
+    padding: 20px;
+    line-height: 1.5em;
+    border: 1px solid #dedede;
+    background-color: #fafafa;
+    height: 200px;
+    overflow-y: scroll;
+    margin-top: 24px;
+}
+
+.terms_agree {
+    height: 24px;
+    margin-top: 6px;
+}
+
+.terms_agree > * {
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+    vertical-align: middle;
+}

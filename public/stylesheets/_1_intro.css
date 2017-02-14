@@ -1,3 +1,29 @@
+#about_1 {
+    width: 980px;
+    height: 155px;
+    background-size: 980px 310px;
+    margin-bottom: 120px;
+}
+
+#about_1:hover {
+    background-position-y: 155px;
+}
+
+#about_value_1,
+#about_value_2,
+#about_value_3 {
+    width: 980px;
+    height: 81px;
+    background-size: 980px 162px;
+    margin-bottom: 80px;
+}
+
+#about_value_1:hover,
+#about_value_2:hover,
+#about_value_3:hover {
+    background-position-y: 81px;
+}
+
 .about_values h1 {
     font-size: 3em;
     font-weight: bold;
@@ -363,13 +389,13 @@
 
 .contact #company_view .thumbnails {
     margin-top: 36px;
-    height: 120px;
+    height: 136px;
 }
 
 .contact #company_view .thumbnails > div {
-    width: 150px;
+    width: 180px;
     height: 100%;
-    margin-right: 16px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
