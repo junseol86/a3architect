@@ -41,7 +41,7 @@ class Project @Inject()(db: Database) {
     var years = List[Map[String, Any]]()
     db.withConnection {implicit  conn =>
       years = SQL(
-        """SELECT DISTINCT pj_year FROM tbl_project""".stripMargin
+        """SELECT DISTINCT pj_year FROM tbl_project ORDER BY pj_year DESC""".stripMargin
       ).as(parser.*)
       years
     }

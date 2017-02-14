@@ -49,6 +49,8 @@ $ ->
     idToShow = $(this).attr 'id'
     $('.people_gallery > div').removeClass '-on'
     $('.people_gallery > div#' + idToShow).addClass '-on'
+    if (idToShow == 'A3BOX')
+      $('.people_gallery > div').addClass '-on'
   $('.filters #all').click ->
     $('.people_gallery > div').addClass '-on'
 
