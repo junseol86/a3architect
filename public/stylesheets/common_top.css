@@ -73,6 +73,10 @@
     float: left;
 }
 
+.top #navigate > div:hover {
+    color: #00ffff;
+}
+
 .top #navigate div div {
     width: 102px;
     font-size: 1.5em;
