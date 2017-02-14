@@ -43,53 +43,43 @@
     <div id="navigate" class="_float_con">
         <div id="intro">
             <div class="_pointer" onclick="navigate('/intro/about')">A3</div>
-            @if(page_data("category")=="intro"){
                 <ul>
                     <li id="about">A3 그룹은?</li>
                     <li id="people">A3 사람들</li>
                     <li id="contact">CONTACT</li>
                 </ul>
-            }
         </div>
         <div id="portfolio">
             <div class="_pointer" onclick="navigate('/portfolio/construction')">포트폴리오</div>
-            @if(page_data("category")=="portfolio"){
-                <ul>
-                    <li id="construction">건축시공</li>
-                    <li id="design">건축설계</li>
-                    <li id="interior">인테리어</li>
-                </ul>
-            }
+            <ul>
+                <li id="construction">건축시공</li>
+                <li id="design">건축설계</li>
+                <li id="interior">인테리어</li>
+            </ul>
         </div>
         <div id="sites">
             <div class="_pointer" onclick="navigate('/sites/in_progress')">현장이야기</div>
-            @if(page_data("category")=="sites"){
-                <ul>
-                    <li id="in_progress">현장상황</li>
-                    <li id="completed">완공현장</li>
-                </ul>
-            }
+            <ul>
+                <li id="in_progress">현장상황</li>
+                <li id="completed">완공현장</li>
+            </ul>
         </div>
         <div id="consulting">
             <div class="_pointer" onclick="navigate('/consulting/process')">컨설팅</div>
-            @if(page_data("category")=="consulting"){
-                <ul>
-                    <li id="process">진행절차</li>
-                    <li id="con_apply" class="secured">컨설팅 신청</li>
-                    <li id="contract_story">계약 스토리</li>
-                    <li id="as_apply" class="secured">A/S 신청</li>
-                </ul>
-            }
+            <ul>
+                <li id="process">진행절차</li>
+                <li id="con_apply" class="secured">컨설팅 신청</li>
+                <li id="contract_story">계약 스토리</li>
+                <li id="as_apply" class="secured">A/S 신청</li>
+            </ul>
         </div>
         <div id="news">
             <div class="_pointer" onclick="navigate('/news/promotion')">소식</div>
-            @if(page_data("category")=="news"){
-                <ul>
-                    <li id="promotion">A3 홍보관</li>
-                    <li id="space_story">공간이야기</li>
-                    <li id="news">A3 NEWS</li>
-                </ul>
-            }
+            <ul>
+                <li id="promotion">A3 홍보관</li>
+                <li id="space_story">공간이야기</li>
+                <li id="news">A3 NEWS</li>
+            </ul>
         </div>
     </div>
 

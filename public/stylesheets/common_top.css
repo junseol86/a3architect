@@ -89,6 +89,15 @@
     border-bottom: 3px solid #555555;
 }
 
+.top #navigate ul {
+    display: none;
+}
+
+.top #navigate div.-on ul,
+.top #navigate div:hover ul {
+    display: block;
+}
+
 .top #navigate li {
     margin: 12px 0px 12px 0px;
     font-size: 1.3em;
