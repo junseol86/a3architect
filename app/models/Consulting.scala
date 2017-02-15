@@ -83,16 +83,16 @@ class Consulting @Inject()(db: Database) {
     (list, count)
   }
 
-  def getAAsApply(idx: String) = {
-    var result = List[Map[String, Any]]()
-    db.withConnection{implicit conn =>
-      result = SQL(
-        s"""SELECT * FROM tbl_as_apply
-           WHERE aa_idx = '$idx'
-           """.stripMargin).as(parser.*)
-    }
-    result(0)
-  }
+//  def getAAsApply(idx: String) = {
+//    var result = List[Map[String, Any]]()
+//    db.withConnection{implicit conn =>
+//      result = SQL(
+//        s"""SELECT * FROM tbl_as_apply
+//           WHERE aa_idx = '$idx'
+//           """.stripMargin).as(parser.*)
+//    }
+//    result(0)
+//  }
 
 
   def getOptions = {

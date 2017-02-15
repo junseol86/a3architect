@@ -27,6 +27,8 @@
 .filters > div,
 .tabs > div {
     padding: 0px 28px 0px 28px;
+    height: 24px;
+    line-height: 24px;
     cursor: pointer;
     border-right: 1px solid #bfbfbf;
 }

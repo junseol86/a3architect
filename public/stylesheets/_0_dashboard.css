@@ -127,9 +127,33 @@
 }
 
 #create_experience {
-    text-align: center;
-    margin: 64px 0px 32px 0px;
-    font-size: 4em;
+    width: 980px;
+    height: 170px;
+    background-size: 980px 510px;
+}
+
+#create_experience > div {
+    height: 170px;
+}
+
+#cfen_1 {
+    width: 110px;
+}
+#cfen_2 {
+    width: 190px;
+    cursor: pointer;
+}
+#cfen_3 {
+    width: 110px;
+    cursor: pointer;
+}
+#cfen_4 {
+    width: 310px;
+    cursor: pointer;
+}
+#cfen_5 {
+    width: 120px;
+    cursor: pointer;
 }
 
 #topPortfolios > div {

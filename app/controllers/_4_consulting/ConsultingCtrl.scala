@@ -167,11 +167,33 @@ class ConsultingCtrl @Inject()(user: User, loginSession: LoginSession,
     var options = Map[String, List[Map[String, Any]]]()
     options = consulting.getOptions
 
-    if (user_data.length != 0)
-      Ok(views.html._4_consulting_04_as_apply(page_data, user_data))
-    else
-      Ok(views.html.go_back(page_data, user_data))
+    Ok(views.html._4_consulting_04_as_apply(page_data, user_data))
   }
+
+//  def as_apply_list() = Action { request =>
+//    var user_data = List[Map[String, Any]]()
+//    user_data = loginSession.userData(request)
+//
+//    val category = request.body.asFormUrlEncoded.get("category").head
+//    val board_page = request.body.asFormUrlEncoded.get("page").head.toInt
+//
+//    var page_data = Map[String, Any]()
+//    page_data += "title" -> "A3 :: 계약 스토리"
+//    page_data += "login" -> ""
+//    page_data += "category" -> "consulting"
+//    page_data += "page" -> "as_apply"
+//
+//    var stories = List[Map[String, Any]]()
+//    var totalCount = 0
+//
+//    val listAndCount = contractStory.getContractStories(category.replace("@", ""), "", board_page)
+//
+//    stories = listAndCount._1
+//    totalCount = listAndCount._2(0)(".total").toString.toInt
+//    val count = totalCount / contractStory.pageSize + (if (totalCount % contractStory.pageSize == 0) 0 else 1)
+//
+//    Ok(views.html._4_consulting_03_as_apply_list(page_data, user_data, commonUtil, stories, count, board_page))
+//  }
 
 
   def as_apply_submit = Action { request =>

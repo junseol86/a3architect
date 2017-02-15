@@ -76,10 +76,10 @@ GET     /admin/contract_story_write                                 controllers.
 GET     /admin/contract_story_modify/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_modify(idx:String)
 POST    /admin/contract_story_submit/:insertOrModify                controllers._A_admin.AdminContractStoryCtrl.contract_story_submit(insertOrModify:Int)
 GET     /admin/contract_story_delete/:idx                           controllers._A_admin.AdminContractStoryCtrl.contract_story_delete(idx:String)
-GET     /admin/as_apply                                             controllers._A_admin.AdminAsApplyCtrl.as_apply
-POST    /admin/as_apply_list                                        controllers._A_admin.AdminAsApplyCtrl.as_apply_list
-GET     /admin/as_apply_view/:idx                                   controllers._A_admin.AdminAsApplyCtrl.as_apply_view(idx:String)
-GET     /admin/as_apply_delete/:idx                                 controllers._A_admin.AdminAsApplyCtrl.as_apply_delete(idx:String)
+#GET     /admin/as_apply                                             controllers._A_admin.AdminAsApplyCtrl.as_apply
+#POST    /admin/as_apply_list                                        controllers._A_admin.AdminAsApplyCtrl.as_apply_list
+#GET     /admin/as_apply_view/:idx                                   controllers._A_admin.AdminAsApplyCtrl.as_apply_view(idx:String)
+#GET     /admin/as_apply_delete/:idx                                 controllers._A_admin.AdminAsApplyCtrl.as_apply_delete(idx:String)
 
 GET     /admin/promotion                                            controllers._A_admin.AdminPromotionCtrl.promotion
 POST    /admin/promotion_list                                       controllers._A_admin.AdminPromotionCtrl.promotion_list

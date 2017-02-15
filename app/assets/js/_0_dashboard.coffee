@@ -93,3 +93,5 @@ $ ->
   category = ($('#sites_tabs > div.on').attr 'id').replace('@', 'in_progress')
   navigate('/sites/' + category)
 
+@create_experience = (num) ->
+  $('#create_experience').css 'background-position-y', num * 170 + 'px'
