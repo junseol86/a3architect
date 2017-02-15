@@ -88,6 +88,11 @@ $ ->
     $('.thumbnails div').removeClass('-on')
     $('#thumb_' + id).addClass('-on')
 
+@about_bi = (num) ->
+  $('#about_bi > div:first-child').css 'background-position-y', -(num-1)*240 + 'px'
+  $('#about_desc > div:last-child > div').removeClass('_on')
+  $('#about_desc_' + num).addClass('_on')
+
 @departments = [
   {
     work: 'DEVELOPERS'

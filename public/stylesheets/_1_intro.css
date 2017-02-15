@@ -117,6 +117,13 @@
     vertical-align: middle;
 }
 
+#about_bi > div:first-child {
+    width: 345px;
+    height: 240px;
+    background-size: 345px 960px;
+    background-position: 0 0;
+}
+
 #about_desc {
     color: #bfbfbf;
     margin: 80px 0 80px 0;
@@ -183,6 +190,10 @@
     margin-right: 64px;
 }
 
+#about_desc > div:first-child > div > div:hover {
+    font-weight: bold;
+}
+
 #about_desc > div:first-child span {
     margin-left: 12px;
     color: #333333;
@@ -191,12 +202,20 @@
 
 #about_desc > div:last-child {
     width: 55%;
+    display: table;
 }
 
 #about_desc > div:last-child > div {
-    margin: 24px 0 0 64px;
-    font-size: 1.2em;
+    height: 140px;
+    padding-left: 64px;
+    font-size: 1.1em;
     line-height: 2em;
+    display: none;
+}
+
+#about_desc > div:last-child > div._on {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #history_div {
@@ -217,13 +236,14 @@
     line-height: 1.5em;
     color: #b6b6b6;
     letter-spacing: -1px;
+    position: relative;
 }
 
 #history_div > div div h1 {
     font-weight: bold;
     margin-bottom: 12px;
     font-size: 1.1em;
-    color: #555555;
+    color: #b6b6b6;
 }
 
 #bi_n_departments_section {
@@ -236,6 +256,34 @@
 
 #history_div > div > div:hover {
     color: #333333;
+}
+
+#history_div > div > div:hover h1 {
+    color: #333333;
+}
+
+#history_div > div > div > span {
+    position: absolute;
+    top: -5px;
+    left: -32px;
+    font-size: 0.8em;
+    color: #333333;
+    display: none;
+}
+
+#history_div > div > div:hover > span {
+    display: block;
+}
+
+#people_word {
+    width: 980px;
+    height: 180px;
+    background-size: 980px 360px;
+    margin-bottom: 120px;
+}
+
+#people_word:hover {
+    background-position-y: 180px;
 }
 
 
