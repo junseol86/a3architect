@@ -12,7 +12,7 @@
                 </div>
                 <div class="name_phone">
                     <span>업체명: </span>@as_apply("tbl_as_apply.aa_client_name")
-                    @if(user_data(0)("tbl_user.user_id") == "admin") {
+                    @if(user_data.length > 0 && user_data(0)("tbl_user.user_id") == "admin") {
                         (@as_apply("tbl_as_apply.aa_client_id"))
                     }
                     <br>
@@ -21,7 +21,7 @@
                 <div class="term">
                     하자담보책임기간: @as_apply("tbl_as_apply.aa_term")
                 </div>
-                @if(as_apply("tbl_as_apply.aa_client_id") == user_data(0)("tbl_user.user_id") || user_data(0)("tbl_user.user_id") == "admin") {
+                @if(user_data.length > 0 && (as_apply("tbl_as_apply.aa_client_id") == user_data(0)("tbl_user.user_id") || user_data(0)("tbl_user.user_id") == "admin")) {
                     <div class="delete_btn _pointer" onclick="deleteThis('/consulting/as_apply_delete', '@as_apply("tbl_as_apply.aa_idx")');">삭제</div>
                 }
             </div>
