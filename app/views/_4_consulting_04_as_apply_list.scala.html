@@ -1,0 +1,53 @@
+@import utils.CommonUtil
+@(page_data: Map[String, Any], user_data: List[Map[String, Any]], commonUtil: CommonUtil, as_applies: List[Map[String, Any]], count: Int, board_page: Int)
+
+<table>
+    @for(as_apply <- as_applies) {
+        <div id="as_apply_item" class="_float_con">
+            <input id="modified_input" type="hidden" name="created">
+            <div class="content _pos_rel">
+                <div class="title_subtitle">
+                    <h1>@as_apply("tbl_as_apply.aa_title")</h1>
+                    <span>@as_apply("tbl_as_apply.aa_subtitle")</span>
+                </div>
+                <div class="name_phone">
+                    <span>업체명: </span>@as_apply("tbl_as_apply.aa_client_name")
+                    @if(user_data(0)("tbl_user.user_id") == "admin") {
+                        (@as_apply("tbl_as_apply.aa_client_id"))
+                    }
+                    <br>
+                    <span>연락처: </span>@as_apply("tbl_as_apply.aa_client_phone")
+                </div>
+                <div class="term">
+                    하자담보책임기간: @as_apply("tbl_as_apply.aa_term")
+                </div>
+                @if(as_apply("tbl_as_apply.aa_client_id") == user_data(0)("tbl_user.user_id") || user_data(0)("tbl_user.user_id") == "admin") {
+                    <div class="delete_btn _pointer" onclick="deleteThis('/consulting/as_apply_delete', '@as_apply("tbl_as_apply.aa_idx")');">삭제</div>
+                }
+            </div>
+            <div class="thumbnail" id="thumb_@as_apply("tbl_as_apply.aa_idx")" style="background-image: url('http://@as_apply("tbl_as_apply.aa_thumbnail")');"></div>
+        </div>
+        <script>
+            imageProcessor().image_process("#thumb_@as_apply("tbl_as_apply.aa_idx")")
+        </script>
+    }
+</table>
+
+<div id="pages_container">
+    <div id="pages" class="_float_con">
+        <img id="move_left" src="@routes.Assets.versioned("/images/interface/pages_left.png")">
+        <div id="numbers">
+            <div id="numbers_lined" class="_float_con">
+                @for(pageNo <- 1 to count) {
+                    @if(pageNo == board_page) {
+                        <div class="number -on">@pageNo</div>
+                    } else {
+                        <div class="number">@pageNo</div>
+                    }
+            }
+            </div>
+        </div>
+        <img id="move_right" src="@routes.Assets.versioned("/images/interface/pages_right.png")">
+    </div>
+</div>
+

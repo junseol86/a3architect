@@ -352,7 +352,8 @@
     background-image: url("/assets/images/interface/consulting_lock_on.png");
 }
 
-.as_apply #write_btn_area div {
+.as_apply #write_btn_area div,
+.as_apply #submit_btn_area div {
     margin-top: 24px;
     margin-left: 1px;
     float: right;
@@ -361,8 +362,119 @@
     color: white;
     font-size: 1.2em;
     cursor: pointer;
+    margin-left: 8px;
 }
 
 .as_apply #write_btn_area div:hover {
     background-color: #444444;
+}
+
+#as_apply_item {
+    margin-bottom: 24px;
+}
+
+#as_apply_item > div {
+    float: right;
+    height: 150px;
+}
+
+#as_apply_item > div.content {
+    width: 510px;
+    border-top: 1px solid #b3b3b3;
+    font-size: 1.2em;
+    color: #808080;
+}
+
+#as_apply_item > div.content > div {
+    position: absolute;
+}
+
+#as_apply_item > div.content > div.title_subtitle {
+    top: 20px;
+    left: 12px;
+}
+
+#as_apply_item > div.content > div.title_subtitle > h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #555555;
+}
+
+#as_apply_item > div.content > div.name_phone {
+    left: 12px;
+    bottom: 8px;
+    line-height: 18px;
+}
+
+#as_apply_item > div.content > div.name_phone > span {
+    font-weight: bold;
+    color: #555555;
+}
+
+#as_apply_item > div.content > div.term {
+    right: 0;
+    bottom: 8px;
+}
+
+#as_apply_item > div.content > div.delete_btn {
+    right: 0;
+    top: 20px;
+}
+
+#as_apply_item > div.content > div.delete_btn:hover {
+    color: #00ffff;
+}
+
+#as_apply_item > div.thumbnail {
+    width: 300px;
+    margin-right: 24px;
+}
+
+#as_apply_form {
+    margin-top: 24px;
+    display: none;
+}
+
+#as_apply_form > div > div {
+    float: right;
+}
+
+#as_apply_form #aa_thumbnail {
+    box-sizing: border-box;
+    width: 300px;
+    height: 170px;
+    border: 1px solid #dedede;
+}
+
+#as_apply_form #thumb_upload {
+    width: 300px;
+    margin-right: 24px;
+}
+
+#as_apply_form #content_upload {
+    width: 510px;
+}
+
+#as_apply_form #content_upload * {
+    font-size: 1.2em;
+    line-height: 24px;
+}
+
+#as_apply_form #content_upload div {
+    display: inline-block;
+    min-width: 40px;
+    margin-right: 12px;
+}
+
+#as_apply_form #content_upload input {
+    margin: 0 4px;
+}
+
+#as_apply_form #content_upload .long {
+    width: 400px;
+}
+
+#as_apply_form #content_upload .short {
+    width: 60px;
 }

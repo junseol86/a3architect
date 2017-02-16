@@ -26,7 +26,9 @@ GET     /consulting/contract_story                                  controllers.
 POST    /consulting/contract_story_list                             controllers._4_consulting.ConsultingCtrl.contract_story_list
 GET     /consulting/contract_story_view/:idx                        controllers._4_consulting.ConsultingCtrl.contract_story_view(idx: String)
 GET     /consulting/as_apply                                        controllers._4_consulting.ConsultingCtrl.as_apply
+POST    /consulting/as_apply_list                                   controllers._4_consulting.ConsultingCtrl.as_apply_list
 POST    /consulting/as_apply_submit                                 controllers._4_consulting.ConsultingCtrl.as_apply_submit
+GET     /consulting/as_apply_delete/:idx                            controllers._4_consulting.ConsultingCtrl.as_apply_delete(idx: String)
 
 GET     /news/promotion                                             controllers._5_news.PromotionCtrl.promotion
 POST    /news/promotion_list                                        controllers._5_news.PromotionCtrl.promotion_list

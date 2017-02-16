@@ -168,35 +168,21 @@ class Consulting @Inject()(db: Database) {
   }
 
   def as_apply(
-                 client_id: String, client_name: String, client_phone: String,
-                 project_name: String,
-                 address_1: String, address_2: String, address_3: String,
-                 content: String,
-                 created: String
+              client_id: String,  client_name: String, client_phone: String, title: String, subtitle: String, created: String, thumbnail: String, term: String
                ) = {
     db.withConnection{implicit conn =>
       SQL(
         """
           INSERT INTO tbl_as_apply (
-          aa_client_id, aa_client_name, aa_client_phone,
-          aa_project_name,
-          aa_address_1, aa_address_2, aa_address_3,
-          aa_content,
-          aa_created
+          aa_client_id, aa_client_name, aa_client_phone, aa_title, aa_subtitle, aa_created, aa_thumbnail, aa_term
           ) values (
-          {client_id}, {client_name}, {client_phone},
-          {project_name},
-          {address_1}, {address_2}, {address_3},
-          {content},
-          {created}
+          {client_id}, {client_name}, {client_phone}, {title}, {subtitle}, {created}, {thumbnail}, {term}
           )
       """
       )
         .on(
           'client_id -> client_id, 'client_name -> client_name, 'client_phone -> client_phone,
-          'project_name -> project_name,
-          'address_1 -> address_1, 'address_2 -> address_2, 'address_3 -> address_3,
-          'content -> content,
+          'title -> title, 'subtitle -> subtitle, 'thumbnail -> thumbnail, 'term -> term,
           'created -> created
         ).executeInsert()
     }
