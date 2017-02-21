@@ -8,7 +8,7 @@
 
             <div>
                 <div class="title">@sites("view_sites.pj_title")</div>
-                <div class="category">| @if(sites("view_sites.sts_category").toString == "in_progress"){현장상황}else{완공현장}</div>
+                <div class="category">@sites("view_sites.pj_subtitle")</div>
             </div>
             <script>
                 imageProcessor().image_process("#dash_sts_@sites("view_sites.sts_idx")");

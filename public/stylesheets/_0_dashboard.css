@@ -224,15 +224,16 @@
 
 #portfolio_container > div > div > div.title,
 #sites_container > div > div > div.title {
-    padding: 48px 0px 0px 24px;
+    padding: 48px 12px 0px 24px;
     font-size: 1.6em;
     font-weight: bold;
 }
 
 #portfolio_container > div > div > div.category,
 #sites_container > div > div > div.category {
-    padding: 8px 0px 0px 24px;
+    padding: 8px 12px 0px 24px;
     font-size: 1.3em;
+    line-height: 1.5em;
 }
 
 #news_n_story > div {

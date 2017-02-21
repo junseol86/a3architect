@@ -39,7 +39,7 @@ $ ->
 #  A3 사람들
   $('.people_gallery .photo').each( () ->
     $(this).css 'background-image', "url('/assets/images/contents/people/" + this.id + ".jpg')"
-    $(this).children('img').css 'background-image', "url('/assets/images/contents/people/" + this.id + ".png')"
+    $(this).children('img').attr 'src', "/assets/images/contents/people/" + this.id + ".png"
   )
   $('.people_gallery > div').each( () ->
     idReplace = $(this).attr('id').replace(' ', '').replace('&', '')

@@ -8,7 +8,7 @@
 
             <div>
                 <div class="title">@portfolio("view_portfolio.pj_title")</div>
-                <div class="category">| @commonUtil.portfolioCategory(portfolio("view_portfolio.pf_category").toString)</div>
+                <div class="category">@portfolio("view_portfolio.pj_subtitle")</div>
             </div>
             <script>
                 imageProcessor().image_process("#dash_pf_@portfolio("view_portfolio.pf_idx")");

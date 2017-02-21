@@ -46,6 +46,6 @@ $(window).resize () ->
       imgHeight = $(this).height()
 
       if(imgWidth > maxWidth)
-        $(this).css "width", "#{maxWidth}.px"
-        $(this).css "width", "#{imgHeight * maxWidth / imgWidth}.px"
+        $(this).css "width", "#{maxWidth}px"
+        $(this).css "height", "#{imgHeight * maxWidth / imgWidth}px"
 }

@@ -9,45 +9,40 @@
     <div id="list_container" data-url="/consulting/as_apply_list">
     </div>
 
-    @user_data.length match {
-        case 0 => {
-            <div id="write_btn_area" class="_float_con" onclick="alert('로그인이 필요합니다.');">
-                <div>AS 신청하기</div>
-            </div>
-        }
-        case default => {
-            <div id="write_btn_area" class="_float_con" onclick="write_as_apply_toggle()">
-                <div>AS 신청하기</div>
-            </div>
+    @if(user_data.length > 0 && user_data(0)("tbl_user.user_group") == "ADMIN") {
+        <div id="write_btn_area" class="_float_con" onclick="write_as_apply_toggle()">
+            <div>AS 신청하기</div>
+        </div>
 
-            <form name="as_apply_form" id="as_apply_form" action="/consulting/as_apply_submit" method="post">
-                <input id="modified_input" type="hidden" name="created">
-                <div class="_float_con">
-                    <div id="content_upload">
-                        <div>제목</div><input name="title" class="long" maxlength="20"/><br>
-                        <div>내용</div><input name="subtitle" class="long" maxlength="50"/><br>
-                        <div>업체명</div><input name="client_name" maxlength="20"/><br>
-                        <div>연락처</div><input class="short" name="client_phone_1" maxlength="4"/>-<input class="short" name="client_phone_2" maxlength="4"/>-<input class="short" name="client_phone_3" maxlength="4"/><br>
-                        <div>하자담보책임기간</div><input name="term" maxlength="20"/><br>
+        <form name="as_apply_form" id="as_apply_form" action="/consulting/as_apply_submit" method="post">
+            <input id="modified_input" type="hidden" name="created">
+            <div class="_float_con">
+                <div id="content_upload">
+                    <div>제목</div><input name="title" class="long" maxlength="20"/><br>
+                    <div>내용</div><input name="subtitle" class="long" maxlength="50"/><br>
+                    <div>업체명</div><input name="client_name" maxlength="20"/><br>
+                    <div>연락처</div><input class="short" name="client_phone_1" maxlength="4"/>-<input class="short" name="client_phone_2" maxlength="4"/>-<input class="short" name="client_phone_3" maxlength="4"/><br>
+                    <div>하자담보책임기간</div><input name="term" maxlength="20"/><br>
 
-                    </div>
-                    <div id="thumb_upload">
-                        <div id="aa_thumbnail" style="background-image: none"></div>
-                        <div id="thumbnail_btns" class="_float_con">
-                            <div>
-                                <input id="thumbnailUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#thumbnailInput'), 'http://115.68.110.118:9000/a3architect/as_apply')" value="썸네일 등록">
-                            </div>
-                            <input id="thumbnail_to_submit" name="thumbnail" hidden>
+                </div>
+                <div id="thumb_upload">
+                    <div id="aa_thumbnail" style="background-image: none"></div>
+                    <div id="thumbnail_btns" class="_float_con">
+                        <div>
+                            <input id="thumbnailUploadBtn" type="button" onclick="boardModule().asyncFileUpload($('#thumbnailInput'), 'http://115.68.110.118:9000/a3architect/as_apply')" value="썸네일 등록">
                         </div>
+                        <input id="thumbnail_to_submit" name="thumbnail" hidden>
                     </div>
                 </div>
-                <div id="submit_btn_area" class="_float_con">
-                    <div onclick="submit_as_apply()">제출하기</div>
-                    <div onclick="write_as_apply_toggle()">취소</div>
-                </div>
-            </form>
-        }
+            </div>
+            <div id="submit_btn_area" class="_float_con">
+                <div onclick="submit_as_apply()">제출하기</div>
+                <div onclick="write_as_apply_toggle()">취소</div>
+            </div>
+        </form>
+
     }
+
 
     </div>
 }
