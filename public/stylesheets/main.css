@@ -29,12 +29,7 @@ a {
     margin: 0 auto;
 }
 
-.filters select {
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.filters select::-ms-expand {
+input[type=hidden] {
+    visibility: hidden;
     display: none;
 }
